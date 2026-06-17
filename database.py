@@ -32,6 +32,16 @@ def _rename_and_format_df(df, tag_map):
 
     # 4. Apply User Tag Mapping
     df = df.rename(columns=tag_map)
+
+    # Ensure all expected friendly name columns from tag_map are present
+    # and cast them to numeric type so missing/bad values are coerced to float NaNs
+    for friendly_name in tag_map.values():
+        if friendly_name not in df.columns:
+            df[friendly_name] = np.nan
+        else:
+            # Coerce any string placeholders (like "Bad" or "Comm Error") to NaN
+            df[friendly_name] = pd.to_numeric(df[friendly_name], errors='coerce')
+
     df[config.TIMESTAMP_COLUMN] = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
 
     # Set index, sort, and merge exact duplicate timestamps from multiple tables before filtering
@@ -63,6 +73,9 @@ def _rename_and_format_df(df, tag_map):
         df = df.bfill().ffill()
     else:
         df = df.ffill().bfill()
+
+    # Fill any remaining NaNs (e.g. from completely empty columns or start/end edges) with 0.0
+    df = df.fillna(0.0)
 
     # Sanitize subnormal floats from disconnected PLCs (e.g., 1e-39) to exactly 0.0
     # This prevents the UI from rendering weird scientific notation characters (like â‚¬<39â‚¬<-)
@@ -184,7 +197,9 @@ def get_live_current_values(field_names, window_minutes=5):
             for fn in field_names
         )
         
-        # We query all 3 measurements in one Flux call
+        # We query all 3 measurements in one Flux call.
+        # We do not use pivot in Flux here because fields updating at different
+        # timestamps will produce multiple rows, causing df.iloc[-1] to discard earlier ones.
         query = f'''
         from(bucket: "{config.DB_BUCKET}")
           |> range(start: -{int(window_minutes)}m)
@@ -193,28 +208,29 @@ def get_live_current_values(field_names, window_minutes=5):
           |> last()
           |> group(columns: ["_field"])
           |> last()
-          |> pivot(rowKey:["_time"], columnKey:["_field"], valueColumn:"_value")
         '''
         df = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
         if isinstance(df, list):
             df = pd.concat(df) if df else pd.DataFrame()
         if df is None or df.empty:
             return {}
-        cols_to_drop = [c for c in ['result', 'table', '_start', '_stop', '_measurement'] if c in df.columns]
-        df = df.drop(columns=cols_to_drop)
-        row = df.iloc[-1].to_dict()
+            
         out = {}
-        for k, v in row.items():
-            if k == '_time':
-                out['_time'] = str(v)
-                continue
-            try:
-                out[k] = float(v)
-            except (TypeError, ValueError):
-                continue
+        for _, r in df.iterrows():
+            field = r.get('_field')
+            val = r.get('_value')
+            if field and val is not None:
+                try:
+                    out[field] = float(val)
+                except (TypeError, ValueError):
+                    continue
+                    
+        if '_time' in df.columns:
+            out['_time'] = str(df['_time'].max())
+            
         return out
     except Exception as e:
-        print(f"get_kiln1_latest_fields error: {e}")
+        print(f"get_live_current_values error: {e}")
         return {}
     finally:
         client.close()
