@@ -18,16 +18,16 @@ import fingerprint_engine
 def test_database_duplicate_resolution():
     print("Running database duplicate column resolution test...")
     
-    # Create a DataFrame with duplicate columns
-    # We include _time and some duplicate tag names
+    # Create a DataFrame with duplicate columns and boolean AI Bit columns
     df_raw = pd.DataFrame([
-        ['2026-06-18 10:00:00', 1.0, 2.0, 'ON'],
-        ['2026-06-18 10:00:02', 3.0, 4.0, 'OFF']
-    ], columns=['_time', 'coalMainBurner', 'coalMainBurner', 'Coal Mill (ON/OFF)'])
+        ['2026-06-18 10:00:00', 1.0, 2.0, 'ON', True],
+        ['2026-06-18 10:00:02', 3.0, 4.0, 'OFF', False]
+    ], columns=['_time', 'coalMainBurner', 'coalMainBurner', 'Coal Mill (ON/OFF)', 'Cooler BF fan speed AI Bit'])
     
     tag_map = {
         'coalMainBurner': 'coalMainBurner',
-        'Coal Mill (ON/OFF)': 'Coal Mill (ON/OFF)'
+        'Coal Mill (ON/OFF)': 'Coal Mill (ON/OFF)',
+        'Cooler BF fan speed AI Bit': 'Cooler BF fan speed AI Bit'
     }
     
     # Run _rename_and_format_df
@@ -39,6 +39,7 @@ def test_database_duplicate_resolution():
     # Asserts
     assert not df_processed.columns.duplicated().any(), "Error: Duplicated columns remain in df!"
     assert 'coalMainBurner' in df_processed.columns, "Error: coalMainBurner is missing!"
+    assert 'Cooler BF fan speed AI Bit' in df_processed.columns, "Error: Cooler BF fan speed AI Bit is missing!"
     
     # Verify values are correctly preserved (last column values or horizontally filled)
     # Row 0: 2.0 (since horizontal fill of 1.0 and 2.0 -> 2.0)

@@ -86,7 +86,10 @@ def _rename_and_format_df(df, tag_map):
         numeric_df = resampled.mean(numeric_only=True)
         non_numeric_cols = df.select_dtypes(exclude=[np.number]).columns
         
-        if not non_numeric_cols.empty:
+        # Filter out columns that are already present in numeric_df to prevent duplicates (e.g. boolean columns)
+        non_numeric_cols = [c for c in non_numeric_cols if c not in numeric_df.columns]
+        
+        if non_numeric_cols:
             non_numeric_df = resampled.first()[non_numeric_cols]
             df = pd.concat([numeric_df, non_numeric_df], axis=1)
         else:
@@ -108,7 +111,9 @@ def _rename_and_format_df(df, tag_map):
             for col in numeric_cols:
                 if isinstance(df[col], pd.DataFrame):
                      print(f"[DIAGNOSTICS] WARNING: numeric col '{col}' is a DataFrame")
-                     df[col] = df[col].ffill(axis=1).iloc[:, -1]
+                     combined = df[col].ffill(axis=1).iloc[:, -1]
+                     df = df.drop(columns=[col])
+                     df[col] = combined
                 df[col] = np.where(np.abs(df[col]) < 1e-10, 0.0, df[col])
 
         df = df.reset_index()
