@@ -97,23 +97,44 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
     if not client: return pd.DataFrame()
 
     try:
-        escaped_tags = [str(tag).replace('\\', '\\\\').replace('"', '\\"') for tag in process_tags]
-        tags_list_str = ", ".join(f'"{tag}"' for tag in escaped_tags)
-        query = f'''
-        from(bucket: "{config.DB_BUCKET}")
-          |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
-          |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
-          |> filter(fn: (r) => contains(value: r["_field"], set: [{tags_list_str}]))
-          |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
-        '''
-        df = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
-        if isinstance(df, list): df = pd.concat(df) if df else pd.DataFrame()
+        # Split process_tags into chunks of 40 to avoid Flux nesting limits and ensure pushdown
+        chunk_size = 40
+        tag_chunks = [process_tags[i:i + chunk_size] for i in range(0, len(process_tags), chunk_size)]
+        
+        dfs = []
+        for chunk in tag_chunks:
+            field_filters = ' or '.join([f'r["_field"] == "{str(tag).replace(chr(34), chr(92) + chr(34))}"' for tag in chunk])
+            query = f'''
+            from(bucket: "{config.DB_BUCKET}")
+              |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
+              |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
+              |> filter(fn: (r) => {field_filters})
+              |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
+            '''
+            df_chunk = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
+            if isinstance(df_chunk, list):
+                df_chunk = pd.concat(df_chunk) if df_chunk else pd.DataFrame()
+            if df_chunk is not None and not df_chunk.empty:
+                # Drop internal Influx columns except '_time' before merging to avoid duplicate columns
+                cols_to_drop = [c for c in ['result', 'table', '_start', '_stop', '_measurement'] if c in df_chunk.columns]
+                df_chunk = df_chunk.drop(columns=cols_to_drop)
+                dfs.append(df_chunk)
+                
+        if not dfs:
+            return pd.DataFrame()
+            
+        # Merge all chunks on '_time'
+        df = dfs[0]
+        for next_df in dfs[1:]:
+            df = pd.merge(df, next_df, on='_time', how='outer')
+            
         return _rename_and_format_df(df, tag_map) if not df.empty else pd.DataFrame()
     except Exception as e:
         print(f"Error: {e}")
         return pd.DataFrame()
     finally:
         client.close()
+
 
 
 
@@ -196,25 +217,41 @@ def get_live_current_values(field_names, window_minutes=5):
         return {}
     try:
         measurements = [config.DB_MEASUREMENT, config.DB_MEASUREMENT_OPC, config.DB_MEASUREMENT_PI]
-        escaped_fields = [str(fn).replace('\\', '\\\\').replace('"', '\\"') for fn in field_names]
-        fields_list_str = ", ".join(f'"{fn}"' for fn in escaped_fields)
         
-        # We query all 3 measurements in one Flux call.
-        # We do not use pivot in Flux here because fields updating at different
-        # timestamps will produce multiple rows, causing df.iloc[-1] to discard earlier ones.
-        query = f'''
-        from(bucket: "{config.DB_BUCKET}")
-          |> range(start: -{int(window_minutes)}m)
-          |> filter(fn: (r) => r["_measurement"] == "{measurements[0]}" or r["_measurement"] == "{measurements[1]}" or r["_measurement"] == "{measurements[2]}")
-          |> filter(fn: (r) => contains(value: r["_field"], set: [{fields_list_str}]))
-          |> last()
-          |> group(columns: ["_field"])
-          |> last()
-        '''
-        df = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
-        if isinstance(df, list):
-            df = pd.concat(df) if df else pd.DataFrame()
-        if df is None or df.empty:
+        # Split field_names into chunks of 40 to avoid Flux nesting limits and ensure pushdown
+        chunk_size = 40
+        field_chunks = [field_names[i:i + chunk_size] for i in range(0, len(field_names), chunk_size)]
+        
+        dfs = []
+        for chunk in field_chunks:
+            filter_clause = " or ".join(
+                f'r["_field"] == "{str(fn).replace(chr(34), chr(92) + chr(34))}"'
+                for fn in chunk
+            )
+            
+            # We query all 3 measurements in one Flux call.
+            # We do not use pivot in Flux here because fields updating at different
+            # timestamps will produce multiple rows, causing df.iloc[-1] to discard earlier ones.
+            query = f'''
+            from(bucket: "{config.DB_BUCKET}")
+              |> range(start: -{int(window_minutes)}m)
+              |> filter(fn: (r) => r["_measurement"] == "{measurements[0]}" or r["_measurement"] == "{measurements[1]}" or r["_measurement"] == "{measurements[2]}")
+              |> filter(fn: (r) => {filter_clause})
+              |> last()
+              |> group(columns: ["_field"])
+              |> last()
+            '''
+            df_chunk = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
+            if isinstance(df_chunk, list):
+                df_chunk = pd.concat(df_chunk) if df_chunk else pd.DataFrame()
+            if df_chunk is not None and not df_chunk.empty:
+                dfs.append(df_chunk)
+                
+        if not dfs:
+            return {}
+            
+        df = pd.concat(dfs)
+        if df.empty:
             return {}
             
         out = {}
