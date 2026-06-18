@@ -1,4 +1,5 @@
 # database.py - Updated for Pandas 3.0 & InfluxDB _time mapping
+# Triggering a new GitHub Actions build run to verify CimporApp executable compilation
 import config
 import pandas as pd
 import numpy as np
