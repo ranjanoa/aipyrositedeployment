@@ -91,16 +91,19 @@ def _rename_and_format_df(df, tag_map):
 
 
 def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
+    if not process_tags:
+        return pd.DataFrame()
     client = get_db_client()
     if not client: return pd.DataFrame()
 
     try:
-        field_filters = ' or '.join([f'r["_field"] == "{tag}"' for tag in process_tags])
+        escaped_tags = [str(tag).replace('\\', '\\\\').replace('"', '\\"') for tag in process_tags]
+        tags_list_str = ", ".join(f'"{tag}"' for tag in escaped_tags)
         query = f'''
         from(bucket: "{config.DB_BUCKET}")
           |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
           |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
-          |> filter(fn: (r) => {field_filters})
+          |> filter(fn: (r) => contains(value: r["_field"], set: [{tags_list_str}]))
           |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
         '''
         df = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
@@ -111,6 +114,7 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
         return pd.DataFrame()
     finally:
         client.close()
+
 
 
 def write_setpoints(timestamp, setpoints_dict, setpoint_tag_map, scale_factors):
@@ -192,10 +196,8 @@ def get_live_current_values(field_names, window_minutes=5):
         return {}
     try:
         measurements = [config.DB_MEASUREMENT, config.DB_MEASUREMENT_OPC, config.DB_MEASUREMENT_PI]
-        filter_clause = " or ".join(
-            f'r["_field"] == "{str(fn).replace(chr(34), chr(92) + chr(34))}"'
-            for fn in field_names
-        )
+        escaped_fields = [str(fn).replace('\\', '\\\\').replace('"', '\\"') for fn in field_names]
+        fields_list_str = ", ".join(f'"{fn}"' for fn in escaped_fields)
         
         # We query all 3 measurements in one Flux call.
         # We do not use pivot in Flux here because fields updating at different
@@ -204,7 +206,7 @@ def get_live_current_values(field_names, window_minutes=5):
         from(bucket: "{config.DB_BUCKET}")
           |> range(start: -{int(window_minutes)}m)
           |> filter(fn: (r) => r["_measurement"] == "{measurements[0]}" or r["_measurement"] == "{measurements[1]}" or r["_measurement"] == "{measurements[2]}")
-          |> filter(fn: (r) => {filter_clause})
+          |> filter(fn: (r) => contains(value: r["_field"], set: [{fields_list_str}]))
           |> last()
           |> group(columns: ["_field"])
           |> last()

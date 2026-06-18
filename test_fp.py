@@ -22,7 +22,8 @@ state = {
 dummy_window = pd.DataFrame([state, state, state, state, state]) # No slopes for test
 
 print('Testing Fingerprint Golden Envelope Logic...')
-result = get_live_fingerprint_action('AUTO', strategy_name, frontend_strategy, state, 1.0, dummy_window)
+result = get_live_fingerprint_action(dummy_window)
+
 
 if result:
     print('SUCCESS! Valid matches found:')
@@ -31,3 +32,4 @@ if result:
     print(f"Golden Envelope Generated with {num_actions} actions.")
 else:
     print('FAILED: Result was None.')
+
