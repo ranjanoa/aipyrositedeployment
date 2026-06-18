@@ -17,86 +17,112 @@ def get_db_client():
 
 
 def _rename_and_format_df(df, tag_map):
-    if df.empty: return df
-
-    # 1. Drop internal Influx columns
-    cols_to_drop = ['result', 'table', '_start', '_stop', '_measurement']
-    df = df.drop(columns=[c for c in cols_to_drop if c in df.columns])
-
-    # 2. RENAME _time to config.TIMESTAMP_COLUMN before any operations
-    if '_time' in df.columns:
-        df = df.rename(columns={'_time': config.TIMESTAMP_COLUMN})
-
-    # 3. Pivot if necessary
-    if '_field' in df.columns and '_value' in df.columns:
-        df = df.pivot_table(index=config.TIMESTAMP_COLUMN, columns='_field', values='_value').reset_index()
-
-    # 4. Apply User Tag Mapping
-    df = df.rename(columns=tag_map)
-
-    # Resolve duplicate column names (e.g. if a tag exists in multiple source measurements or is already named as friendly)
-    if df.columns.duplicated().any():
-        cols_to_resolve = df.columns[df.columns.duplicated()].unique()
-        for col in cols_to_resolve:
-            col_df = df[col]
-            if isinstance(col_df, pd.DataFrame):
-                combined = col_df.ffill(axis=1).iloc[:, -1]
-                df = df.drop(columns=[col])
-                df[col] = combined
-
-    # Ensure all expected friendly name columns from tag_map are present
-    # and cast them to numeric type so missing/bad values are coerced to float NaNs
-    for friendly_name in tag_map.values():
-        if friendly_name not in df.columns:
-            df[friendly_name] = np.nan
-        else:
-            # Coerce any string placeholders (like "Bad" or "Comm Error") to NaN
-            df[friendly_name] = pd.to_numeric(df[friendly_name], errors='coerce')
-
-    df[config.TIMESTAMP_COLUMN] = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
-
-    # Set index, sort, and merge exact duplicate timestamps from multiple tables before filtering
-    df = df.set_index(config.TIMESTAMP_COLUMN).sort_index()
-    if df.index.duplicated().any():
-        df = df.groupby(level=0).first()
-
-    # Apply configured signal filtering rules on RAW data BEFORE oversampling
     try:
-        import process_model
-        df = process_model.apply_signal_filters(df)
+        if df.empty: return df
+
+        # 1. Drop internal Influx columns
+        cols_to_drop = ['result', 'table', '_start', '_stop', '_measurement']
+        df = df.drop(columns=[c for c in cols_to_drop if c in df.columns])
+
+        # 2. RENAME _time to config.TIMESTAMP_COLUMN before any operations
+        if '_time' in df.columns:
+            df = df.rename(columns={'_time': config.TIMESTAMP_COLUMN})
+
+        # 3. Pivot if necessary
+        if '_field' in df.columns and '_value' in df.columns:
+            df = df.pivot_table(index=config.TIMESTAMP_COLUMN, columns='_field', values='_value').reset_index()
+
+        # 4. Apply User Tag Mapping
+        df = df.rename(columns=tag_map)
+
+        # Resolve duplicate column names (e.g. if a tag exists in multiple source measurements or is already named as friendly)
+        if df.columns.duplicated().any():
+            cols_to_resolve = df.columns[df.columns.duplicated()].unique()
+            print(f"[DIAGNOSTICS] Duplicate columns detected in raw data: {list(cols_to_resolve)}")
+            for col in cols_to_resolve:
+                col_df = df[col]
+                if isinstance(col_df, pd.DataFrame):
+                    print(f"[DIAGNOSTICS] Resolving duplicated column '{col}' with shape {col_df.shape}")
+                    combined = col_df.ffill(axis=1).iloc[:, -1]
+                    df = df.drop(columns=[col])
+                    df[col] = combined
+
+        # Ensure all expected friendly name columns from tag_map are present
+        # and cast them to numeric type so missing/bad values are coerced to float NaNs
+        for friendly_name in tag_map.values():
+            if friendly_name not in df.columns:
+                df[friendly_name] = np.nan
+            else:
+                # Coerce any string placeholders (like "Bad" or "Comm Error") to NaN
+                if isinstance(df[friendly_name], pd.DataFrame):
+                    print(f"[DIAGNOSTICS] WARNING: '{friendly_name}' is still a DataFrame with columns: {list(df[friendly_name].columns)}")
+                    # Force combine
+                    df[friendly_name] = df[friendly_name].ffill(axis=1).iloc[:, -1]
+                df[friendly_name] = pd.to_numeric(df[friendly_name], errors='coerce')
+
+        # Check timestamp column safety
+        if isinstance(df[config.TIMESTAMP_COLUMN], pd.DataFrame):
+            print(f"[DIAGNOSTICS] WARNING: timestamp column '{config.TIMESTAMP_COLUMN}' is a DataFrame with columns: {list(df[config.TIMESTAMP_COLUMN].columns)}")
+            df[config.TIMESTAMP_COLUMN] = df[config.TIMESTAMP_COLUMN].ffill(axis=1).iloc[:, -1]
+
+        df[config.TIMESTAMP_COLUMN] = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
+
+        # Set index, sort, and merge exact duplicate timestamps from multiple tables before filtering
+        df = df.set_index(config.TIMESTAMP_COLUMN).sort_index()
+        if df.index.duplicated().any():
+            df = df.groupby(level=0).first()
+
+        # Apply configured signal filtering rules on RAW data BEFORE oversampling
+        try:
+            import process_model
+            df = process_model.apply_signal_filters(df)
+        except Exception as e:
+            print(f"Error applying signal filters: {e}")
+
+        # 5. Resample and Fill:
+        # Use mean() for numeric columns to preserve high-frequency signal fidelity without 'flattening',
+        # and use first() for categorical/string columns (like 'Coal Mill (ON/OFF)') to prevent dropping them.
+        resampled = df.resample(config.RESAMPLE_INTERVAL)
+        numeric_df = resampled.mean(numeric_only=True)
+        non_numeric_cols = df.select_dtypes(exclude=[np.number]).columns
+        
+        if not non_numeric_cols.empty:
+            non_numeric_df = resampled.first()[non_numeric_cols]
+            df = pd.concat([numeric_df, non_numeric_df], axis=1)
+        else:
+            df = numeric_df
+
+        if config.FILL_METHOD == 'bfill':
+            df = df.bfill().ffill()
+        else:
+            df = df.ffill().bfill()
+
+        # Fill any remaining NaNs (e.g. from completely empty columns or start/end edges) with 0.0
+        df = df.fillna(0.0)
+
+        # Sanitize subnormal floats from disconnected PLCs (e.g., 1e-39) to exactly 0.0
+        # This prevents the UI from rendering weird scientific notation characters (like â‚¬<39â‚¬<-)
+        # and prevents the AI from calculating infinite uncertainties.
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        if not numeric_cols.empty:
+            for col in numeric_cols:
+                if isinstance(df[col], pd.DataFrame):
+                     print(f"[DIAGNOSTICS] WARNING: numeric col '{col}' is a DataFrame")
+                     df[col] = df[col].ffill(axis=1).iloc[:, -1]
+                df[col] = np.where(np.abs(df[col]) < 1e-10, 0.0, df[col])
+
+        df = df.reset_index()
+        return df
+
     except Exception as e:
-        print(f"Error applying signal filters: {e}")
-
-    # 5. Resample and Fill:
-    # Use mean() for numeric columns to preserve high-frequency signal fidelity without 'flattening',
-    # and use first() for categorical/string columns (like 'Coal Mill (ON/OFF)') to prevent dropping them.
-    resampled = df.resample(config.RESAMPLE_INTERVAL)
-    numeric_df = resampled.mean(numeric_only=True)
-    non_numeric_cols = df.select_dtypes(exclude=[np.number]).columns
-    
-    if not non_numeric_cols.empty:
-        non_numeric_df = resampled.first()[non_numeric_cols]
-        df = pd.concat([numeric_df, non_numeric_df], axis=1)
-    else:
-        df = numeric_df
-
-    if config.FILL_METHOD == 'bfill':
-        df = df.bfill().ffill()
-    else:
-        df = df.ffill().bfill()
-
-    # Fill any remaining NaNs (e.g. from completely empty columns or start/end edges) with 0.0
-    df = df.fillna(0.0)
-
-    # Sanitize subnormal floats from disconnected PLCs (e.g., 1e-39) to exactly 0.0
-    # This prevents the UI from rendering weird scientific notation characters (like â‚¬<39â‚¬<-)
-    # and prevents the AI from calculating infinite uncertainties.
-    numeric_cols = df.select_dtypes(include=[np.number]).columns
-    if not numeric_cols.empty:
-        for col in numeric_cols:
-            df[col] = np.where(np.abs(df[col]) < 1e-10, 0.0, df[col])
-
-    df = df.reset_index()
+        import traceback
+        print(f"[DIAGNOSTICS] CRITICAL Exception in _rename_and_format_df: {e}")
+        print(f"[DIAGNOSTICS] df shape: {df.shape if 'df' in locals() else 'unknown'}")
+        if 'df' in locals() and hasattr(df, 'columns'):
+            print(f"[DIAGNOSTICS] df columns: {list(df.columns)}")
+            print(f"[DIAGNOSTICS] Duplicate columns in df: {list(df.columns[df.columns.duplicated()].unique())}")
+        traceback.print_exc()
+        raise e
 
     return df
 
@@ -141,7 +167,9 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
             
         return _rename_and_format_df(df, tag_map) if not df.empty else pd.DataFrame()
     except Exception as e:
-        print(f"Error: {e}")
+        import traceback
+        print(f"Error in get_realtime_data_window: {e}")
+        traceback.print_exc()
         return pd.DataFrame()
     finally:
         client.close()
