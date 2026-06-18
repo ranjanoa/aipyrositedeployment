@@ -631,6 +631,24 @@ def find_best_fingerprint_advanced(current_real_df_window, historical_df, fronte
                                    weights=None):
     if historical_df.empty: return [], False
 
+    # Normalize frontend_strategy: convert any string values or non-dict objects into dictionaries
+    # with default boundaries to prevent downstream AttributeError/TypeError
+    normalized_strategy = {}
+    if isinstance(frontend_strategy, dict):
+        for k, v in frontend_strategy.items():
+            if isinstance(v, dict):
+                normalized_strategy[k] = v.copy()
+            else:
+                normalized_strategy[k] = {
+                    "priority": 3,
+                    "min": -9e9,
+                    "max": 9e9,
+                    "custom_min": -9e9,
+                    "custom_max": 9e9,
+                    "value": str(v)
+                }
+    frontend_strategy = normalized_strategy
+
     initial_count = len(historical_df)
     conf = get_model_config_safe()
     if HAS_PROCESS_MODEL and process_model:

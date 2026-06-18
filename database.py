@@ -33,6 +33,16 @@ def _rename_and_format_df(df, tag_map):
     # 4. Apply User Tag Mapping
     df = df.rename(columns=tag_map)
 
+    # Resolve duplicate column names (e.g. if a tag exists in multiple source measurements or is already named as friendly)
+    if df.columns.duplicated().any():
+        cols_to_resolve = df.columns[df.columns.duplicated()].unique()
+        for col in cols_to_resolve:
+            col_df = df[col]
+            if isinstance(col_df, pd.DataFrame):
+                combined = col_df.ffill(axis=1).iloc[:, -1]
+                df = df.drop(columns=[col])
+                df[col] = combined
+
     # Ensure all expected friendly name columns from tag_map are present
     # and cast them to numeric type so missing/bad values are coerced to float NaNs
     for friendly_name in tag_map.values():
