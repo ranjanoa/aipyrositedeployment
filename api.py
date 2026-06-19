@@ -815,12 +815,7 @@ def get_runtime_statistics():
                     df = hist_df.tail(window_mins * 60).copy()
                     
         if df.empty:
-            return jsonify({
-                "status": "success",
-                "window_minutes": window_mins,
-                "time_span_hours": round(window_mins / 60.0, 2),
-                "statistics": []
-            })
+            print("Runtime stats: Dataframe is empty, will return zeroed values.")
             
         # Enrich dataframe with calculated variables
         df = process_model.materialize_df(df, controls, indicators, calc_vars)
@@ -845,26 +840,25 @@ def get_runtime_statistics():
                 print(f"Error applying runtime stats condition filter: {e}")
                 
         if df.empty:
-            return jsonify({
-                "status": "success",
-                "window_minutes": window_mins,
-                "time_span_hours": 0.0,
-                "statistics": []
-            })
+            print("Runtime stats: Dataframe is empty after filtering, will return zeroed values.")
         
         # Calculate window time span in hours
-        if isinstance(df.index, pd.DatetimeIndex):
-            time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
-        elif config.TIMESTAMP_COLUMN in df.columns:
-            ts_series = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
-            time_span_hours = (ts_series.max() - ts_series.min()).total_seconds() / 3600.0
-        else:
+        try:
+            if not df.empty and isinstance(df.index, pd.DatetimeIndex):
+                time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
+            elif not df.empty and config.TIMESTAMP_COLUMN in df.columns:
+                ts_series = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
+                time_span_hours = (ts_series.max() - ts_series.min()).total_seconds() / 3600.0
+            else:
+                time_span_hours = window_mins / 60.0
+        except Exception:
             time_span_hours = window_mins / 60.0
             
-        if time_span_hours <= 0:
+        if time_span_hours <= 0 or pd.isna(time_span_hours):
             time_span_hours = window_mins / 60.0
             
         stats_results = []
+        db_offline = False
         
         # Per Control Variable Stats
         for var_name, mapping in mappings.items():
@@ -876,8 +870,10 @@ def get_runtime_statistics():
             unit = mapping.get('unit', var_info.get('unit', ''))
             
             curr_status = 0.0
-            if status_col and status_col in df.columns:
-                curr_status = float(df[status_col].iloc[-1])
+            if status_col and status_col in df.columns and not df.empty:
+                valid_status = df[status_col].dropna()
+                if not valid_status.empty:
+                    curr_status = float(valid_status.iloc[-1])
                 
             curr_rh = 0.0
             has_rh = False
@@ -887,8 +883,15 @@ def get_runtime_statistics():
                 has_rh = True
                 raw_rh_tag = name_to_tag.get(rh_col, rh_col)
                 # Query InfluxDB directly for values at start and end
-                db_curr_rh = database.get_tag_value_at_time(end_time, raw_rh_tag)
-                db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
+                db_curr_rh = None
+                db_start_rh = None
+                
+                if not db_offline:
+                    db_curr_rh = database.get_tag_value_at_time(end_time, raw_rh_tag)
+                    if db_curr_rh is None and df.empty:
+                        db_offline = True
+                    else:
+                        db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
                 
                 if db_curr_rh is not None and db_start_rh is not None:
                     curr_rh = db_curr_rh
@@ -896,7 +899,7 @@ def get_runtime_statistics():
                     rh_delta = max(0.0, curr_rh - start_rh)
                 else:
                     # Fallback to dataframe values
-                    if rh_col in df.columns:
+                    if rh_col in df.columns and not df.empty:
                         rh_vals = df[rh_col].dropna()
                         if not rh_vals.empty:
                             curr_rh = float(rh_vals.iloc[-1])
@@ -904,8 +907,10 @@ def get_runtime_statistics():
                             rh_delta = max(0.0, curr_rh - start_rh)
                     
             util_pct = 0.0
-            if status_col and status_col in df.columns:
-                util_pct = float((df[status_col] > 0.5).mean() * 100.0)
+            if status_col and status_col in df.columns and not df.empty:
+                valid_status = df[status_col].dropna()
+                if not valid_status.empty:
+                    util_pct = float((valid_status > 0.5).mean() * 100.0)
                 
             active_hours = (util_pct / 100.0) * time_span_hours
             

@@ -9,7 +9,8 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 def get_db_client():
     try:
-        client = InfluxDBClient(url=config.DB_URL, token=config.DB_TOKEN, org=config.DB_ORG)
+        # Fail fast if database is offline (2s timeout, 0 retries)
+        client = InfluxDBClient(url=config.DB_URL, token=config.DB_TOKEN, org=config.DB_ORG, timeout=2000, retries=0)
         return client
     except Exception as e:
         print(f"Error connecting to InfluxDB: {e}")
