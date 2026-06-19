@@ -320,35 +320,46 @@ def find_fingerprint():
 
         formatted_results = []
         ts_col = config.TIMESTAMP_COLUMN
-        
+        current_state_dict = current_state.to_dict() if hasattr(current_state, 'to_dict') else dict(current_state)
+
+        # --- PERF: Build a timestamp → index lookup once, not per match ---
+        if ts_col in hist_df.columns:
+            ts_index = pd.to_datetime(hist_df[ts_col])
+        else:
+            ts_index = pd.Series(dtype='datetime64[ns]')
+
+        # --- PERF: Cap to top 10 matches - UI only shows top results anyway ---
+        MAX_RESULTS = 10
+        top_matches_raw = top_matches_raw[:MAX_RESULTS]
+
         for i, row_dict in enumerate(top_matches_raw):
             try:
-                # Reconstruct row from dict for build_api_response compatibility
                 row = pd.Series(row_dict)
                 ts = row.get(ts_col)
-                
-                # Retrieve the 60-minute future window from history for visualization
                 target_ts = pd.to_datetime(ts)
-                matches = hist_df.index[pd.to_datetime(hist_df[ts_col]) == target_ts].tolist()
-                
+
+                # --- PERF: Only build full chart window for the best match (index 0) ---
                 pred_df = None
-                if matches:
-                    idx = matches[0]
-                    future_time = 60
-                    pred_df = hist_df.iloc[idx: idx + future_time].copy()
-                    
-                    if len(pred_df) < future_time:
-                        last_row = pred_df.iloc[-1:]
-                        padding = pd.concat([last_row] * (future_time - len(pred_df)))
-                        pred_df = pd.concat([pred_df, padding])
+                if i == 0:
+                    matches = ts_index.index[ts_index == target_ts].tolist()
+                    if matches:
+                        idx = matches[0]
+                        pred_df = hist_df.iloc[idx: idx + 60].copy()
+                        if len(pred_df) < 60:
+                            last_row = pred_df.iloc[-1:]
+                            padding = pd.concat([last_row] * (60 - len(pred_df)))
+                            pred_df = pd.concat([pred_df, padding])
+                    else:
+                        engine_logger.warning(f"  [API] Visualization window not found for {ts}. Using dummy padding.")
+                        pred_df = pd.DataFrame([row_dict] * 60)
                 else:
-                    engine_logger.warning(f"  [API] Visualization window not found for {ts}. Using dummy padding.")
-                    pred_df = pd.DataFrame([row_dict] * 60)
+                    # For non-top matches, use a minimal placeholder (no heavy DataFrame copy)
+                    pred_df = pd.DataFrame([row_dict] * 2)
 
                 # Calculate physical similarity score (0-100%)
                 sim_pct = fingerprint_engine.calculate_match_percentage(
-                    current_state.to_dict() if hasattr(current_state, 'to_dict') else dict(current_state), 
-                    row_dict, 
+                    current_state_dict,
+                    row_dict,
                     controls_cfg,
                     indicators_cfg
                 )
@@ -356,6 +367,12 @@ def find_fingerprint():
                 if is_fallback: sim_pct = 0.0
 
                 api_obj = process_model.build_api_response(real_df, row, pred_df, sim_pct, 0, 0)
+
+                # For non-top matches, strip heavy chart data to keep response lean
+                if i > 0:
+                    api_obj['live_history'] = {}
+                    api_obj['fingerprint_prediction'] = {}
+
                 formatted_results.append(api_obj)
             except Exception as e:
                 engine_logger.error(f"  [API] Match {i+1} formatting error: {str(e)}")
@@ -369,6 +386,7 @@ def find_fingerprint():
             return jsonify({"data": [process_model.build_no_fingerprint_response(current_state)]})
 
         return jsonify({"data": formatted_results})
+
 
     except Exception as e:
         traceback.print_exc()
