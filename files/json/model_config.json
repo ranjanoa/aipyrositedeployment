@@ -3907,7 +3907,7 @@
     "default_window_minutes": 60,
     "mappings": {
       "Availability": {
-        "status_tag": "AI_SYSTEM_TRUST_STATUS",
+        "status_tag": "AI_SYSTEM_TRUST",
         "rh_tag": "AI_SYSTEM_TRUST_RH",
         "description": "Overall AI System Status / Watchdog",
         "unit": "binary"
