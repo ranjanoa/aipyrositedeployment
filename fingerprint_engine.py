@@ -832,6 +832,20 @@ def find_best_fingerprint_advanced(current_real_df_window, historical_df, fronte
         )
 
     final_matches = final_matches.copy()
+    
+    # Vectorized Candidate Pruning: If the filtering phase matched a huge number of rows (e.g. >2000),
+    # pre-sort them by a fast vectorized Euclidean distance and keep the top 2000 to prevent slow
+    # row-by-row apply loops with heavy Mahalanobis / age math.
+    if len(final_matches) > 2000:
+        temp_dist = pd.Series(0.0, index=final_matches.index)
+        for tag in active_tags:
+            if tag in final_matches.columns:
+                curr_val = float(current_state.get(tag, 0))
+                std = final_matches[tag].std()
+                if std == 0 or np.isnan(std): std = 1.0
+                temp_dist += ((final_matches[tag] - curr_val) / std) ** 2
+        final_matches = final_matches.loc[temp_dist.sort_values().index[:2000]]
+
     final_matches['score'] = final_matches.apply(_adv_score_wrapper, axis=1)
     df_sorted = final_matches.sort_values(by='score', ascending=False)
     df_sorted = df_sorted[df_sorted['score'] > -900000]
