@@ -958,7 +958,9 @@ def get_runtime_statistics():
             if status_col == "AI_SYSTEM_TRUST":
                 active_hours = rh_delta
             elif status_col and status_col in df.columns and not df.empty:
-                if has_rh:
+                # Use running hours delta if we successfully retrieved a non-zero cumulative value,
+                # otherwise fall back to counting status ticks in the dataframe.
+                if has_rh and curr_rh > 0.0:
                     active_hours = rh_delta
                 else:
                     valid_status = df[status_col].dropna()
