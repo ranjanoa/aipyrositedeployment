@@ -1,3 +1,16 @@
+# --- EVENTLET AUTO-DETECT (must be before ALL other imports) ---
+# When running as a compiled .exe, eventlet is bundled and must be monkey-patched first.
+# When running from source on Windows dev, we fall back to threading to avoid RLock issues.
+import sys as _sys
+_EVENTLET_AVAILABLE = False
+try:
+    import eventlet as _eventlet
+    _eventlet.monkey_patch(all=True)
+    print("[INIT] AGGRESSIVE Eventlet Monkey Patch applied")
+    _EVENTLET_AVAILABLE = True
+except (ImportError, Exception):
+    pass  # Will fall back to threading mode below
+
 import warnings
 import os
 import pandas as pd
@@ -104,7 +117,7 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 app.config.from_object('config')
 socketio = SocketIO(app, 
                     cors_allowed_origins="*", 
-                    async_mode='threading',
+                    async_mode='eventlet' if _EVENTLET_AVAILABLE else 'threading',
                     ping_timeout=60,
                     ping_interval=25)
 

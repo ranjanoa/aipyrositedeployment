@@ -421,9 +421,11 @@ def get_aimnm_values():
         cdr_keys_lower = {k.lower(): k for k in cdr.keys()}
 
         # --- MEASUREMENT NAME SAFETY CHECK ---
+        # Use getattr fallback so older config.py deployments without DB_MEASUREMENT_AI_MNM_RESULT don't crash
+        primary_measurement = getattr(config, 'DB_MEASUREMENT_AI_MNM_RESULT', 'cimpor_data_results')
         # Try primary config name, but fallback to singular if plural (or vice-versa) if empty
         if not cdr:
-            alt_measurement = "cimpor_data_result" if config.DB_MEASUREMENT_AI_MNM_RESULT.endswith('s') else config.DB_MEASUREMENT_AI_MNM_RESULT + 's'
+            alt_measurement = "cimpor_data_result" if primary_measurement.endswith('s') else primary_measurement + 's'
             cdr = database.get_aimnm_results(window_minutes=10, measurement_override=alt_measurement) or {}
             if cdr:
                 print(f"[AI_MNM] Data found in alternate measurement: {alt_measurement}")
