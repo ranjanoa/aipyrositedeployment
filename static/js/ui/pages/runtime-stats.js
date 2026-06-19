@@ -95,34 +95,7 @@ export function RuntimeStats() {
 
                 <!-- Right panel: Quick Insights & Summary Card -->
                 <div class="w-[300px] shrink-0 flex flex-col gap-4 overflow-hidden h-full">
-                    <!-- Overall Card -->
-                    <div class="glass-panel border border-[#2d4a54] bg-[#1a3842] p-4 rounded-lg flex flex-col justify-between shrink-0 shadow-lg relative overflow-hidden">
 
-                        <div>
-                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">System Level Statistics</span>
-                            <h2 class="text-white text-lg font-black mt-1">AI Trust status</h2>
-                        </div>
-                        <div class="my-4 flex items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="text-[28px] font-black text-white font-mono leading-none" id="overall-util-percent">--%</span>
-                                <span class="text-[10px] text-gray-400 font-bold uppercase mt-1">Average Utilization</span>
-                            </div>
-                            <div id="overall-status-indicator" class="flex flex-col items-center">
-                                <div class="w-4 h-4 rounded-full bg-red-500 animate-pulse"></div>
-                                <span class="text-[9px] text-gray-400 uppercase tracking-wider font-bold mt-1">Inactive</span>
-                            </div>
-                        </div>
-                        <div class="border-t border-[#2d4a54] pt-3 mt-1 flex flex-col gap-2">
-                            <div class="flex justify-between text-[11px]">
-                                <span class="text-gray-400">Total Active Time:</span>
-                                <span class="text-white font-bold font-mono" id="overall-active-hours">--h --m</span>
-                            </div>
-                            <div class="flex justify-between text-[11px]">
-                                <span class="text-gray-400">Time Span Query:</span>
-                                <span class="text-white font-bold font-mono" id="overall-time-span">-- Hours</span>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Guidance Card -->
                     <div class="flex-1 glass-panel border border-[#2d4a54] bg-[#1a3842] p-4 rounded-lg flex flex-col overflow-hidden shadow-lg">
@@ -301,31 +274,9 @@ window.RuntimeStatsActions = {
             return;
         }
 
-        // 1. Separate Overall System from Loop Stats
-        const systemStat = stats.find(s => s.var_name.includes("Overall")) || stats[0];
-        const loopStats = stats.filter(s => !s.var_name.includes("Overall"));
-
-        // Render Overall system info
-        const overallPctEl = document.getElementById("overall-util-percent");
-        const overallActiveEl = document.getElementById("overall-active-hours");
-        const overallSpanEl = document.getElementById("overall-time-span");
-        const overallIndEl = document.getElementById("overall-status-indicator");
-
-        if (overallPctEl) overallPctEl.innerText = `${systemStat.utilization_pct}%`;
-        if (overallActiveEl) overallActiveEl.innerText = formatHours(systemStat.status_active_hours);
-        if (overallSpanEl) overallSpanEl.innerText = `${data.time_span_hours} Hours`;
-        
-        if (overallIndEl) {
-            const isActive = systemStat.current_status > 0.5;
-            overallIndEl.innerHTML = `
-                <div class="w-4 h-4 rounded-full ${isActive ? 'bg-[#00FF66] shadow-[0_0_8px_#00FF66]' : 'bg-red-500'} transition-all duration-300"></div>
-                <span class="text-[9px] ${isActive ? 'text-[#00FF66]' : 'text-red-400'} uppercase tracking-wider font-bold mt-1">${isActive ? 'Active' : 'Inactive'}</span>
-            `;
-        }
-
         // 2. Render Variable Rows
         let html = '';
-        loopStats.forEach(stat => {
+        stats.forEach(stat => {
             const isEngaged = stat.current_status > 0.5;
             const util = stat.utilization_pct || 0;
             

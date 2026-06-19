@@ -250,6 +250,7 @@ def automated_control_loop():
     _low_trust_timer = 0
     _last_mode_state = -1
     _last_base_strat = ""
+    _ai_system_trust_rh = None
 
     # Persistent storage for recommendation to ensure UI stays updated 
     # even between 30-second AI optimization cycles.
@@ -663,6 +664,16 @@ def automated_control_loop():
                                 
                                 setpoints['AI_SYSTEM_TRUST'] = final_trust_bit
                                 recommendation['system_trust'] = final_trust_bit
+                                
+                                # --- AI SYSTEM TRUST RH TOTALISER ---
+                                if _ai_system_trust_rh is None:
+                                    last_val = database.get_tag_value_at_time(datetime.utcnow(), "AI_SYSTEM_TRUST_RH")
+                                    _ai_system_trust_rh = last_val if last_val is not None else 0.0
+                                    
+                                if final_trust_bit == 1:
+                                    _ai_system_trust_rh += (AI_INTERVAL_SECONDS / 3600.0)
+                                    
+                                setpoints['AI_SYSTEM_TRUST_RH'] = _ai_system_trust_rh
 
                             # --- PROCESS INSIGHT GENERATION ---
                             insights = []

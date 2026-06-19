@@ -283,6 +283,14 @@
       "tag_name": "AI_SYSTEM_TRUST_STATUS",
       "unit": "binary"
     },
+    "AI_SYSTEM_TRUST_RH": {
+      "description": "Totaliser for overall AI system active hours",
+      "is_setpoint": true,
+      "op_summary": false,
+      "priority": 0,
+      "tag_name": "AI_SYSTEM_TRUST_RH",
+      "unit": "hours"
+    },
     "Cooler BF fan speed AI Status": {
       "default_max": 1,
       "default_min": 0,
@@ -3510,6 +3518,12 @@
       ]
     }
   },
+  "runtime_stats_condition": {
+    "enabled": true,
+    "variable": "Kiln feed",
+    "operator": ">",
+    "threshold": 100
+  },
   "trust_interlock_config": {
     "behavior": {
       "manual_trust": 0,
@@ -3844,6 +3858,12 @@
     "window_options_minutes": [30, 60, 240, 480, 1440],
     "default_window_minutes": 60,
     "mappings": {
+      "Availability": {
+        "status_tag": "AI_SYSTEM_TRUST_STATUS",
+        "rh_tag": "AI_SYSTEM_TRUST_RH",
+        "description": "Overall AI System Status / Watchdog",
+        "unit": "binary"
+      },
       "Cooler BF fan motor speed": {
         "status_tag": "Cooler BF fan speed AI Status",
         "rh_tag": "Cooler bagfilter fan motor speed AI RH"

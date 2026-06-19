@@ -775,6 +775,11 @@ def get_runtime_statistics():
                     dependencies = re.findall(r'`([^`]+)`', formula)
                     for dep in dependencies:
                         friendly_names_to_query.add(dep)
+        
+        # Add runtime stats condition variable if enabled
+        cond = conf.get('runtime_stats_condition', {})
+        if cond.get('enabled') and cond.get('variable'):
+            friendly_names_to_query.add(cond.get('variable'))
                         
         # Translate friendly names to raw tags for database query
         name_to_tag = process_model.get_name_to_tag_map()
@@ -820,6 +825,33 @@ def get_runtime_statistics():
         # Enrich dataframe with calculated variables
         df = process_model.materialize_df(df, controls, indicators, calc_vars)
         
+        # Apply runtime stats filter condition
+        if cond.get('enabled'):
+            cond_var = cond.get('variable')
+            operator = cond.get('operator', '>')
+            try:
+                threshold = float(cond.get('threshold', 0))
+                if cond_var in df.columns:
+                    # Filter dataframe where condition is met
+                    if operator == '>':
+                        df = df[pd.to_numeric(df[cond_var], errors='coerce') > threshold]
+                    elif operator == '<':
+                        df = df[pd.to_numeric(df[cond_var], errors='coerce') < threshold]
+                    elif operator == '>=':
+                        df = df[pd.to_numeric(df[cond_var], errors='coerce') >= threshold]
+                    elif operator == '<=':
+                        df = df[pd.to_numeric(df[cond_var], errors='coerce') <= threshold]
+            except Exception as e:
+                print(f"Error applying runtime stats condition filter: {e}")
+                
+        if df.empty:
+            return jsonify({
+                "status": "success",
+                "window_minutes": window_mins,
+                "time_span_hours": 0.0,
+                "statistics": []
+            })
+        
         # Calculate window time span in hours
         if isinstance(df.index, pd.DatetimeIndex):
             time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
@@ -834,42 +866,14 @@ def get_runtime_statistics():
             
         stats_results = []
         
-        # 1. Overall System Stats
-        system_status_val = 0.0
-        system_status_name = "AI_SYSTEM_TRUST"
-        if system_status_name in df.columns:
-            system_status_val = float(df[system_status_name].iloc[-1])
-        elif "AI_SYSTEM_TRUST_STATUS" in df.columns:
-            system_status_val = float(df["AI_SYSTEM_TRUST_STATUS"].iloc[-1])
-            
-        system_active_pct = 0.0
-        if system_status_name in df.columns:
-            system_active_pct = float((df[system_status_name] > 0.5).mean() * 100.0)
-        elif "AI_SYSTEM_TRUST_STATUS" in df.columns:
-            system_active_pct = float((df["AI_SYSTEM_TRUST_STATUS"] > 0.5).mean() * 100.0)
-            
-        system_active_hours = (system_active_pct / 100.0) * time_span_hours
-        
-        stats_results.append({
-            "var_name": "AI System (Overall)",
-            "description": "Overall AI System Status / Watchdog",
-            "unit": "binary",
-            "current_status": system_status_val,
-            "status_active_hours": round(system_active_hours, 2),
-            "utilization_pct": round(system_active_pct, 1),
-            "current_rh": "-",
-            "rh_delta": round(system_active_hours, 2),
-            "has_rh": False
-        })
-        
-        # 2. Per Control Variable Stats
+        # Per Control Variable Stats
         for var_name, mapping in mappings.items():
             status_col = mapping.get('status_tag')
             rh_col = mapping.get('rh_tag')
             
             var_info = controls.get(var_name, {})
-            desc = var_info.get('description', var_name)
-            unit = var_info.get('unit', '')
+            desc = mapping.get('description', var_info.get('description', var_name))
+            unit = mapping.get('unit', var_info.get('unit', ''))
             
             curr_status = 0.0
             if status_col and status_col in df.columns:
