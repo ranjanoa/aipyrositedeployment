@@ -1,30 +1,7 @@
-# --- EVENTLET AUTO-DETECT (must be before ALL other imports) ---
-# Only use eventlet when running as a compiled .exe (PyInstaller frozen).
-# In local dev/source mode, always use threading to avoid Windows RLock deadlocks.
-import sys as _sys
+# --- EVENTLET AUTO-DETECT (Disabled for Windows compatibility) ---
+# Eventlet is disabled to prevent WinError 10053 socket connection aborts.
+# We always use standard python threading which is stable on Windows.
 _EVENTLET_AVAILABLE = False
-if getattr(_sys, 'frozen', False):
-    # Running as compiled executable - eventlet is required and bundled
-    try:
-        import eventlet as _eventlet
-        # Use eventlet's own patcher API to check if already patched (e.g. by hook-eventlet.py)
-        try:
-            from eventlet import patcher as _patcher
-            _already_patched = _patcher.is_monkey_patched('socket')
-        except Exception:
-            _already_patched = False
-
-        if not _already_patched:
-            _eventlet.monkey_patch(all=True)
-            print("[INIT] Eventlet Monkey Patch applied")
-        else:
-            print("[INIT] Eventlet already patched by hook, skipping.")
-        _EVENTLET_AVAILABLE = True
-    except (ImportError, Exception) as _e:
-        print(f"[WARN] Eventlet not available in compiled build: {_e}")
-else:
-    # Running from source - use threading (stable on Windows, no RLock issues)
-    pass
 
 import warnings
 import os
