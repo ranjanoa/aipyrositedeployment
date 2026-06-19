@@ -136,8 +136,8 @@ def _rename_and_format_df(df, tag_map):
 def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
     if not process_tags:
         return pd.DataFrame()
-    # Use a longer timeout (10s) for window queries since pivoting and loading many tags takes time
-    client = get_db_client(timeout=10000)
+    # Use a longer timeout (20s) for window queries to prevent timeouts during database lag spikes
+    client = get_db_client(timeout=20000)
     if not client: return pd.DataFrame()
 
     try:
@@ -161,15 +161,15 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
               |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
               |> filter(fn: (r) => {measurement_filter})
               |> filter(fn: (r) => {field_filters})
-              |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
             '''
             df_chunk = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
             if isinstance(df_chunk, list):
                 df_chunk = pd.concat(df_chunk) if df_chunk else pd.DataFrame()
             if df_chunk is not None and not df_chunk.empty:
-                # Drop internal Influx columns except '_time' before merging to avoid duplicate columns
-                cols_to_drop = [c for c in ['result', 'table', '_start', '_stop', '_measurement'] if c in df_chunk.columns]
-                df_chunk = df_chunk.drop(columns=cols_to_drop)
+                # Pivot in Pandas to avoid slow InfluxDB Flux pivot CPU bottlenecks and timeouts
+                if '_time' in df_chunk.columns and '_field' in df_chunk.columns and '_value' in df_chunk.columns:
+                    df_chunk = df_chunk.pivot_table(index='_time', columns='_field', values='_value', aggfunc='first').reset_index()
+                    df_chunk.columns.name = None
                 dfs.append(df_chunk)
                 
         if not dfs:
