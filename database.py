@@ -7,10 +7,10 @@ from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
 
 
-def get_db_client():
+def get_db_client(timeout=2000):
     try:
-        # Fail fast if database is offline (2s timeout, 0 retries)
-        client = InfluxDBClient(url=config.DB_URL, token=config.DB_TOKEN, org=config.DB_ORG, timeout=2000, retries=0)
+        # Fail fast if database is offline (default 2s timeout, 0 retries)
+        client = InfluxDBClient(url=config.DB_URL, token=config.DB_TOKEN, org=config.DB_ORG, timeout=timeout, retries=0)
         return client
     except Exception as e:
         print(f"Error connecting to InfluxDB: {e}")
@@ -136,7 +136,8 @@ def _rename_and_format_df(df, tag_map):
 def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
     if not process_tags:
         return pd.DataFrame()
-    client = get_db_client()
+    # Use a longer timeout (10s) for window queries since pivoting and loading many tags takes time
+    client = get_db_client(timeout=10000)
     if not client: return pd.DataFrame()
 
     try:
@@ -144,13 +145,22 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
         chunk_size = 40
         tag_chunks = [process_tags[i:i + chunk_size] for i in range(0, len(process_tags), chunk_size)]
         
+        # Include kiln2 (DB_MEASUREMENT_SETPOINTS) to fetch AI status tags like AI_SYSTEM_TRUST_RH
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+
         dfs = []
         for chunk in tag_chunks:
             field_filters = ' or '.join([f'r["_field"] == "{str(tag).replace(chr(34), chr(92) + chr(34))}"' for tag in chunk])
             query = f'''
             from(bucket: "{config.DB_BUCKET}")
               |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
-              |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
+              |> filter(fn: (r) => {measurement_filter})
               |> filter(fn: (r) => {field_filters})
               |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
             '''
@@ -250,18 +260,26 @@ def get_aimnm_results(window_minutes=2, measurement_override=None):
 def get_live_current_values(field_names, window_minutes=5):
     """
     Reads the latest values for the given field_names by scanning multiple
-    measurements: kiln1, kiln1_opc, and kiln1_pi.
+    measurements: kiln1, kiln1_opc, kiln1_pi, and kiln2.
     
     Returns: { field_name: float_value } - returns the most recent point found
     across all sources.
     """
     if not field_names:
         return {}
-    client = get_db_client()
+    # Use 5s timeout for fetching current values
+    client = get_db_client(timeout=5000)
     if not client:
         return {}
     try:
-        measurements = [config.DB_MEASUREMENT, config.DB_MEASUREMENT_OPC, config.DB_MEASUREMENT_PI]
+        # Include kiln2 (DB_MEASUREMENT_SETPOINTS) to fetch setpoints
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
         
         # Split field_names into chunks of 40 to avoid Flux nesting limits and ensure pushdown
         chunk_size = 40
@@ -274,13 +292,12 @@ def get_live_current_values(field_names, window_minutes=5):
                 for fn in chunk
             )
             
-            # We query all 3 measurements in one Flux call.
             # We do not use pivot in Flux here because fields updating at different
             # timestamps will produce multiple rows, causing df.iloc[-1] to discard earlier ones.
             query = f'''
             from(bucket: "{config.DB_BUCKET}")
               |> range(start: -{int(window_minutes)}m)
-              |> filter(fn: (r) => r["_measurement"] == "{measurements[0]}" or r["_measurement"] == "{measurements[1]}" or r["_measurement"] == "{measurements[2]}")
+              |> filter(fn: (r) => {measurement_filter})
               |> filter(fn: (r) => {filter_clause})
               |> last()
               |> group(columns: ["_field"])
@@ -381,7 +398,8 @@ def write_aimnm_setpoints(values_dict):
 
 
 def get_tag_value_at_time(timestamp, tag_name):
-    client = get_db_client()
+    # Use 6s timeout for historic value retrieval
+    client = get_db_client(timeout=6000)
     if not client:
         return None
     try:
@@ -390,20 +408,36 @@ def get_tag_value_at_time(timestamp, tag_name):
             timestamp = timestamp.astimezone(dt.timezone.utc).replace(tzinfo=None)
         ts_str = timestamp.isoformat() + 'Z'
         
-        # Query the last value up to the stop timestamp starting from 0 (all history)
-        query = f'''
-        from(bucket: "{config.DB_BUCKET}")
-          |> range(start: 0, stop: {ts_str})
-          |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
-          |> filter(fn: (r) => r["_field"] == "{str(tag_name).replace(chr(34), chr(92) + chr(34))}")
-          |> last()
-        '''
-        tables = client.query_api().query(query, org=config.DB_ORG)
-        for table in tables:
-            for record in table.records:
-                val = record.get_value()
-                if val is not None:
-                    return float(val)
+        # Include kiln2 (DB_MEASUREMENT_SETPOINTS) to fetch AI status tags like AI_SYSTEM_TRUST_RH
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+
+        # Tiered query: search the last 7 days first (fast), fall back to 30 days, then to all history (start: 0)
+        # to avoid scanning the entire database from 1970 when not needed.
+        for days in [7, 30, 0]:
+            if days == 0:
+                range_start = "0"
+            else:
+                range_start = (timestamp - dt.timedelta(days=days)).isoformat() + 'Z'
+
+            query = f'''
+            from(bucket: "{config.DB_BUCKET}")
+              |> range(start: {range_start}, stop: {ts_str})
+              |> filter(fn: (r) => {measurement_filter})
+              |> filter(fn: (r) => r["_field"] == "{str(tag_name).replace(chr(34), chr(92) + chr(34))}")
+              |> last()
+            '''
+            tables = client.query_api().query(query, org=config.DB_ORG)
+            for table in tables:
+                for record in table.records:
+                    val = record.get_value()
+                    if val is not None:
+                        return float(val)
         return None
     except Exception as e:
         print(f"Error getting tag value at time {timestamp} for {tag_name}: {e}")
