@@ -296,7 +296,8 @@ def find_fingerprint():
         if hist_df is not None:
             hist_df.columns = [str(c).strip() for c in hist_df.columns]
             if config.TIMESTAMP_COLUMN in hist_df.columns:
-                hist_df[config.TIMESTAMP_COLUMN] = pd.to_datetime(hist_df[config.TIMESTAMP_COLUMN])
+                if not pd.api.types.is_datetime64_any_dtype(hist_df[config.TIMESTAMP_COLUMN]):
+                    hist_df[config.TIMESTAMP_COLUMN] = pd.to_datetime(hist_df[config.TIMESTAMP_COLUMN], errors='coerce')
 
         if real_df.empty:
             if hist_df is not None and not hist_df.empty:
@@ -324,7 +325,10 @@ def find_fingerprint():
 
         # --- PERF: Build a timestamp → index lookup once, not per match ---
         if ts_col in hist_df.columns:
-            ts_index = pd.to_datetime(hist_df[ts_col])
+            if not pd.api.types.is_datetime64_any_dtype(hist_df[ts_col]):
+                ts_index = pd.to_datetime(hist_df[ts_col], errors='coerce')
+            else:
+                ts_index = hist_df[ts_col]
         else:
             ts_index = pd.Series(dtype='datetime64[ns]')
 
