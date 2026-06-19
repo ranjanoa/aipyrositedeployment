@@ -909,7 +909,9 @@ def get_runtime_statistics():
                 if not db_offline:
                     db_curr_rh = database.get_tag_value_at_time(end_time, raw_rh_tag)
                     if db_curr_rh is None and df.empty:
+                        # Both the direct query and the window query returned nothing — DB is offline
                         db_offline = True
+                        print("[RUNTIME-STATS] DB offline detected, skipping remaining RH queries.")
                     else:
                         db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
                 

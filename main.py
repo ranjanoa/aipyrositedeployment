@@ -7,8 +7,14 @@ if getattr(_sys, 'frozen', False):
     # Running as compiled executable - eventlet is required and bundled
     try:
         import eventlet as _eventlet
-        # Check if already patched by hook-eventlet.py to avoid double patching
-        if not getattr(_eventlet, '_monkey_patched', False):
+        # Use eventlet's own patcher API to check if already patched (e.g. by hook-eventlet.py)
+        try:
+            from eventlet import patcher as _patcher
+            _already_patched = _patcher.is_monkey_patched('socket')
+        except Exception:
+            _already_patched = False
+
+        if not _already_patched:
             _eventlet.monkey_patch(all=True)
             print("[INIT] Eventlet Monkey Patch applied")
         else:
