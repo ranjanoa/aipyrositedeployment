@@ -1,3 +1,5 @@
+import { updateTargetVariables } from "../initTargetVariables.js";
+import { updateCvTableAiStatus } from "../initAiLoopStatus.js";
 import { state } from "../../inits/state.js";
 import { drawOpParallelChartKiln } from "./drawOpParallelChartKiln.js";
 import { drawOpSummaryChartKiln } from "./drawOpSummaryChartKiln.js";
@@ -41,4 +43,8 @@ export function updateOpkiln(data) {
 
     drawOpSummaryChartKiln();
     drawOpParallelChartKiln();
+    // Update target variable current values
+    updateTargetVariables(data, 'kiln');
+    updateCvTableAiStatus(data, 'op3-kiln-');
+
 }

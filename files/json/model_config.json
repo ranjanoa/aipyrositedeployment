@@ -1647,6 +1647,54 @@
       "priority": 0,
       "tag_name": "Cooler speed (right) AI Bit"
     },
+    "Cooler grate speed (central 1) AI RH": {
+      "default_max": 100,
+      "default_min": 0,
+      "filtering": {
+        "ema_alpha": 0.2,
+        "enabled": true,
+        "median_window": 3
+      },
+      "nudge_speed": 0.05,
+      "priority": 0,
+      "tag_name": "Cooler grate speed (central 1) AI RH"
+    },
+    "Cooler grate speed (central 2) AI RH": {
+      "default_max": 100,
+      "default_min": 0,
+      "filtering": {
+        "ema_alpha": 0.2,
+        "enabled": true,
+        "median_window": 3
+      },
+      "nudge_speed": 0.05,
+      "priority": 0,
+      "tag_name": "Cooler grate speed (central 2) AI RH"
+    },
+    "Cooler grate speed (left) AI RH": {
+      "default_max": 100,
+      "default_min": 0,
+      "filtering": {
+        "ema_alpha": 0.2,
+        "enabled": true,
+        "median_window": 3
+      },
+      "nudge_speed": 0.05,
+      "priority": 0,
+      "tag_name": "Cooler grate speed (left) AI RH"
+    },
+    "Cooler grate speed (right) AI RH": {
+      "default_max": 100,
+      "default_min": 0,
+      "filtering": {
+        "ema_alpha": 0.2,
+        "enabled": true,
+        "median_window": 3
+      },
+      "nudge_speed": 0.05,
+      "priority": 0,
+      "tag_name": "Cooler grate speed (right) AI RH"
+    },
     "Dividing gate AI Bit": {
       "default_max": 1,
       "default_min": 0,
@@ -3868,21 +3916,25 @@
         "status_tag": "Cooler BF fan speed AI Status",
         "rh_tag": "Cooler bagfilter fan motor speed AI RH"
       },
+      "Cooler grate pressure (avg)": {
+        "status_tag": "Cooler grate P SP AI Status",
+        "rh_tag": "Cooler grate pressure SP AI RH"
+      },
       "Cooler speed (central 1)": {
         "status_tag": "Cooler speed (central 1) AI Status",
-        "rh_tag": null
+        "rh_tag": "Cooler grate speed (central 1) AI RH"
       },
       "Cooler speed (central 2)": {
         "status_tag": "Cooler speed (central 2) AI Status",
-        "rh_tag": null
+        "rh_tag": "Cooler grate speed (central 2) AI RH"
       },
       "Cooler speed (left)": {
         "status_tag": "Cooler speed (left) AI Status",
-        "rh_tag": null
+        "rh_tag": "Cooler grate speed (left) AI RH"
       },
       "Cooler speed (right)": {
         "status_tag": "Cooler speed (right) AI Status",
-        "rh_tag": null
+        "rh_tag": "Cooler grate speed (right) AI RH"
       },
       "Dividing gate": {
         "status_tag": "Dividing gate AI Status",

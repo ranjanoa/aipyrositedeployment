@@ -1,3 +1,5 @@
+import { updateTargetVariables } from "../initTargetVariables.js";
+import { updateCvTableAiStatus } from "../initAiLoopStatus.js";
 import { state } from "../../inits/state.js";
 import { drawOpParallelChartCooler } from "./drawOpParallelChartCooler.js";
 import { drawOpSummaryChartCooler } from "./drawOpSummaryChartCooler.js";
@@ -40,4 +42,8 @@ export function updateCooler(data) {
 
    drawOpSummaryChartCooler();
    drawOpParallelChartCooler();
+    // Update target variable current values
+    updateTargetVariables(data, 'cooler');
+    updateCvTableAiStatus(data, 'op3-col-');
+
 }

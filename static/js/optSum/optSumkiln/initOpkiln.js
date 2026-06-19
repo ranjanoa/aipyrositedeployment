@@ -1,3 +1,5 @@
+import { initTargetVariables } from "../initTargetVariables.js";
+import { CV_AI_MAPPING } from "../initAiLoopStatus.js";
 import { state } from "../../inits/state.js";
 
 export function initOpkiln() {
@@ -37,17 +39,23 @@ export function initOpkiln() {
             // Row builder
             const buildRow = (tag, alias) => {
                 const safeId = tag.replace(/[^a-zA-Z0-9]/g, '');
+                const hasAi = CV_AI_MAPPING[tag] !== undefined;
+                const dotHtml = hasAi
+                    ? `<span id="op3-kiln-ai-dot-${safeId}" class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0 border border-black/20" title="AI Status: OFF"></span>`
+                    : `<span class="w-2.5 h-2.5 rounded-full bg-gray-500/20 shrink-0 border border-transparent" title="No AI Status Mapping"></span>`;
                 return `
                 <tr class="hover:bg-white/5 transition-colors">
                     <td class="p-1.5 text-gray-300 overflow-hidden align-middle">
                         <div class="flex items-center gap-1.5 w-full">
                             ${getTrendBtn(tag)}
+                            ${dotHtml}
                             <span class="truncate flex-1 min-w-0  font-bold text-white" title="${tag}">${alias}</span>
                         </div>
                     </td>
-                    <td class="p-1.5 font-mono  font-bold text-right text-gray-300 font-black truncate align-middle" id="op3-kiln-cur-${safeId}">---</td>
-                    <td class="p-1.5 font-mono  font-bold text-right text-gray-300 font-black truncate align-middle" id="op3-kiln-nsp-${safeId}">---</td>
-                    <td class="p-1.5 font-mono  font-bold text-right text-gray-300  font-black pr-2 truncate align-middle" id="op3-kiln-tgt-${safeId}">---</td>
+                    <td class="p-1.5 font-mono  font-bold text-right text-white font-black truncate align-middle" id="op3-kiln-cur-${safeId}">---</td>
+                    <td class="p-1.5 font-mono  font-bold text-right text-white font-black truncate align-middle" id="op3-kiln-nsp-${safeId}">---</td>
+                    <td class="p-1.5 font-mono  font-bold text-right text-white  font-black truncate align-middle" id="op3-kiln-tgt-${safeId}">---</td>
+                    <td class="p-1.5 font-mono  font-bold text-right text-[#ebf552] font-black pr-2 truncate align-middle" id="op3-kiln-rh-${safeId}">---</td>
                 </tr>`;
             };
 
@@ -75,8 +83,9 @@ export function initOpkiln() {
                         const alias = v.description || tag;
 
                         // Exclude Cooler/Preheater items if they leaked into config somehow
-                        if (combined.includes('cooler') || combined.includes('grate') || combined.includes('grille') || combined.includes('filter')) return;
+                        if ( combined.includes('cooler') || combined.includes('grate') || combined.includes('grille') || combined.includes('filter')) return;
                         if (combined.includes('fan') || combined.includes('calciner') || combined.includes('cyclone') || combined.includes('flap') || combined.includes('gate') || combined.includes('tert') || combined.includes('quench')) return;
+                        if (combined.includes('motor') || combined.includes('emissions') || combined.includes('inlet o2') || combined.includes('burning')) return;
 
                         if (tKiln) tKiln.innerHTML += buildRow(tag, alias);
                     }
@@ -135,4 +144,18 @@ export function initOpkiln() {
                     `;
                 });
             }
+
+            // ── TARGET VARIABLES TABLE ──────────────────────────────────────────
+            // Reads calculated_variables with is_setpoint=true from model_config.
+            // Kiln page: shows kiln/motor/bzt/o2/nox targets; excludes cooler/calciner.
+            initTargetVariables({
+                tbodyId:      'op-table-kiln-targets',
+                pageKeywords: ['kiln', 'motor', 'bzt', 'o2', 'nox', 'tert'],
+                excludeKeys:  ['cooler', 'calciner', 'cyclone', 'sec air', 'grate pressure','filling'],
+                trendAction:  'toggleOpTrendKiln',
+                pageId:       'kiln',
+            });
+
+
+
 }

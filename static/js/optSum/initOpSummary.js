@@ -1,4 +1,5 @@
 import { state } from "../inits/state.js";
+import { CV_AI_MAPPING } from "./initAiLoopStatus.js";
 
 export function initOpSummary() {
      if (!state.currentModelConfig) return;
@@ -37,17 +38,23 @@ export function initOpSummary() {
             // Row builder
             const buildRow = (tag, alias) => {
                 const safeId = tag.replace(/[^a-zA-Z0-9]/g, '');
+                const hasAi = CV_AI_MAPPING[tag] !== undefined;
+                const dotHtml = hasAi
+                    ? `<span id="op3-ai-dot-${safeId}" class="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0 border border-black/20" title="AI Status: OFF"></span>`
+                    : `<span class="w-2.5 h-2.5 rounded-full bg-gray-500/20 shrink-0 border border-transparent" title="No AI Status Mapping"></span>`;
                 return `
                 <tr class="hover:bg-white/5 transition-colors">
                     <td class="p-1.5 text-gray-300 overflow-hidden align-middle">
                         <div class="flex items-center gap-1.5 w-full">
                             ${getTrendBtn(tag)}
+                            ${dotHtml}
                             <span class="truncate flex-1 min-w-0 text-[11px] font-bold text-white" title="${tag}">${alias}</span>
                         </div>
                     </td>
                     <td class="p-1.5 font-mono text-[11px] text-right text-white font-black truncate align-middle" id="op3-cur-${safeId}">---</td>
                     <td class="p-1.5 font-mono text-[11px] text-right font-black  text-white truncate align-middle" id="op3-nsp-${safeId}">---</td>
-                    <td class="p-1.5 font-mono text-[11px] text-right text-white font-black pr-2 truncate align-middle" id="op3-tgt-${safeId}">---</td>
+                    <td class="p-1.5 font-mono text-[11px] text-right text-white font-black truncate align-middle" id="op3-tgt-${safeId}">---</td>
+                    <td class="p-1.5 font-mono text-[11px] text-right text-[#ebf552] font-black pr-2 truncate align-middle" id="op3-rh-${safeId}">---</td>
                 </tr>`;
             };
 

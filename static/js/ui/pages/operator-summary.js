@@ -36,10 +36,11 @@ export function OperatorSummary() {
                             <table class="w-full text-[11px] text-left table-fixed">
                                 <thead class="text-gray-500 border-b border-[#2d4a54] bg-[#1a3842]">
                                     <tr>
-                                        <th class="p-1.5 font-bold w-[45%] pl-2 truncate">Variable</th>
+                                        <th class="p-1.5 font-bold w-[38%] pl-2 truncate">Variable</th>
                                         <th class="p-1.5 font-bold text-right w-[15%] truncate">Curr</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] truncate">Nudge</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] pr-2 truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] truncate">Nudge</th>
+                                        <th class="p-1.5 font-bold text-right w-[17%] truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] pr-2 truncate">RH</th>
                                     </tr>
                                 </thead>
                                 <tbody id="op-table-kiln" class="divide-y divide-[#2d4a54]"></tbody>
@@ -57,10 +58,11 @@ export function OperatorSummary() {
                             <table class="w-full text-[11px] text-left table-fixed">
                                 <thead class="text-gray-500 border-b border-[#2d4a54] bg-[#1a3842]">
                                     <tr>
-                                        <th class="p-1.5 font-bold w-[45%] pl-2 truncate">Variable</th>
+                                        <th class="p-1.5 font-bold w-[38%] pl-2 truncate">Variable</th>
                                         <th class="p-1.5 font-bold text-right w-[15%] truncate">Curr</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] truncate">Nudge</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] pr-2 truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] truncate">Nudge</th>
+                                        <th class="p-1.5 font-bold text-right w-[17%] truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] pr-2 truncate">RH</th>
                                     </tr>
                                 </thead>
                                 <tbody id="op-table-phpc" class="divide-y divide-[#2d4a54]"></tbody>
@@ -77,10 +79,11 @@ export function OperatorSummary() {
                             <table class="w-full text-[11px] text-left table-fixed">
                                 <thead class="text-gray-500 border-b border-[#2d4a54] bg-[#1a3842]">
                                     <tr>
-                                        <th class="p-1.5 font-bold w-[45%] pl-2 truncate">Variable</th>
+                                        <th class="p-1.5 font-bold w-[38%] pl-2 truncate">Variable</th>
                                         <th class="p-1.5 font-bold text-right w-[15%] truncate">Curr</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] truncate">Nudge</th>
-                                        <th class="p-1.5 font-bold text-right w-[20%] pr-2 truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] truncate">Nudge</th>
+                                        <th class="p-1.5 font-bold text-right w-[17%] truncate">Target</th>
+                                        <th class="p-1.5 font-bold text-right w-[15%] pr-2 truncate">RH</th>
                                     </tr>
                                 </thead>
                                 <tbody id="op-table-cooler" class="divide-y divide-[#2d4a54]"></tbody>

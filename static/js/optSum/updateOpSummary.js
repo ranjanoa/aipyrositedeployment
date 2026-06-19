@@ -1,6 +1,7 @@
 import { state } from "../inits/state.js";
 import { drawOpSummaryChart } from "./drawOpSummaryChart.js"
 import { drawOpParallelChart } from "./drawOpParallelChart.js"
+import { updateCvTableAiStatus } from "./initAiLoopStatus.js";
 
 export function updateOpSummary(data) {
     const now = Date.now();
@@ -46,7 +47,31 @@ export function updateOpSummary(data) {
         const val = parseFloat(data[tag]).toFixed(2);
 
         const curEl = document.getElementById(`op3-cur-${safeId}`);
-        if (curEl) curEl.innerText = val;
+        if (curEl) {
+            if (tag.startsWith("TRG -")) {
+                const item = state.currentModelConfig?.calculated_variables?.[tag] ||
+                             state.currentModelConfig?.control_variables?.[tag] ||
+                             state.currentModelConfig?.indicator_variables?.[tag];
+                const valNum = parseFloat(data[tag]);
+                if (item && !isNaN(valNum) && item.default_min !== undefined && item.default_max !== undefined) {
+                    const min = parseFloat(item.default_min);
+                    const max = parseFloat(item.default_max);
+                    const range = max - min;
+                    const buffer = range * 0.10;
+                    if (valNum < min || valNum > max) {
+                        curEl.innerHTML = `<span class="font-mono font-bold px-1 rounded text-white bg-red-600 text-[12px]">${val}</span>`;
+                    } else if (valNum < (min + buffer) || valNum > (max - buffer)) {
+                        curEl.innerHTML = `<span class="font-mono font-bold px-1 rounded text-black bg-yellow-900 text-[12px]">${val}</span>`;
+                    } else {
+                        curEl.innerHTML = `<span class="font-mono font-bold px-1 rounded text-slate-800 bg-slate-100 text-[12px]">${val}</span>`;
+                    }
+                } else {
+                    curEl.innerText = val;
+                }
+            } else {
+                curEl.innerText = val;
+            }
+        }
 
         //  const liveEl = document.getElementById(`op3-live-${safeId}`);
         // if (liveEl) liveEl.innerText = val;
@@ -61,4 +86,5 @@ export function updateOpSummary(data) {
 
     drawOpSummaryChart();
     drawOpParallelChart();
+    updateCvTableAiStatus(data, 'op3-');
 }

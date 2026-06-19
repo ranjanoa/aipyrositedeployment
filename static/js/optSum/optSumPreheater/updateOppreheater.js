@@ -1,3 +1,5 @@
+import { updateTargetVariables } from "../initTargetVariables.js";
+import { updateCvTableAiStatus } from "../initAiLoopStatus.js";
 import { state } from "../../inits/state.js";
 import { drawOpParallelChartPreheater } from "./drawOpParallelChartPreheater.js";
 import { drawOpSummaryChartPreheater } from "./drawOpSummaryChartPreheater.js";
@@ -40,4 +42,8 @@ export function updateOpPreheater(data) {
 
     drawOpSummaryChartPreheater();
     drawOpParallelChartPreheater();
+    // Update target variable current values
+    updateTargetVariables(data, 'preheater');
+    updateCvTableAiStatus(data, 'op3-pre-');
+
 }

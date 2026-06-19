@@ -69,6 +69,10 @@ export function updateOpSummaryActions(data) {
     }
 
     // 2. Action Display & Nudging
+    // Clear previous actions display to avoid stale values persisting
+    document.querySelectorAll('[id^="op3-nsp-"]').forEach(el => el.innerHTML = `<span class="text-white">-</span>`);
+    document.querySelectorAll('[id^="op3-tgt-"]').forEach(el => el.innerHTML = `<span class="text-white">---</span>`);
+
     if (data.actions && data.actions.length > 0) {
         window.currentAIVars = data.actions.map(a => a.var_name);
         window.latestActions = data.actions;
@@ -87,7 +91,7 @@ export function updateOpSummaryActions(data) {
             // Prefer the backend nudge; fall back to a frontend calculation only if missing
             const backendNudge = act.nudge_target !== undefined ? parseFloat(act.nudge_target) : null;
 
-            const varConf = state.currentModelConfig.control_variables?.[act.var_name];
+            const varConf = state.currentModelConfig?.control_variables?.[act.var_name] || state.currentModelConfig?.calculated_variables?.[act.var_name];
             const gain = varConf ? (Math.abs(parseFloat(varConf.nudge_speed)) || 0.15) : 1.0;
             const defMax = varConf ? parseFloat(varConf.default_max || 9999) : 9999;
             const defMin = varConf ? parseFloat(varConf.default_min || -9999) : -9999;
@@ -115,7 +119,19 @@ export function updateOpSummaryActions(data) {
                     nspEl.innerHTML = `<span class="text-white">-</span>`;
                 }
             }
-            if (tgtEl) tgtEl.innerText = finalTarget.toFixed(2);
+
+            let displayedTarget = finalTarget;
+            if (varConf && varConf.dynamic_sp_tag) {
+                const spTag = varConf.dynamic_sp_tag;
+                if (state.latestLiveValues && state.latestLiveValues[spTag] !== undefined && state.latestLiveValues[spTag] !== null && state.latestLiveValues[spTag] !== '') {
+                    const spVal = parseFloat(state.latestLiveValues[spTag]);
+                    if (!isNaN(spVal)) {
+                        displayedTarget = spVal;
+                    }
+                }
+            }
+
+            if (tgtEl) tgtEl.innerText = displayedTarget.toFixed(2);
         });
     } else {
         window.currentAIVars = [];

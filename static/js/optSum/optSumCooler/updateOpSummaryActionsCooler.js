@@ -1,6 +1,7 @@
 import { state } from "../../inits/state.js";
 import { drawOpSummaryChartCooler} from "./drawOpSummaryChartCooler.js"
 import { drawOpParallelChartCooler} from "./drawOpParallelChartCooler.js"
+import { updateTargetVariablesActions } from "../initTargetVariables.js";
 
 export function updateOpSummaryActionsCooler(data) {
     if (!data) return;
@@ -67,6 +68,10 @@ export function updateOpSummaryActionsCooler(data) {
                 });
             }
 
+            // Clear previous actions display to avoid stale values persisting
+            document.querySelectorAll('[id^="op3-col-nsp-"]').forEach(el => el.innerHTML = `<span class="text-white">-</span>`);
+            document.querySelectorAll('[id^="op3-col-tgt-"]').forEach(el => el.innerHTML = `<span class="text-white">---</span>`);
+
             if (data.actions && data.actions.length > 0) {
                 window.currentAIVars = data.actions.map(a => a.var_name);
                 window.latestActions = data.actions;
@@ -78,7 +83,7 @@ export function updateOpSummaryActionsCooler(data) {
 
                     // 1. Use the backend's pre-computed nudge_target.
                     // Do NOT re-derive from latestLiveValues which may hold AI-written setpoints.
-                    const varConf = state.currentModelConfig.control_variables?.[act.var_name];
+                    const varConf = state.currentModelConfig?.control_variables?.[act.var_name] || state.currentModelConfig?.calculated_variables?.[act.var_name];
                     const finalTarget = parseFloat(act.fingerprint_set_point || 0);
                     const liveCurr = parseFloat(act.current_setpoint || 0);
 
@@ -114,7 +119,19 @@ export function updateOpSummaryActionsCooler(data) {
                             nspEl.innerHTML = `<span class="text-white">-</span>`;
                         }
                     }
-                    if (tgtEl) tgtEl.innerText = finalTarget.toFixed(2);
+
+                    let displayedTarget = finalTarget;
+                    if (varConf && varConf.dynamic_sp_tag) {
+                        const spTag = varConf.dynamic_sp_tag;
+                        if (state.latestLiveValues && state.latestLiveValues[spTag] !== undefined && state.latestLiveValues[spTag] !== null && state.latestLiveValues[spTag] !== '') {
+                            const spVal = parseFloat(state.latestLiveValues[spTag]);
+                            if (!isNaN(spVal)) {
+                                displayedTarget = spVal;
+                            }
+                        }
+                    }
+
+                    if (tgtEl) tgtEl.innerText = displayedTarget.toFixed(2);
 
                     // 6. Fallback Prediction Array
                     if (!state.opPredictionDataCooler[act.var_name]) {
@@ -132,6 +149,9 @@ export function updateOpSummaryActionsCooler(data) {
                 document.querySelectorAll('[id^="op3-col-nsp-"]').forEach(el => el.innerHTML = `<span class="text-white">-</span>`);
                 document.querySelectorAll('[id^="op3-col-tgt-"]').forEach(el => el.innerHTML = `<span class="text-white">---</span>`);
             }
+
+            // Update target variables nudge and target values
+            updateTargetVariablesActions(data, 'cooler');
 
             drawOpSummaryChartCooler();
             drawOpParallelChartCooler();

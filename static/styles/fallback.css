@@ -204,6 +204,14 @@ input[type=range]::-webkit-slider-runnable-track {
     color: #08191F !important;
 }
 
+.text-\[\#08191F\], [class*="text-[#08191F]"] {
+    color: #08191F !important;
+}
+
+.text-\[\#122a33\], [class*="text-[#122a33]"] {
+    color: #122a33 !important;
+}
+
 .text-slate-300 {
     color: #cbd5e1 !important;
 }
@@ -251,12 +259,22 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .text-select-white {
-    color-scheme: dark;
+    color-scheme: light !important;
 }
 
-.text-select-white option {
-    color: #ffffff !important;
-    background-color: #08191F !important;
+#trend-variable-select option,
+#config-active-strategy option,
+#config-sim-default-color option,
+#sim-color-var option,
+#sim-time-window option,
+#ai-mnm-base-mode option,
+#sim-output-select option,
+#softsensor-select option,
+#stats-window-select option,
+select option,
+option {
+    color: #111111 !important;
+    background-color: #ffffff !important;
 }
 
 .label-margin-bottom {
@@ -539,4 +557,49 @@ input:checked + .slider:before {
     position: relative;
     right: -78px;
     top: -3px;
+}
+
+/* Custom status dot indicators and pulse animations */
+.rounded-full {
+    border-radius: 9999px !important;
+}
+.bg-red-500 {
+    background-color: #ef4444 !important;
+}
+.bg-green-500 {
+    background-color: #22c55e !important;
+}
+.bg-gray-500\/20 {
+    background-color: rgba(107, 114, 128, 0.2) !important;
+}
+.w-2\.5 {
+    width: 10px !important;
+}
+.h-2\.5 {
+    height: 10px !important;
+}
+.shrink-0 {
+    flex-shrink: 0 !important;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
+.border {
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+.border-black\/20 {
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+.border-transparent {
+    border-color: transparent !important;
 }

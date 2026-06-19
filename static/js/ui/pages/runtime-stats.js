@@ -29,6 +29,7 @@ export function RuntimeStats() {
                     <div class="flex items-center gap-2">
                         <span class="text-xs font-bold text-gray-300 uppercase tracking-wider">Analysis Window:</span>
                         <select id="stats-window-select" onchange="window.RuntimeStatsActions.changeWindow(this.value)"
+                            onclick="if(this.value.startsWith('custom')) { const container = document.getElementById('custom-range-container'); if(container) { container.classList.remove('hidden'); container.classList.add('flex'); } }"
                             class="text-xs bg-[#152e36] text-white border border-[#2d4a54] rounded-md px-2.5 py-1.5 outline-none font-bold cursor-pointer hover:border-white/20 transition-colors">
                             <option value="30" class="bg-[#152e36] text-white">Last 30 Minutes</option>
                             <option value="60" selected class="bg-[#152e36] text-white">Last 1 Hour</option>
@@ -196,6 +197,7 @@ window.RuntimeStatsActions = {
                 if (customOption) {
                     customOption.text = `Custom: ${formatShort(startD)} - ${formatShort(endD)}`;
                     customOption.value = `custom_${startD.getTime()}_${endD.getTime()}`; // unique value to preserve change events
+                    statsSelect.value = customOption.value; // Explicitly select the new custom range value
                 }
                 
                 // Hide custom inputs container (close calendar window)
@@ -235,7 +237,7 @@ window.RuntimeStatsActions = {
         let url = `/api/runtime-stats?window_minutes=${currentWindowMinutes}`;
         
         const statsSelect = document.getElementById("stats-window-select");
-        if (statsSelect && statsSelect.value === "custom") {
+        if (statsSelect && statsSelect.value.startsWith("custom")) {
             const startInput = document.getElementById("custom-start-time");
             const endInput = document.getElementById("custom-end-time");
             if (startInput && endInput && startInput.value && endInput.value) {

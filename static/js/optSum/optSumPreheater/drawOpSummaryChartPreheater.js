@@ -37,8 +37,8 @@ export function drawOpSummaryChartPreheater() {
                 };
 
                 let histData = [];
-                if (state.opHistoryDataKiln[tag]) {
-                    histData = state.opHistoryDataKiln[tag].map(pt => ({
+                if (state.opHistoryDataPreheater[tag]) {
+                    histData = state.opHistoryDataPreheater[tag].map(pt => ({
                         x: -((now - pt.ts) / 60000),
                         y: pt.val
                     })).filter(pt => pt.x >= minX);
@@ -94,7 +94,7 @@ export function drawOpSummaryChartPreheater() {
                         yAxisID: yAxisId
                     });
                 } else {
-                    let predDataRaw = state.opPredictionData[tag];
+                    let predDataRaw = state.opPredictionDataPreheater[tag];
                     if (!predDataRaw || predDataRaw.length === 0) {
                         predDataRaw = Array(11).fill(liveCurr);
                     }
