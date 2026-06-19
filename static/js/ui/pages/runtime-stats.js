@@ -53,7 +53,7 @@ export function RuntimeStats() {
                         </button>
                     </div>
 
-                    <button onclick="window.RuntimeStatsActions.refreshData()"
+                    <button onclick="window.RuntimeStatsActions.refreshData(true)"
                         class="text-xs font-bold px-3 py-1.5 bg-[#ebf552] text-slate-900 rounded-md hover:brightness-110 transition-colors flex items-center gap-1.5 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="animate-spin-hover">
                             <path d="M23 4v6h-6M1 20v-6h6"/>
@@ -171,7 +171,7 @@ window.RuntimeStatsActions = {
             }
             
             currentWindowMinutes = parseInt(value);
-            this.refreshData();
+            this.refreshData(true);
         }
     },
 
@@ -208,23 +208,29 @@ window.RuntimeStatsActions = {
                 console.error("Error setting custom option labels:", e);
             }
         }
-        this.refreshData();
+        this.refreshData(true);
     },
 
-    refreshData() {
+    refreshData(showLoader = false) {
         const tableBody = document.getElementById("runtime-stats-table-body");
         if (!tableBody) return;
 
-        // Show spinner / loading indicator
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="5" class="p-8 text-center text-gray-400 font-bold">
-                    <div class="flex items-center justify-center gap-2">
-                        Fetching runtime statistics...
-                    </div>
-                </td>
-            </tr>
-        `;
+        // Show spinner / loading indicator only if requested or table is empty
+        if (showLoader || tableBody.innerHTML.includes("Loading statistics")) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="p-8 text-center text-gray-400 font-bold">
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="animate-spin h-4 w-4 text-[#ebf552]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Fetching runtime statistics...
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
 
         let url = `/api/runtime-stats?window_minutes=${currentWindowMinutes}`;
         
@@ -334,14 +340,14 @@ function formatHours(hoursFloat) {
 
 export function initRuntimeStats() {
     // Initial fetch
-    window.RuntimeStatsActions.refreshData();
+    window.RuntimeStatsActions.refreshData(true);
 
     // Start interval loop (every 10s)
     if (refreshInterval) {
         clearInterval(refreshInterval);
     }
     refreshInterval = setInterval(() => {
-        window.RuntimeStatsActions.refreshData();
+        window.RuntimeStatsActions.refreshData(false);
     }, 10000);
 }
 

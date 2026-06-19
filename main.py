@@ -1,7 +1,4 @@
-import eventlet
-eventlet.monkey_patch(all=True)
 import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning, module="eventlet")
 import os
 import pandas as pd
 import sys
@@ -107,7 +104,7 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 app.config.from_object('config')
 socketio = SocketIO(app, 
                     cors_allowed_origins="*", 
-                    async_mode='eventlet',
+                    async_mode='threading',
                     ping_timeout=60,
                     ping_interval=25)
 
