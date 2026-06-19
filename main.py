@@ -1,15 +1,20 @@
 # --- EVENTLET AUTO-DETECT (must be before ALL other imports) ---
-# When running as a compiled .exe, eventlet is bundled and must be monkey-patched first.
-# When running from source on Windows dev, we fall back to threading to avoid RLock issues.
+# Only use eventlet when running as a compiled .exe (PyInstaller frozen).
+# In local dev/source mode, always use threading to avoid Windows RLock deadlocks.
 import sys as _sys
 _EVENTLET_AVAILABLE = False
-try:
-    import eventlet as _eventlet
-    _eventlet.monkey_patch(all=True)
-    print("[INIT] AGGRESSIVE Eventlet Monkey Patch applied")
-    _EVENTLET_AVAILABLE = True
-except (ImportError, Exception):
-    pass  # Will fall back to threading mode below
+if getattr(_sys, 'frozen', False):
+    # Running as compiled executable - eventlet is required and bundled
+    try:
+        import eventlet as _eventlet
+        _eventlet.monkey_patch(all=True)
+        print("[INIT] AGGRESSIVE Eventlet Monkey Patch applied")
+        _EVENTLET_AVAILABLE = True
+    except (ImportError, Exception) as _e:
+        print(f"[WARN] Eventlet not available in compiled build: {_e}")
+else:
+    # Running from source - use threading (stable on Windows, no RLock issues)
+    pass
 
 import warnings
 import os
