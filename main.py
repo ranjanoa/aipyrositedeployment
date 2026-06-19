@@ -178,8 +178,13 @@ def favicon():
 
 # --- BACKGROUND TASK: Data Stream ---
 def background_data_emitter():
-    """Reads real-time data from InfluxDB and pushes it to the UI every 2 seconds."""
+    """Reads real-time data from InfluxDB and pushes it to the UI every 2 seconds.
+    Uses exponential backoff when the database is offline to avoid blocking Flask threads.
+    """
     socketio.sleep(2)
+    db_fail_count = 0
+    MAX_BACKOFF = 30  # Max 30s sleep when DB is offline
+
     while True:
         try:
             tag_map = process_model.get_tag_to_name_map()
@@ -194,6 +199,9 @@ def background_data_emitter():
                 df = database.get_realtime_data_window(start_time, end_time, tag_list, tag_map)
 
                 if not df.empty:
+                    # DB is back online — reset backoff
+                    db_fail_count = 0
+
                     conf = process_model.load_model_config()
                     calc_vars_cfg = conf.get('calculated_variables', {})
                     controls_cfg = conf.get('control_variables', {})
@@ -201,7 +209,6 @@ def background_data_emitter():
                     latest = df.iloc[-1].to_dict()
 
                     # [LIVE CALC] Evaluate all formulas for current state
-                    # Correct order: (state_map, controls_cfg, indicators_cfg, calc_vars_cfg)
                     calculated_vals = process_model.evaluate_formulas(latest, controls_cfg, indicators_cfg, calc_vars_cfg)
                     if calculated_vals:
                         latest.update(calculated_vals)
@@ -211,9 +218,16 @@ def background_data_emitter():
                         latest[config.TIMESTAMP_COLUMN] = str(latest[config.TIMESTAMP_COLUMN])
 
                     socketio.emit('live_values', latest)
+                else:
+                    # DB offline or returned empty — apply backoff
+                    db_fail_count += 1
         except Exception as e:
             logger.error(f"Stream Error: {e}")
-        socketio.sleep(2)
+            db_fail_count += 1
+
+        # Exponential backoff: 2s → 4s → 8s → 16s → 30s (capped)
+        backoff = min(2 * (2 ** min(db_fail_count, 4)), MAX_BACKOFF) if db_fail_count > 0 else 2
+        socketio.sleep(backoff)
 
 
 # --- BACKGROUND TASK: Autopilot Logic ---
