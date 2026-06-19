@@ -145,12 +145,11 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
         chunk_size = 40
         tag_chunks = [process_tags[i:i + chunk_size] for i in range(0, len(process_tags), chunk_size)]
         
-        # Include kiln2 (DB_MEASUREMENT_SETPOINTS) to fetch AI status tags like AI_SYSTEM_TRUST_RH
+        # Only query primary measurements for fast alignment and to avoid pivot timeouts
         measurements = [
             config.DB_MEASUREMENT,
             config.DB_MEASUREMENT_OPC,
-            config.DB_MEASUREMENT_PI,
-            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+            config.DB_MEASUREMENT_PI
         ]
         measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
 
@@ -272,12 +271,11 @@ def get_live_current_values(field_names, window_minutes=5):
     if not client:
         return {}
     try:
-        # Include kiln2 (DB_MEASUREMENT_SETPOINTS) to fetch setpoints
+        # Only query primary measurements for fast alignment and to avoid timeouts
         measurements = [
             config.DB_MEASUREMENT,
             config.DB_MEASUREMENT_OPC,
-            config.DB_MEASUREMENT_PI,
-            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+            config.DB_MEASUREMENT_PI
         ]
         measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
         
