@@ -7,8 +7,12 @@ if getattr(_sys, 'frozen', False):
     # Running as compiled executable - eventlet is required and bundled
     try:
         import eventlet as _eventlet
-        _eventlet.monkey_patch(all=True)
-        print("[INIT] AGGRESSIVE Eventlet Monkey Patch applied")
+        # Check if already patched by hook-eventlet.py to avoid double patching
+        if not getattr(_eventlet, '_monkey_patched', False):
+            _eventlet.monkey_patch(all=True)
+            print("[INIT] Eventlet Monkey Patch applied")
+        else:
+            print("[INIT] Eventlet already patched by hook, skipping.")
         _EVENTLET_AVAILABLE = True
     except (ImportError, Exception) as _e:
         print(f"[WARN] Eventlet not available in compiled build: {_e}")
@@ -196,6 +200,19 @@ def favicon():
     ico_path = _os.path.join(BASE_DIR, 'logo.ico')
     serve_dir = BASE_DIR if _os.path.exists(ico_path) else config.APP_DIR
     return send_from_directory(serve_dir, 'logo.ico', mimetype='image/vnd.microsoft.icon')
+
+
+@app.route('/.well-known/<path:subpath>')
+def well_known(subpath):
+    """Silently suppress Chrome DevTools .well-known requests (204 No Content)."""
+    return '', 204
+
+
+@app.route('/static/lib/<path:filename>.map')
+def source_map(filename):
+    """Silently suppress source-map requests that generate noisy 404s."""
+    return '', 204
+
 
 
 # --- BACKGROUND TASK: Data Stream ---
