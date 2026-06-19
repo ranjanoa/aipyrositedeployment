@@ -888,9 +888,19 @@ def get_runtime_statistics():
             var_info = controls.get(var_name, {})
             desc = mapping.get('description', var_info.get('description', var_name))
             unit = mapping.get('unit', var_info.get('unit', ''))
-            
             curr_status = 0.0
-            if status_col and status_col in df.columns and not df.empty:
+            if status_col == "AI_SYSTEM_TRUST":
+                # Availability / AI watchdog is in kiln2 (which is not loaded in df window to avoid timeouts)
+                # Fetch directly from InfluxDB using the raw tag name if possible, or fallback to config mode
+                raw_tag = name_to_tag.get(status_col, "AI_SYSTEM_TRUST_STATUS")
+                db_val = None
+                if not db_offline:
+                    db_val = database.get_tag_value_at_time(end_time, raw_tag)
+                if db_val is not None:
+                    curr_status = float(db_val)
+                else:
+                    curr_status = 1.0 if config.CONTROL_MODE > 0 else 0.0
+            elif status_col and status_col in df.columns and not df.empty:
                 valid_status = df[status_col].dropna()
                 if not valid_status.empty:
                     curr_status = float(valid_status.iloc[-1])
@@ -929,7 +939,11 @@ def get_runtime_statistics():
                             rh_delta = max(0.0, curr_rh - start_rh)
                     
             util_pct = 0.0
-            if status_col and status_col in df.columns and not df.empty:
+            if status_col == "AI_SYSTEM_TRUST":
+                # Calculate from rh_delta and time_span_hours since it's not in the df
+                if time_span_hours > 0:
+                    util_pct = min(100.0, max(0.0, (rh_delta / time_span_hours) * 100.0))
+            elif status_col and status_col in df.columns and not df.empty:
                 valid_status = df[status_col].dropna()
                 if not valid_status.empty:
                     util_pct = float((valid_status > 0.5).mean() * 100.0)
