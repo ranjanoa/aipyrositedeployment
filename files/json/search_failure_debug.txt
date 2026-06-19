@@ -1,0 +1,6622 @@
+
+--- 2026-03-19T23:48:06.767903 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2807.2502
+Target range: [2105.4377 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-21T09:41:57.222717 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 19.8255
+Target range: [14.8691 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T09:41:57.916561 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 19.8255
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T09:46:32.000207 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2606.6252
+Target range: [1954.9689 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-21T09:46:32.768856 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 19.9714
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:44:26.315878 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 20.9065
+Target range: [15.6799 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:44:27.018786 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 20.9065
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:47:51.884839 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 20.8181
+Target range: [15.6136 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:47:52.501622 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 20.8181
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:55:17.469948 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4800
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:55:18.138829 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4800
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:58:41.448025 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4586
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T13:58:42.010625 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4586
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T14:01:24.378089 ---
+Phase: Standard
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4722
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T14:01:24.836596 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln filling degree (%) SP
+Current RT value: 12.4722
+Target range: [11.0000 to 13.0000]
+Config Limits: [11.0 to 13.0]
+
+--- 2026-03-21T14:49:41.753721 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 3003.8776
+Target range: [2252.9082 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-21T14:54:44.479035 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2699.9136
+Target range: [2024.9352 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-21T15:00:16.015584 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2726.5413
+Target range: [2044.9060 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-21T15:03:01.509808 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2780.7600
+Target range: [2085.5700 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:43:42.950340 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 3089.2201
+Target range: [2316.9151 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:46:02.934154 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2546.1017
+Target range: [1909.5763 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:49:08.556176 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 3077.7312
+Target range: [2308.2984 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:51:31.023240 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2701.7957
+Target range: [2026.3468 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:53:33.243903 ---
+Phase: Standard
+Rejected at tag: Liquid Alternative Mass Flow Actual MainBurner
+Current RT value: 2776.4842
+Target range: [2082.3631 to 2000.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-03-23T22:56:05.286291 ---
+Phase: Standard
+Rejected at tag: Mass Flow Actual Solid 1 CalcinerBurner
+Current RT value: 3.0003
+Target range: [2.2502 to 3.7504]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-13T19:49:53.453331 ---
+Phase: Standard
+Rejected at tag: Mass Flow Actual Solid 1 CalcinerBurner
+Current RT value: 0.0250
+Target range: [0.0187 to 0.0312]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-13T19:49:53.460276 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Mass Flow Actual Solid 1 CalcinerBurner
+Current RT value: 0.0250
+Target range: [0.0000 to 0.0500]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-13T19:50:15.469653 ---
+Phase: Standard
+Rejected at tag: ID Fan Speed
+Current RT value: 733.5000
+Target range: [550.1250 to 916.8750]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-13T19:50:15.472164 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Mass Flow Actual Solid 1 CalcinerBurner
+Current RT value: 0.0000
+Target range: [-1.0000 to 1.0000]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-13T19:50:42.005939 ---
+Phase: Standard
+Rejected at tag: Dividing gate position Cyclone 3
+Current RT value: nan
+Target range: [-9999.0000 to 9999.0000]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-13T19:50:42.005939 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Dividing gate position Cyclone 3
+Current RT value: nan
+Target range: [-9999.0000 to 9999.0000]
+Config Limits: [-9999.0 to 9999.0]
+
+--- 2026-04-19T22:59:14.653639 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.0337
+Target range: [6.0253 to 10.0000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-19T23:01:26.918609 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.0278
+Target range: [6.0209 to 10.0000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-19T23:03:40.942685 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.0127
+Target range: [6.0095 to 10.0000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-19T23:05:52.357308 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 7.2132
+Target range: [5.4099 to 9.0165]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-19T23:08:05.220281 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 7.0165
+Target range: [5.2624 to 8.7706]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-19T23:52:30.702562 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0004
+Target range: [4.5004 to 5.5005]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T00:08:40.088623 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0078
+Target range: [2.7070 to 3.3086]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T00:10:56.174928 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.1724
+Target range: [1.0551 to 1.2896]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T00:13:07.532881 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0007
+Target range: [2.7007 to 3.3008]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T00:17:11.956244 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0041
+Target range: [2.7037 to 3.3045]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T08:57:09.454146 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9985
+Target range: [2.6986 to 3.2983]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:00:29.858407 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9975
+Target range: [1.7978 to 2.1973]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:02:39.385786 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9979
+Target range: [2.6981 to 3.2977]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:04:52.412315 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0051
+Target range: [2.7046 to 3.3056]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:07:05.349193 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0139
+Target range: [2.7125 to 3.3153]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:09:15.846280 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 9.0945
+Target range: [8.1851 to 10.0000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:11:26.999157 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0141
+Target range: [2.7127 to 3.3155]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:13:40.421655 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.8221
+Target range: [1.6399 to 2.0044]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:15:50.684190 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.5085
+Target range: [2.2577 to 2.7594]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:18:01.544422 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.9891
+Target range: [8.0902 to 9.8880]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:20:10.944294 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.5049
+Target range: [2.2544 to 2.7554]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:22:21.930209 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.0225
+Target range: [0.9202 to 1.1247]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:24:31.716175 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.7047
+Target range: [4.2342 to 5.1751]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:26:44.987525 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0196
+Target range: [2.7177 to 3.3216]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:28:56.556499 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.6897
+Target range: [0.6207 to 0.7587]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:31:07.305560 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0015
+Target range: [1.8014 to 2.2017]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:33:19.033549 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.5379
+Target range: [7.6841 to 9.3917]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:35:28.958182 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.0733
+Target range: [7.2660 to 8.8807]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:37:39.391240 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.9507
+Target range: [8.0556 to 9.8457]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:39:49.766477 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.5151
+Target range: [7.6635 to 9.3666]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:41:59.801102 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0056
+Target range: [1.8050 to 2.2061]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:44:10.756681 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0053
+Target range: [1.8047 to 2.2058]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:46:21.239216 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9983
+Target range: [1.7985 to 2.1981]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:48:32.799919 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0006
+Target range: [1.8005 to 2.2006]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:50:43.413024 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9862
+Target range: [2.6876 to 3.2849]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:52:55.155133 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0109
+Target range: [2.7098 to 3.3120]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:55:07.775591 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0075
+Target range: [2.7067 to 3.3082]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:57:20.325230 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0088
+Target range: [2.7079 to 3.3097]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T09:59:33.664570 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0076
+Target range: [2.7069 to 3.3084]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:01:45.364503 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9935
+Target range: [2.6942 to 3.2929]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:03:57.288332 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0156
+Target range: [2.7141 to 3.3172]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:06:09.855244 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9976
+Target range: [2.6978 to 3.2974]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:08:22.203640 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9974
+Target range: [2.6977 to 3.2972]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:10:34.379812 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0073
+Target range: [2.7065 to 3.3080]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:12:47.148037 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0157
+Target range: [2.7141 to 3.3172]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:15:00.895582 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0044
+Target range: [2.7039 to 3.3048]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:17:14.551699 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9952
+Target range: [2.6957 to 3.2947]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:19:28.294386 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0070
+Target range: [2.7063 to 3.3077]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:21:42.827063 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0064
+Target range: [2.7058 to 3.3070]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:23:57.127972 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9908
+Target range: [2.6917 to 3.2898]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:26:10.124346 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9938
+Target range: [2.6944 to 3.2931]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:28:23.202058 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0010
+Target range: [2.7009 to 3.3011]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:30:37.250921 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9977
+Target range: [2.6979 to 3.2974]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:32:50.947017 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.9864
+Target range: [0.8878 to 1.0850]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:35:02.270983 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0087
+Target range: [1.8078 to 2.2096]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:37:13.838590 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9985
+Target range: [1.7987 to 2.1984]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:39:25.856818 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0048
+Target range: [1.8043 to 2.2053]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:41:36.061988 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0004
+Target range: [1.8003 to 2.2004]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:43:46.935842 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9984
+Target range: [1.7986 to 2.1983]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:45:57.630133 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9982
+Target range: [1.7984 to 2.1980]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:48:09.402308 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9979
+Target range: [1.7981 to 2.1977]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:50:20.681302 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0112
+Target range: [2.7101 to 3.3123]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:52:33.080635 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9991
+Target range: [2.6992 to 3.2990]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:54:45.691694 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.4974
+Target range: [3.1477 to 3.8472]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:56:59.290030 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.0276
+Target range: [3.6248 to 4.4304]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T10:59:11.885833 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.9891
+Target range: [3.5902 to 4.3880]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:01:23.829787 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.9888
+Target range: [3.5899 to 4.3876]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:03:35.568271 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9827
+Target range: [4.4844 to 5.4809]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:05:48.005521 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0161
+Target range: [4.5145 to 5.5177]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:08:00.446305 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9716
+Target range: [4.4745 to 5.4688]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:10:12.592093 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0067
+Target range: [4.5060 to 5.5074]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:12:24.280335 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9858
+Target range: [4.4872 to 5.4844]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:14:37.272702 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0102
+Target range: [4.5092 to 5.5112]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:16:49.355605 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0183
+Target range: [4.5164 to 5.5201]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:19:02.330700 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9921
+Target range: [4.4929 to 5.4913]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:21:14.296100 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0000
+Target range: [4.5000 to 5.5000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:23:25.921041 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0035
+Target range: [4.5031 to 5.5038]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:25:38.656417 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9793
+Target range: [4.4813 to 5.4772]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:27:51.673424 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0261
+Target range: [4.5235 to 5.5287]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:30:04.867986 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 4.9995
+Target range: [4.4996 to 5.4995]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:32:18.575574 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0066
+Target range: [4.5060 to 5.5073]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:34:30.727998 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9954
+Target range: [4.4958 to 5.4949]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:36:42.616016 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0124
+Target range: [4.5111 to 5.5136]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:38:55.109360 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9964
+Target range: [4.4967 to 5.4960]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:41:08.146224 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9956
+Target range: [4.4961 to 5.4952]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:43:21.283902 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9898
+Target range: [4.4908 to 5.4888]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:45:33.603326 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9986
+Target range: [4.4988 to 5.4985]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:47:45.571529 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9989
+Target range: [4.4991 to 5.4988]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:49:59.134040 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9985
+Target range: [4.4987 to 5.4984]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:52:12.280554 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0020
+Target range: [4.5018 to 5.5022]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:54:24.327879 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0059
+Target range: [4.5053 to 5.5065]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:56:37.669443 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9919
+Target range: [4.4927 to 5.4911]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T11:58:50.450823 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.0943
+Target range: [6.3849 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T11:58:50.461094 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.1408
+Target range: [0.0000 to 0.2815]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:01:06.644460 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.3015
+Target range: [6.5714 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:01:06.688194 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:03:22.520697 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2781
+Target range: [5.6503 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:03:22.530925 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:05:38.585871 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4994
+Target range: [5.8495 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:05:38.599068 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:07:54.834742 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2756
+Target range: [5.6481 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:07:54.844807 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 1.5281
+Target range: [0.0000 to 3.0562]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T12:10:12.326484 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0072
+Target range: [4.5064 to 5.5079]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:12:24.835881 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0166
+Target range: [4.5149 to 5.5182]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:14:37.749676 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9997
+Target range: [4.4998 to 5.4997]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:16:50.818474 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9872
+Target range: [4.4884 to 5.4859]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:19:04.318516 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0194
+Target range: [4.5175 to 5.5213]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:21:18.416902 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0014
+Target range: [4.5012 to 5.5015]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:23:32.195132 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0037
+Target range: [4.5033 to 5.5041]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:25:46.162939 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0263
+Target range: [4.5236 to 5.5289]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:27:59.675254 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9910
+Target range: [4.4919 to 5.4901]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:30:14.055004 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0152
+Target range: [4.5137 to 5.5167]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:52:29.479825 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9962
+Target range: [4.4966 to 5.4958]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T12:58:43.955058 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0021
+Target range: [4.5019 to 5.5024]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T13:16:04.370716 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.3865
+Target range: [6.6479 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:16:04.379319 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:18:15.938540 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0132
+Target range: [4.5119 to 5.5145]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T13:22:39.218924 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 3.9896
+Target range: [3.5906 to 4.3885]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:24:50.855284 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 3.9854
+Target range: [3.5868 to 4.3839]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:27:02.598542 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 4.0103
+Target range: [3.6093 to 4.4114]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:29:14.375459 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0028
+Target range: [4.5025 to 5.5031]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T13:31:25.015865 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.2500
+Target range: [6.5250 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:31:25.021884 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: -0.0016
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:33:35.548539 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.5707
+Target range: [5.9136 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:33:35.554981 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.9970
+Target range: [0.0000 to 1.9940]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:35:47.805811 ---
+Phase: Standard
+Rejected at tag: Petcoke (PC)
+Current RT value: 5.1570
+Target range: [4.6413 to 5.5000]
+Config Limits: [0.0 to 5.5]
+
+--- 2026-04-20T13:37:57.771474 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9938
+Target range: [4.4944 to 5.4932]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T13:42:49.325963 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 4.0107
+Target range: [3.6097 to 4.4118]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T13:49:15.295698 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 4.9984
+Target range: [4.4986 to 5.4983]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T13:51:24.637722 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0125
+Target range: [4.5113 to 5.5138]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T14:18:02.175547 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0307
+Target range: [4.5277 to 5.5338]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T15:50:48.080225 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0289
+Target range: [4.5260 to 5.5318]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T15:56:49.478368 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0222
+Target range: [4.5199 to 5.5244]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:01:12.324886 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0030
+Target range: [4.5027 to 5.5033]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:03:24.394162 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0139
+Target range: [4.5125 to 5.5153]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:05:35.886044 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9921
+Target range: [4.4929 to 5.4913]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:07:48.492324 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9946
+Target range: [4.4952 to 5.4941]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:10:00.647274 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0084
+Target range: [4.5075 to 5.5092]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:12:11.959860 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9984
+Target range: [4.4986 to 5.4982]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:17:38.271006 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0028
+Target range: [4.5025 to 5.5031]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:19:48.890338 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0046
+Target range: [4.5042 to 5.5051]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:23:59.810030 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9893
+Target range: [4.4903 to 5.4882]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:26:10.507106 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9707
+Target range: [4.4736 to 5.4678]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:28:22.479237 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0077
+Target range: [4.5069 to 5.5085]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:32:44.345177 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0247
+Target range: [4.5223 to 5.5272]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:34:57.215189 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9818
+Target range: [4.4836 to 5.4800]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:37:09.914394 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0171
+Target range: [4.5154 to 5.5189]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:39:21.901970 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0171
+Target range: [4.5154 to 5.5188]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:41:34.288546 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0076
+Target range: [4.5068 to 5.5083]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:43:45.713617 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9984
+Target range: [4.4985 to 5.4982]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:45:57.839079 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9961
+Target range: [4.4965 to 5.4957]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:48:09.159220 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9993
+Target range: [4.4994 to 5.4993]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:50:20.687514 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0145
+Target range: [4.5131 to 5.5160]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T16:53:22.737052 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0008
+Target range: [4.5007 to 5.5009]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:20:59.100714 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.9759
+Target range: [6.2783 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T17:20:59.107939 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-20T17:40:53.427286 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9899
+Target range: [4.4909 to 5.4889]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:43:06.111077 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0041
+Target range: [4.5037 to 5.5045]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:45:05.197024 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0058
+Target range: [4.5052 to 5.5064]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:45:38.718351 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9991
+Target range: [4.4992 to 5.4990]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:46:12.225301 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9952
+Target range: [4.4957 to 5.4948]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:46:45.856717 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9986
+Target range: [4.4987 to 5.4984]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:47:19.423096 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0068
+Target range: [4.5062 to 5.5075]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:47:54.223319 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9965
+Target range: [4.4968 to 5.4961]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:48:27.957304 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0032
+Target range: [4.5029 to 5.5036]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:49:01.305010 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0070
+Target range: [4.5063 to 5.5077]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:54:28.882005 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9848
+Target range: [4.4864 to 5.4833]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T17:55:03.411375 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0104
+Target range: [4.5093 to 5.5114]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:03:01.429874 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 4.9900
+Target range: [4.4910 to 5.4889]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:04:07.807541 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0037
+Target range: [4.5034 to 5.5041]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:04:41.515432 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0061
+Target range: [4.5055 to 5.5067]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:08:01.698083 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.0152
+Target range: [4.5137 to 5.5167]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:10:15.820608 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0072
+Target range: [4.5065 to 5.5079]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:12:26.362238 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0277
+Target range: [4.5249 to 5.5305]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:14:37.316081 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0008
+Target range: [4.5008 to 5.5009]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:16:49.293578 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9891
+Target range: [4.4902 to 5.4880]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:19:01.717574 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0181
+Target range: [4.5163 to 5.5199]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:21:13.892215 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9845
+Target range: [4.4861 to 5.4830]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:23:25.023085 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0288
+Target range: [4.5259 to 5.5317]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:25:35.983396 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0019
+Target range: [4.5017 to 5.5021]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:27:47.508741 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0062
+Target range: [4.5056 to 5.5068]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:29:59.378257 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9943
+Target range: [4.4949 to 5.4937]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-20T18:32:13.764122 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9933
+Target range: [4.4939 to 5.4926]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T08:22:00.001762 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9989
+Target range: [1.7990 to 2.1988]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T08:22:32.437719 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9990
+Target range: [2.6991 to 3.2990]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T08:31:52.469425 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9963
+Target range: [2.6967 to 3.2960]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T08:34:01.973690 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 9.0042
+Target range: [8.1038 to 9.9046]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:16:07.960436 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9897
+Target range: [2.6908 to 3.2887]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:18:19.986113 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0076
+Target range: [2.7068 to 3.3084]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:20:31.808552 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0017
+Target range: [2.7015 to 3.3019]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:22:43.847491 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0140
+Target range: [2.7126 to 3.3154]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:29:55.263522 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0026
+Target range: [2.7023 to 3.3029]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:32:06.924808 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9955
+Target range: [2.6959 to 3.2950]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:43:16.142309 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0009
+Target range: [2.7008 to 3.3010]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:45:27.565506 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 3.2571
+Target range: [2.9314 to 3.5828]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T09:47:40.143807 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0107
+Target range: [2.7096 to 3.3118]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:49:51.955041 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0027
+Target range: [2.7024 to 3.3030]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:52:03.726051 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.0078
+Target range: [3.6070 to 4.4086]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:54:59.109457 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9956
+Target range: [1.7960 to 2.1952]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:57:11.014101 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0101
+Target range: [1.8091 to 2.2111]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T09:59:22.960436 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9981
+Target range: [1.7983 to 2.1979]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:01:33.842232 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0001
+Target range: [1.8001 to 2.2001]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:03:44.264371 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9975
+Target range: [1.7978 to 2.1973]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:05:54.795492 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9957
+Target range: [1.7962 to 2.1953]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:08:05.124946 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9995
+Target range: [1.7995 to 2.1994]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:10:16.462439 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9732
+Target range: [2.6759 to 3.2706]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:12:28.284387 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9953
+Target range: [2.6957 to 3.2948]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:14:40.838794 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.4888
+Target range: [3.1400 to 3.8377]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:16:52.453651 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.9996
+Target range: [3.5997 to 4.3996]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:19:04.474829 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.0155
+Target range: [3.6140 to 4.4171]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:21:17.583363 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.0068
+Target range: [3.6061 to 4.4075]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:25:41.990880 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9984
+Target range: [4.4986 to 5.4983]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:30:25.347503 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0018
+Target range: [4.5016 to 5.5019]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:32:37.852052 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9965
+Target range: [4.4969 to 5.4962]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:34:51.569380 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0125
+Target range: [4.5112 to 5.5137]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:37:05.495556 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0096
+Target range: [4.5087 to 5.5106]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:39:19.388694 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9759
+Target range: [4.4783 to 5.4734]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:41:30.873061 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0059
+Target range: [4.5053 to 5.5065]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:43:42.638674 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0192
+Target range: [4.5173 to 5.5211]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:55:14.817967 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0047
+Target range: [4.5042 to 5.5052]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:57:27.207133 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9997
+Target range: [4.4997 to 5.4996]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T10:59:42.131303 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0169
+Target range: [4.5152 to 5.5186]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:06:09.387799 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9922
+Target range: [4.4930 to 5.4915]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:08:19.897712 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0083
+Target range: [4.5075 to 5.5091]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:10:31.507382 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0061
+Target range: [4.5055 to 5.5067]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:12:42.775980 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9852
+Target range: [4.4867 to 5.4837]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:14:54.397427 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9868
+Target range: [4.4881 to 5.4855]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:17:06.697263 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0186
+Target range: [4.5168 to 5.5205]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:19:19.089314 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9908
+Target range: [4.4917 to 5.4899]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:21:31.068072 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.2994
+Target range: [6.5694 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:21:31.120292 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:23:46.065543 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2684
+Target range: [5.6416 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:23:46.073807 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:25:59.835947 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4912
+Target range: [5.8421 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:25:59.844558 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T11:48:59.026817 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0070
+Target range: [4.5063 to 5.5077]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:50:28.734279 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9929
+Target range: [4.4936 to 5.4922]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:51:56.952322 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0304
+Target range: [4.5274 to 5.5335]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:54:09.117234 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0026
+Target range: [4.5024 to 5.5029]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:56:23.502374 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0021
+Target range: [4.5019 to 5.5023]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:58:35.414469 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0129
+Target range: [4.5117 to 5.5142]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T11:59:34.086203 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0051
+Target range: [4.5046 to 5.5056]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:00:59.854651 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9885
+Target range: [4.4896 to 5.4873]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:03:02.264434 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0054
+Target range: [4.5048 to 5.5059]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:05:11.542514 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0116
+Target range: [4.5105 to 5.5128]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:07:20.226274 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9980
+Target range: [4.4982 to 5.4979]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:08:26.110709 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9905
+Target range: [4.4915 to 5.4896]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:10:38.266148 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9911
+Target range: [4.4920 to 5.4902]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:12:50.593388 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0042
+Target range: [4.5038 to 5.5046]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:15:03.441988 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9965
+Target range: [4.4968 to 5.4961]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:17:14.778667 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 4.9905
+Target range: [4.4915 to 5.4896]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:19:25.349899 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 5.0075
+Target range: [4.5067 to 5.5082]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:33:15.857539 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 4.9961
+Target range: [4.4965 to 5.4957]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:35:25.991242 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.3900
+Target range: [6.6510 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T12:35:26.000086 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T12:37:48.314238 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9982
+Target range: [2.6984 to 3.2981]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:40:00.036001 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9888
+Target range: [2.6899 to 3.2877]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:42:12.121766 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9854
+Target range: [2.6868 to 3.2839]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:44:56.164100 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9868
+Target range: [2.6881 to 3.2854]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:47:09.424469 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9991
+Target range: [2.6992 to 3.2990]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T12:49:23.750211 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.9931
+Target range: [8.0938 to 9.8924]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T13:08:41.458637 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 8.9081
+Target range: [8.0173 to 9.7989]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T13:10:52.716221 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0041
+Target range: [1.8037 to 2.2045]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T13:28:15.249999 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0007
+Target range: [1.8006 to 2.2008]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T13:30:25.193479 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9982
+Target range: [1.7983 to 2.1980]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:29:45.063646 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 7.4470
+Target range: [6.7023 to 8.1917]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:31:50.300868 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 7.0199
+Target range: [6.3179 to 7.7219]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:36:09.530390 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.9965
+Target range: [5.3969 to 6.5962]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:38:16.287779 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.9790
+Target range: [5.3811 to 6.5769]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:40:23.050281 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.9895
+Target range: [5.3906 to 6.5885]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T14:42:29.196210 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 5.9922
+Target range: [5.3930 to 6.5914]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-21T15:39:39.461510 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.1991
+Target range: [6.4792 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:39:39.593894 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0040
+Target range: [0.0000 to 0.0079]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:42:31.647280 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2756
+Target range: [5.6480 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:42:31.784751 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:45:23.000182 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4928
+Target range: [5.8435 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:45:23.138359 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:48:17.587922 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.7854
+Target range: [6.1069 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T15:48:17.785236 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T19:56:29.920594 ---
+Phase: Standard
+Rejected at tag: Kiln feed
+Current RT value: 100.0000
+Target range: [200.0000 to 105.0000]
+Config Limits: [200.0 to 300.0]
+
+--- 2026-04-21T19:56:29.921657 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln feed
+Current RT value: 100.0000
+Target range: [200.0000 to 105.0000]
+Config Limits: [200.0 to 300.0]
+
+--- 2026-04-21T19:57:10.147575 ---
+Phase: Standard
+Rejected at tag: Kiln feed
+Current RT value: 100.0000
+Target range: [200.0000 to 105.0000]
+Config Limits: [200.0 to 300.0]
+
+--- 2026-04-21T19:57:10.148699 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Kiln feed
+Current RT value: 100.0000
+Target range: [200.0000 to 105.0000]
+Config Limits: [200.0 to 300.0]
+
+--- 2026-04-21T20:53:04.252575 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 1.4700
+Target range: [1.3230 to 1.6170]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T20:55:14.555723 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 1.4700
+Target range: [1.3230 to 1.6170]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T20:57:26.927300 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 1.4700
+Target range: [1.3230 to 1.6170]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T20:59:42.085874 ---
+Phase: Standard
+Rejected at tag: Kiln speed
+Current RT value: 3.4831
+Target range: [3.1348 to 3.8000]
+Config Limits: [0.0 to 3.8]
+
+--- 2026-04-21T21:01:50.917714 ---
+Phase: Standard
+Rejected at tag: Kiln speed
+Current RT value: 3.4789
+Target range: [3.1310 to 3.8000]
+Config Limits: [0.0 to 3.8]
+
+--- 2026-04-21T22:21:49.780349 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 1.4700
+Target range: [1.3230 to 1.6170]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-21T22:24:41.258408 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 7.5215
+Target range: [6.7693 to 8.2736]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-04-28T21:36:23.903171 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0038
+Target range: [0.0032 to 0.0043]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:38:37.221288 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:40:50.851581 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:43:03.671878 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:45:18.498479 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 1104.3186
+Target range: [938.6708 to 1269.9664]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-04-28T21:47:32.773382 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:49:47.544535 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:51:59.268366 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:53:30.819628 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T21:55:07.283836 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T22:03:10.069183 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T22:05:39.167608 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-04-28T22:35:14.829699 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 1203.6448
+Target range: [1023.0981 to 1384.1916]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-04-28T22:38:46.338050 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.2891
+Target range: [6.1957 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:38:47.531932 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 3.0000
+Target range: [0.0000 to 6.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-04-28T22:40:03.115936 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.3085
+Target range: [6.2122 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:40:03.934541 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 238.8732
+Target range: [0.0000 to 477.7463]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-04-28T22:42:19.799259 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2726
+Target range: [5.3317 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:17.255070 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4892
+Target range: [5.5158 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:29.757401 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.5000
+Target range: [5.5250 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:30.453492 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:44.169459 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4946
+Target range: [5.5204 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:44.881783 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:54.787828 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.5423
+Target range: [5.5609 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:44:55.496871 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:45:12.830187 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.5970
+Target range: [5.6075 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-04-28T22:45:29.351822 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 486.2157
+Target range: [413.2833 to 559.1480]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-04-28T22:46:12.358074 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.6945
+Target range: [5.6903 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-05-05T15:53:56.860327 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 1305.4848
+Target range: [979.1136 to 1631.8560]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-05-05T16:37:37.493041 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-05-05T16:39:57.525754 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-05-05T16:42:12.604494 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-05-05T16:44:13.603637 ---
+Phase: Standard
+Rejected at tag: RIP (Kiln)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 2000.0]
+
+--- 2026-05-05T16:46:27.010913 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 1.5000
+Target range: [1.1250 to 1.8750]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-05-05T16:57:28.915920 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-05T16:59:43.297554 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-05T17:01:57.843514 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-05T17:04:11.590726 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0000
+Target range: [0.0000 to 0.0000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-05T17:12:45.430128 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0000
+Target range: [1.5000 to 2.5001]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-14T12:40:59.999322 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.8307
+Target range: [0.6230 to 1.0383]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-14T12:41:39.636673 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.0247
+Target range: [0.0185 to 0.0309]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-14T12:41:39.649295 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF 2 (PC)
+Current RT value: 9.8961
+Target range: [0.0000 to 10.0000]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-14T13:04:12.382439 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 399.6773
+Target range: [299.7580 to 499.5966]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-14T13:04:50.777599 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 546.3119
+Target range: [409.7340 to 682.8899]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-14T13:05:29.196155 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6668
+Target range: [23.0001 to 38.3335]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:06:01.445611 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6236
+Target range: [22.9677 to 38.2795]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:07:39.300145 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6208
+Target range: [22.9656 to 38.2760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:08:16.831829 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6208
+Target range: [22.9656 to 38.2760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:08:50.894408 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.6045
+Target range: [23.7034 to 39.5057]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:12:53.668146 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.9625
+Target range: [22.4719 to 37.4531]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:18:37.328916 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2417
+Target range: [21.9313 to 36.5521]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:22:00.252504 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:25:47.879559 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:25:49.749992 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-14T13:30:41.568297 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 630.7349
+Target range: [473.0512 to 788.4187]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-14T13:31:16.821447 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 601.3107
+Target range: [450.9830 to 751.6384]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-14T13:31:45.957829 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 629.9379
+Target range: [472.4534 to 787.4224]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-14T13:37:45.441067 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 593.4651
+Target range: [445.0988 to 741.8314]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-14T23:21:59.297324 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3200
+Target range: [1.7400 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:22:36.343791 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:23:13.295458 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:23:50.610245 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:24:27.799405 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:25:05.104832 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:25:42.503269 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:26:19.713186 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:26:56.997983 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:27:34.225006 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.5952
+Target range: [1.9464 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:28:11.584938 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4800
+Target range: [1.8600 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:28:48.951896 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4800
+Target range: [1.8600 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:29:26.289926 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4800
+Target range: [1.8600 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:30:03.633807 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4800
+Target range: [1.8600 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:30:40.857965 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4800
+Target range: [1.8600 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:31:18.172779 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:31:55.667155 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:32:33.083744 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:33:10.600273 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:33:48.184178 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:34:25.602697 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:35:03.283920 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:35:40.761176 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:36:18.528131 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:36:56.054410 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:37:33.816895 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:38:11.580826 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:38:49.441027 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:39:27.389219 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.4440
+Target range: [1.8330 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:40:05.445511 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:40:43.388485 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:41:21.188414 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:41:59.185873 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:42:36.978455 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:43:14.984590 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:43:52.841099 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3952
+Target range: [1.7964 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:44:30.679262 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:45:08.655456 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:45:46.619080 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:46:24.697790 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:47:02.697526 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:47:40.790329 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.2864
+Target range: [1.7148 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:48:18.772833 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3440
+Target range: [1.7580 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:48:56.950091 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3440
+Target range: [1.7580 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-14T23:49:35.344663 ---
+Phase: Standard
+Rejected at tag: Free CaO
+Current RT value: 2.3440
+Target range: [1.7580 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-15T00:10:42.010593 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0750 to 0.1250]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-15T00:11:17.002345 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0750 to 0.1250]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-15T00:11:52.116774 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0750 to 0.1250]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-15T00:12:27.589566 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0750 to 0.1250]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T14:05:19.942097 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.2776
+Target range: [0.9582 to 1.5969]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T14:05:55.507143 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.0247
+Target range: [0.0185 to 0.0309]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T14:08:52.039194 ---
+Phase: Standard
+Rejected at tag: RDF 2 (PC)
+Current RT value: 0.9130
+Target range: [0.6848 to 1.1413]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T14:28:30.883009 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 551.4903
+Target range: [413.6178 to 689.3629]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T14:29:10.504425 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.8599
+Target range: [23.1449 to 38.5748]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:29:46.087229 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6313
+Target range: [22.9735 to 38.2892]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:30:23.387961 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6211
+Target range: [22.9658 to 38.2764]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:31:03.559494 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6209
+Target range: [22.9656 to 38.2761]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:31:43.315367 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6208
+Target range: [22.9656 to 38.2760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:32:22.333321 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6208
+Target range: [22.9656 to 38.2760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:32:56.351831 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.6086
+Target range: [23.7065 to 39.5108]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:33:30.504352 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 542.3107
+Target range: [406.7330 to 677.8883]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T14:34:06.390172 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 551.5491
+Target range: [413.6619 to 689.4364]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T14:34:41.795489 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 550.5172
+Target range: [412.8879 to 688.1465]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T14:35:17.301963 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 549.9080
+Target range: [412.4310 to 687.3850]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T14:35:54.907975 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.6396
+Target range: [24.4797 to 40.7995]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:36:37.578943 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.9954
+Target range: [23.2466 to 38.7443]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:37:19.697683 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3032
+Target range: [21.9774 to 36.6290]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:37:58.039900 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2492
+Target range: [21.9369 to 36.5615]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:38:36.251860 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2417
+Target range: [21.9313 to 36.5522]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:39:15.320555 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2417
+Target range: [21.9313 to 36.5521]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:39:53.177963 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:40:31.461825 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:41:06.806754 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:41:42.530476 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:42:18.246740 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:42:52.941546 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:43:30.843076 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:44:09.706977 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:44:45.663182 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:45:21.481340 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:45:57.457771 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:46:32.835257 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:47:07.878310 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:47:43.149407 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2417
+Target range: [21.9313 to 36.5521]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:48:19.772164 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:48:58.618694 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:49:34.422204 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:50:10.428169 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2578
+Target range: [21.9434 to 36.5723]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:50:46.361138 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2578
+Target range: [21.9434 to 36.5723]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:51:22.316045 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2507
+Target range: [21.9381 to 36.5634]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:51:58.285105 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2587
+Target range: [21.9440 to 36.5733]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:52:34.423570 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2467
+Target range: [21.9350 to 36.5584]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:53:11.460661 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:53:47.266715 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 648.2424
+Target range: [486.1818 to 810.3030]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:54:23.170631 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2458
+Target range: [21.9344 to 36.5573]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T14:54:59.285541 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 601.9366
+Target range: [451.4525 to 752.4208]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:55:34.574028 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 616.8856
+Target range: [462.6642 to 771.1070]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:56:09.924758 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 643.6200
+Target range: [482.7150 to 804.5250]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:56:49.126945 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 586.6319
+Target range: [439.9739 to 733.2898]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:57:28.104078 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 607.9543
+Target range: [455.9658 to 759.9429]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:58:07.042740 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 616.7414
+Target range: [462.5560 to 770.9267]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:58:46.315425 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 582.8424
+Target range: [437.1318 to 728.5531]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T14:59:24.250714 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 619.9300
+Target range: [464.9475 to 774.9124]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:00:03.222287 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 626.3512
+Target range: [469.7634 to 782.9390]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:00:39.402386 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 603.5803
+Target range: [452.6852 to 754.4753]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:01:15.624470 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2833
+Target range: [21.9625 to 36.6042]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:01:49.625722 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 593.4651
+Target range: [445.0988 to 741.8314]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:02:25.469678 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 633.5007
+Target range: [475.1255 to 791.8759]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:03:01.656963 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 640.4781
+Target range: [480.3586 to 800.5976]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:03:37.566516 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 541.9755
+Target range: [406.4816 to 677.4694]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:04:14.060277 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 562.0266
+Target range: [421.5200 to 702.5333]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:04:49.676091 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 560.2319
+Target range: [420.1739 to 700.2899]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:05:23.582629 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 641.8059
+Target range: [481.3544 to 802.2574]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:05:59.794672 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 639.3260
+Target range: [479.4945 to 799.1575]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:06:33.896972 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3201
+Target range: [21.9901 to 36.6501]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:07:09.526472 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:07:45.769450 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:08:20.429616 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:08:55.728171 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:09:31.645514 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:10:06.772050 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3208
+Target range: [21.9906 to 36.6510]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:10:41.868932 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.3167
+Target range: [21.9875 to 36.6458]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:11:17.593645 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.5723
+Target range: [20.6792 to 34.4654]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:11:53.559959 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.4754
+Target range: [20.6065 to 34.3442]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:12:29.655217 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1862
+Target range: [20.3896 to 33.9827]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:13:03.407653 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.3009
+Target range: [18.9757 to 31.6261]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:13:39.288142 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.1030
+Target range: [18.8272 to 31.3787]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:14:15.275352 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0832
+Target range: [18.8124 to 31.3540]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:14:51.399447 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0817
+Target range: [18.8113 to 31.3522]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:15:27.177300 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0436
+Target range: [18.7827 to 31.3045]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:16:03.196560 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7813 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:16:39.002948 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0458
+Target range: [18.7844 to 31.3073]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:17:14.675654 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:17:50.458195 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:18:26.459707 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:19:02.379547 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0458
+Target range: [18.7844 to 31.3073]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:19:38.461683 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:20:14.535835 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:20:50.421383 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:21:26.328190 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:22:02.360874 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0417
+Target range: [18.7812 to 31.3021]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:22:38.408974 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0297
+Target range: [18.7722 to 31.2871]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:23:14.495409 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0151
+Target range: [18.7613 to 31.2689]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:23:50.427559 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0093
+Target range: [18.7570 to 31.2616]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:24:26.232416 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0084
+Target range: [18.7563 to 31.2605]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:25:01.869062 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.0042
+Target range: [18.7531 to 31.2552]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:25:37.787486 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.3894
+Target range: [19.7921 to 32.9868]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:26:13.818340 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6052
+Target range: [19.9539 to 33.2565]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:26:49.871414 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6041
+Target range: [19.9530 to 33.2551]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:27:25.932470 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6083
+Target range: [19.9562 to 33.2604]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:28:01.918668 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6083
+Target range: [19.9562 to 33.2604]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:28:37.864775 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6042
+Target range: [19.9531 to 33.2552]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:29:13.986145 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6083
+Target range: [19.9562 to 33.2604]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:29:50.041930 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6083
+Target range: [19.9562 to 33.2604]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:30:25.912293 ---
+Phase: Standard
+Rejected at tag: Cooler speed (central 1)
+Current RT value: 18.0743
+Target range: [13.5557 to 20.0000]
+Config Limits: [0.0 to 20.0]
+
+--- 2026-05-19T15:31:01.969359 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6083
+Target range: [19.9562 to 33.2604]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:31:38.057863 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6202
+Target range: [21.4652 to 35.7753]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:32:17.114678 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6591
+Target range: [21.4943 to 35.8238]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:32:56.261600 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6857
+Target range: [21.5143 to 35.8571]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:33:35.481840 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6966
+Target range: [21.5224 to 35.8707]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:34:14.626416 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.3305
+Target range: [22.7479 to 37.9132]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:34:54.372068 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 655.5472
+Target range: [491.6604 to 819.4340]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:35:33.982672 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 648.2852
+Target range: [486.2139 to 810.3565]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:36:13.586097 ---
+Phase: Standard
+Rejected at tag: Cooler speed (central 1)
+Current RT value: 18.9150
+Target range: [14.1863 to 20.0000]
+Config Limits: [0.0 to 20.0]
+
+--- 2026-05-19T15:36:53.505178 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 34.5473
+Target range: [25.9104 to 43.1841]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:37:32.977579 ---
+Phase: Standard
+Rejected at tag: Cooler speed (central 1)
+Current RT value: 17.7956
+Target range: [13.3467 to 20.0000]
+Config Limits: [0.0 to 20.0]
+
+--- 2026-05-19T15:38:12.618240 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.0903
+Target range: [24.0677 to 40.1129]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:38:52.177956 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 648.8287
+Target range: [486.6215 to 811.0359]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:39:31.922730 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.0101
+Target range: [24.7575 to 41.2626]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:40:11.661458 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.7132
+Target range: [26.7849 to 44.6415]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:40:51.220905 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.7289
+Target range: [26.7967 to 44.6611]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:41:31.230455 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.7333
+Target range: [26.8000 to 44.6667]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:42:11.279907 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 37.5312
+Target range: [28.1484 to 46.9140]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:42:51.619296 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 36.3027
+Target range: [27.2271 to 45.3784]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:43:31.447716 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 641.1062
+Target range: [480.8297 to 801.3828]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:44:11.280443 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.6949
+Target range: [26.7712 to 44.6187]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:44:11.296450 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.5840
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T15:45:06.129761 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.6917
+Target range: [26.7687 to 44.6146]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:45:06.151342 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:46:01.624134 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 645.1502
+Target range: [483.8627 to 806.4378]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:46:01.643048 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:46:58.285531 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 644.4049
+Target range: [483.3037 to 805.5061]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:46:58.306434 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:47:54.652104 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 631.4746
+Target range: [473.6060 to 789.3433]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:47:54.677323 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:48:51.462852 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 38.5754
+Target range: [28.9316 to 48.2193]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:48:51.482077 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:49:48.062996 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 39.3535
+Target range: [29.5151 to 49.1919]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:49:48.085693 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:50:46.032501 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 39.6027
+Target range: [29.7021 to 49.5034]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:50:46.058442 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:51:44.607008 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 3.0021
+Target range: [2.2516 to 3.7527]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T15:51:44.622129 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:52:45.291554 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 37.6718
+Target range: [28.2539 to 47.0898]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:52:45.315080 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 402.1644
+Target range: [800.0000 to 804.3288]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:53:46.145792 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 36.5385
+Target range: [27.4039 to 45.6732]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:53:46.169526 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 335.3344
+Target range: [800.0000 to 670.6688]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:54:48.358093 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 34.9718
+Target range: [26.2289 to 43.7148]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:54:48.381789 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 286.2141
+Target range: [800.0000 to 572.4281]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:55:49.747183 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 34.9708
+Target range: [26.2281 to 43.7135]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:55:49.763063 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 294.7544
+Target range: [800.0000 to 589.5087]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:56:52.945565 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 649.5541
+Target range: [487.1656 to 811.9426]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T15:56:52.968395 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 350.9879
+Target range: [800.0000 to 701.9757]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:58:06.805208 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.6867
+Target range: [25.2650 to 42.1084]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:58:06.830500 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 350.9879
+Target range: [800.0000 to 701.9757]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T15:59:10.140486 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.7273
+Target range: [25.2954 to 42.1591]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T15:59:10.156331 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 376.3016
+Target range: [800.0000 to 752.6031]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T16:00:14.166646 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9973
+Target range: [2.2480 to 3.7467]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:00:14.184052 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.5672
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T16:01:18.384661 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8292
+Target range: [24.6219 to 41.0365]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:02:04.153514 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8292
+Target range: [24.6219 to 41.0365]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:02:49.249840 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8292
+Target range: [24.6219 to 41.0365]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:03:40.646322 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8333
+Target range: [24.6250 to 41.0417]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:04:28.673351 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.0282
+Target range: [0.7712 to 1.2853]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:05:04.545315 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 0.9897
+Target range: [0.7423 to 1.2371]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:05:40.676662 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.5462
+Target range: [23.6597 to 39.4328]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:06:16.122298 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.2202
+Target range: [22.6651 to 37.7752]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:06:50.758495 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1949
+Target range: [22.6462 to 37.7437]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:07:26.057865 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1918
+Target range: [22.6439 to 37.7398]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:08:03.391120 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1917
+Target range: [22.6438 to 37.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:08:43.978981 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1958
+Target range: [22.6469 to 37.7448]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:09:22.907736 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1958
+Target range: [22.6469 to 37.7448]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:09:56.827772 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1958
+Target range: [22.6469 to 37.7448]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:10:31.946396 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1917
+Target range: [22.6438 to 37.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:11:09.464092 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1917
+Target range: [22.6438 to 37.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:11:45.574322 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1917
+Target range: [22.6438 to 37.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:12:22.200791 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0076
+Target range: [23.2557 to 38.7595]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:12:57.933857 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0076
+Target range: [23.2557 to 38.7595]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:13:32.515401 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0076
+Target range: [23.2557 to 38.7595]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:14:07.221892 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.6729
+Target range: [24.5047 to 40.8412]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:14:42.558516 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7455
+Target range: [24.5591 to 40.9319]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:15:17.649578 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7752
+Target range: [24.5814 to 40.9690]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:15:54.352318 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7874
+Target range: [24.5905 to 40.9842]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:16:31.091543 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7944
+Target range: [24.5958 to 40.9930]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:17:05.939313 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7957
+Target range: [24.5968 to 40.9947]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:17:40.630193 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.7958
+Target range: [24.5969 to 40.9948]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:18:15.094884 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 360.1025
+Target range: [270.0769 to 450.1281]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T16:18:49.455938 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.9990
+Target range: [1.4992 to 2.4987]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:19:23.804290 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.6066
+Target range: [25.2050 to 42.0083]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:19:58.771323 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.0035
+Target range: [1.5027 to 2.5044]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:20:36.960406 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.8219
+Target range: [25.3664 to 42.2774]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:21:15.446789 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.8229
+Target range: [25.3672 to 42.2786]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:21:51.309639 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.1936
+Target range: [24.8952 to 41.4919]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:22:34.882906 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 33.6379
+Target range: [25.2284 to 42.0473]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:23:13.932457 ---
+Phase: Standard
+Rejected at tag: RDF 1 (PC)
+Current RT value: 2.9921
+Target range: [2.2440 to 3.7401]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T16:24:05.753150 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 4.9965
+Target range: [3.7473 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-05-19T16:32:43.639031 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.1026
+Target range: [23.3269 to 38.8782]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:33:22.621179 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0838
+Target range: [23.3128 to 38.8547]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:34:03.586129 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0934
+Target range: [23.3200 to 38.8667]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:34:42.548292 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0798
+Target range: [23.3099 to 38.8498]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:35:19.926192 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0774
+Target range: [23.3080 to 38.8467]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:36:04.875944 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6677
+Target range: [23.0008 to 38.3346]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:36:49.206549 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.6767
+Target range: [24.5075 to 40.8458]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:37:35.520237 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 405.0700
+Target range: [303.8025 to 506.3375]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T16:38:26.800747 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0800
+Target range: [0.0600 to 0.1000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T16:39:15.107448 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0800
+Target range: [0.0600 to 0.1000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T16:39:59.815415 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.0800
+Target range: [0.0600 to 0.1000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T16:40:43.413500 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.9593
+Target range: [24.7195 to 41.1991]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:41:33.053593 ---
+Phase: Standard
+Rejected at tag: RDF (Kiln)
+Current RT value: 5.0046
+Target range: [3.7534 to 5.0000]
+Config Limits: [0.0 to 5.0]
+
+--- 2026-05-19T16:42:25.860094 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2262
+Target range: [23.4197 to 39.0328]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:43:13.065563 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2229
+Target range: [23.4172 to 39.0287]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:44:10.276216 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2229
+Target range: [23.4172 to 39.0286]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:45:05.000735 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2271
+Target range: [23.4203 to 39.0339]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:45:59.399958 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2229
+Target range: [23.4172 to 39.0286]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:46:53.971039 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.3144
+Target range: [22.7358 to 37.8930]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:47:48.991367 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1992
+Target range: [22.6494 to 37.7490]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:48:43.704218 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1747
+Target range: [22.6310 to 37.7184]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:49:39.442714 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1747
+Target range: [22.6310 to 37.7184]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:50:33.981862 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.5331
+Target range: [20.6499 to 34.4164]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:51:23.803391 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.2764
+Target range: [20.4573 to 34.0955]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:52:10.844151 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.2764
+Target range: [20.4573 to 34.0955]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:52:58.932911 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.2422
+Target range: [20.4316 to 34.0527]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:53:49.079339 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.2409
+Target range: [20.4307 to 34.0511]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:54:36.813461 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.4360
+Target range: [19.0770 to 31.7950]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:55:26.911664 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.1780
+Target range: [18.8835 to 31.4725]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:56:14.588420 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.4460
+Target range: [19.8345 to 33.0575]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:57:05.482143 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5645
+Target range: [19.9234 to 33.2056]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:57:52.922644 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5667
+Target range: [19.9250 to 33.2083]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:58:42.814587 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5708
+Target range: [19.9281 to 33.2135]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T16:59:31.336173 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5667
+Target range: [19.9250 to 33.2083]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:00:20.880901 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5667
+Target range: [19.9250 to 33.2083]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:01:09.099857 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5667
+Target range: [19.9250 to 33.2083]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:02:01.570686 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1797
+Target range: [20.3848 to 33.9746]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:02:54.711300 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.9828
+Target range: [20.9871 to 34.9785]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:03:45.046877 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.4105
+Target range: [22.0579 to 36.7631]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:04:39.869553 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5279
+Target range: [22.1459 to 36.9098]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:05:34.173251 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5313
+Target range: [22.1484 to 36.9141]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:06:29.018724 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4859
+Target range: [22.8645 to 38.1074]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:07:25.509282 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5043
+Target range: [22.8782 to 38.1304]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:08:23.991324 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5022
+Target range: [22.8767 to 38.1278]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:09:20.024311 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5147
+Target range: [22.8860 to 38.1434]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:10:15.970734 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5175
+Target range: [22.8881 to 38.1468]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:11:11.077462 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5239
+Target range: [22.8929 to 38.1549]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:12:07.122008 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5044
+Target range: [22.8783 to 38.1305]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:13:02.899712 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5025
+Target range: [22.8769 to 38.1281]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:13:58.172243 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.5021
+Target range: [22.8766 to 38.1276]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:14:53.641868 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.0982
+Target range: [24.0737 to 40.1228]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:15:48.668070 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 460.9540
+Target range: [345.7155 to 576.1925]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:16:39.697070 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 454.7415
+Target range: [341.0561 to 568.4269]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:17:28.004271 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 455.1117
+Target range: [341.3338 to 568.8897]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:18:18.552329 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 463.7346
+Target range: [347.8009 to 579.6682]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:19:07.421817 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 478.5166
+Target range: [358.8874 to 598.1457]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:19:57.566632 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 463.2912
+Target range: [347.4684 to 579.1140]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:20:46.609976 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 458.7624
+Target range: [344.0718 to 573.4530]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:21:36.463224 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 471.2005
+Target range: [353.4004 to 589.0007]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:22:25.157863 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 467.0520
+Target range: [350.2890 to 583.8150]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:23:15.479426 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 455.3889
+Target range: [341.5417 to 569.2361]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:24:03.875534 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 457.6913
+Target range: [343.2685 to 572.1142]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:24:56.012097 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 462.6564
+Target range: [346.9923 to 578.3206]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:25:44.666948 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 459.9361
+Target range: [344.9521 to 574.9202]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:26:35.460505 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 453.4444
+Target range: [340.0833 to 566.8055]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:27:23.737586 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 365.0132
+Target range: [273.7599 to 456.2665]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T17:28:14.476146 ---
+Phase: Standard
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0750 to 0.1250]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T17:29:02.686256 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.0377
+Target range: [22.5283 to 37.5471]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:29:54.054628 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.6238
+Target range: [22.2179 to 37.0298]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:30:41.869040 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5643
+Target range: [22.1732 to 36.9554]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:31:31.977992 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.2816
+Target range: [22.7112 to 37.8520]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:32:20.592353 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.9197
+Target range: [23.1898 to 38.6496]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:32:20.617775 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 280.9587
+Target range: [800.0000 to 561.9174]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T17:33:50.138825 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.3018
+Target range: [5.4764 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:33:50.179468 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 74.5667
+Target range: [800.0000 to 149.1333]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T17:35:20.104198 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2748
+Target range: [4.7061 to 7.8435]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:36:11.159797 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2759
+Target range: [4.7070 to 7.8449]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:37:00.031566 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2717
+Target range: [4.7038 to 7.8397]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:37:50.444792 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4920
+Target range: [4.8690 to 8.1150]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:38:39.715662 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.5409
+Target range: [4.9057 to 8.1761]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:39:29.873243 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2254
+Target range: [4.6690 to 7.7817]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:40:18.916319 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.7557
+Target range: [5.0668 to 8.4446]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T17:41:09.222149 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 502.4843
+Target range: [376.8632 to 628.1054]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:41:58.188413 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4150
+Target range: [22.8112 to 38.0187]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:42:48.968925 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.2787
+Target range: [22.7090 to 37.8483]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:43:37.801151 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.3932
+Target range: [23.5449 to 39.2414]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:44:28.400738 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0539
+Target range: [23.2904 to 38.8174]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:45:16.918857 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0354
+Target range: [23.2766 to 38.7943]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:46:12.870575 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.0907
+Target range: [22.5681 to 37.6134]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:47:09.130099 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 515.4119
+Target range: [386.5589 to 644.2649]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:48:05.111221 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 507.8165
+Target range: [380.8624 to 634.7706]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:49:01.398006 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 500.6346
+Target range: [375.4759 to 625.7932]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:49:58.571714 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 497.4318
+Target range: [373.0738 to 621.7897]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:50:54.680258 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 470.1668
+Target range: [352.6251 to 587.7086]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T17:51:51.056125 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6479
+Target range: [22.9860 to 38.3099]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:52:48.156169 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.2612
+Target range: [21.1959 to 35.3264]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:53:38.744168 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.2991
+Target range: [21.9743 to 36.6239]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:54:34.711761 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.4535
+Target range: [22.0901 to 36.8169]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:55:30.763896 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.4991
+Target range: [22.1243 to 36.8739]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:56:26.953707 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5022
+Target range: [22.1267 to 36.8778]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:57:22.993782 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5207
+Target range: [22.1405 to 36.9009]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:58:18.578040 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5347
+Target range: [22.1510 to 36.9184]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T17:59:14.653119 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.9478
+Target range: [22.4609 to 37.4348]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:00:10.722207 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.2951
+Target range: [23.4713 to 39.1188]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:01:07.376203 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.5290
+Target range: [23.6467 to 39.4112]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:02:05.220725 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.4654
+Target range: [21.3490 to 35.5817]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:03:00.930404 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.1784
+Target range: [21.1338 to 35.2231]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:03:52.357695 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1121
+Target range: [20.3340 to 33.8901]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:04:40.846095 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1043
+Target range: [20.3282 to 33.8804]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:05:30.535970 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1192
+Target range: [20.3394 to 33.8990]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:06:18.853947 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1280
+Target range: [20.3460 to 33.9100]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:07:08.427547 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1456
+Target range: [20.3592 to 33.9320]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:07:57.235019 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1458
+Target range: [20.3594 to 33.9323]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:08:47.440579 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1417
+Target range: [20.3563 to 33.9271]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:09:35.969631 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1458
+Target range: [20.3594 to 33.9323]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:10:26.083821 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1417
+Target range: [20.3563 to 33.9271]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:11:13.722226 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.1458
+Target range: [20.3594 to 33.9323]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:12:03.974097 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.1670
+Target range: [21.1252 to 35.2087]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:12:51.729289 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5263
+Target range: [22.1447 to 36.9078]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:13:48.003513 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.2378
+Target range: [22.6784 to 37.7973]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:14:44.948205 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0415
+Target range: [23.2811 to 38.8018]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:15:41.550763 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7207
+Target range: [23.7905 to 39.6508]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:16:39.018728 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.8108
+Target range: [23.1081 to 38.5135]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:17:35.846900 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.9364
+Target range: [20.9523 to 34.9205]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:18:26.515380 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.1049
+Target range: [21.8287 to 36.3812]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:19:23.346611 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1267
+Target range: [22.5951 to 37.6584]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:20:19.589012 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4497
+Target range: [22.8373 to 38.0622]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:21:16.782108 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4636
+Target range: [22.8477 to 38.0795]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:22:14.769396 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4645
+Target range: [22.8484 to 38.0806]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:23:11.424332 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4604
+Target range: [22.8453 to 38.0755]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:24:08.983032 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4604
+Target range: [22.8453 to 38.0755]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:25:07.580353 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6503
+Target range: [21.4877 to 35.8129]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:26:03.886067 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.3612
+Target range: [21.2709 to 35.4515]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:26:57.925331 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.3644
+Target range: [21.2733 to 35.4555]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:27:51.694661 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.3677
+Target range: [21.2758 to 35.4597]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:28:45.927511 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.9068
+Target range: [22.4301 to 37.3835]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:29:44.267558 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.9340
+Target range: [23.9505 to 39.9175]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:30:40.879975 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 448.8299
+Target range: [336.6224 to 561.0374]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:31:39.267826 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 442.7613
+Target range: [332.0710 to 553.4516]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:32:37.426145 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 439.6006
+Target range: [329.7004 to 549.5007]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:33:34.411720 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 437.6160
+Target range: [328.2120 to 547.0200]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:34:32.816112 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 443.5458
+Target range: [332.6594 to 554.4323]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:35:31.029154 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 444.4747
+Target range: [333.3560 to 555.5934]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:36:28.688344 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.8614
+Target range: [5.1461 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:37:27.189709 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.9774
+Target range: [5.2331 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:38:25.594765 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.9738
+Target range: [5.2303 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:39:22.635378 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.9732
+Target range: [5.2299 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:40:20.948216 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.6929
+Target range: [5.0197 to 8.3661]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:41:19.488875 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.4948
+Target range: [4.8711 to 8.1184]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:42:17.123065 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 6.2254
+Target range: [4.6690 to 7.7817]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:43:04.460663 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 438.4268
+Target range: [328.8201 to 548.0335]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:44:01.912016 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 426.8815
+Target range: [320.1612 to 533.6019]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:44:49.749465 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 426.2762
+Target range: [319.7071 to 532.8452]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:45:47.633761 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 429.8285
+Target range: [322.3714 to 537.2857]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:46:45.661122 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 436.3969
+Target range: [327.2977 to 545.4961]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:46:45.674095 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.6188
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T18:48:26.663223 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 438.9462
+Target range: [329.2096 to 548.6827]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:48:26.685691 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.4750
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T18:50:07.859308 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 422.5654
+Target range: [316.9240 to 528.2067]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:50:07.876061 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RDF 1 (PC)
+Current RT value: 1.1804
+Target range: [0.0000 to 2.3608]
+Config Limits: [0.0 to 10.0]
+
+--- 2026-05-19T18:51:51.120856 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 495.1323
+Target range: [371.3492 to 618.9154]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T18:52:37.758253 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 3.2152
+Target range: [2.4114 to 4.0190]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T18:52:37.781903 ---
+Phase: Steering (Relaxed)
+Rejected at tag: RIP (Kiln)
+Current RT value: 328.3299
+Target range: [800.0000 to 656.6598]
+Config Limits: [800.0 to 1500.0]
+
+--- 2026-05-19T18:54:21.580423 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 415.6534
+Target range: [311.7400 to 519.5667]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:55:21.195830 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.9666
+Target range: [23.9750 to 39.9583]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:56:19.057445 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 37.2687
+Target range: [27.9515 to 46.5859]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:57:16.568676 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 447.9288
+Target range: [335.9466 to 559.9109]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T18:58:14.580341 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 39.5930
+Target range: [29.6947 to 49.4912]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T18:59:13.674720 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 495.0560
+Target range: [371.2920 to 618.8200]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T19:00:07.817697 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 450.4285
+Target range: [337.8214 to 563.0356]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T19:01:05.089037 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 444.0251
+Target range: [333.0188 to 555.0313]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T19:02:01.039234 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 424.5756
+Target range: [318.4317 to 530.7195]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T19:02:56.926296 ---
+Phase: Standard
+Rejected at tag: Cooler speed (central 1)
+Current RT value: 18.9219
+Target range: [14.1914 to 20.0000]
+Config Limits: [0.0 to 20.0]
+
+--- 2026-05-19T19:03:53.090410 ---
+Phase: Standard
+Rejected at tag: Petcoke (Kiln)
+Current RT value: 7.1973
+Target range: [5.3980 to 8.5000]
+Config Limits: [0.0 to 8.5]
+
+--- 2026-05-19T19:03:53.173096 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.5408
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T19:05:34.839712 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 638.4550
+Target range: [478.8413 to 798.0688]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T19:05:34.857906 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.4251
+Target range: [1.3000 to 2.5000]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T19:07:13.956351 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 36.8257
+Target range: [27.6193 to 46.0321]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:08:09.990970 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.1944
+Target range: [22.6458 to 37.7430]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:09:06.222884 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5455
+Target range: [22.1591 to 36.9318]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:10:01.548153 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.5146
+Target range: [19.8860 to 33.1433]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:10:47.421293 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.5742
+Target range: [20.6806 to 34.4677]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:11:37.480770 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.6394
+Target range: [20.7295 to 34.5492]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:12:24.500752 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.6396
+Target range: [20.7297 to 34.5495]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:13:12.137748 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.4262
+Target range: [21.3197 to 35.5328]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:14:08.856478 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.5206
+Target range: [21.3905 to 35.6508]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:15:04.333884 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.0105
+Target range: [19.5079 to 32.5132]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:15:04.424465 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.0424
+Target range: [1.3000 to 2.0848]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T19:16:50.037322 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.0039
+Target range: [19.5029 to 32.5049]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:16:50.051710 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Free CaO
+Current RT value: 1.0424
+Target range: [1.3000 to 2.0848]
+Config Limits: [1.3 to 2.5]
+
+--- 2026-05-19T19:18:37.147070 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.7796
+Target range: [20.0847 to 33.4745]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:19:23.424575 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.5969
+Target range: [20.6977 to 34.4961]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:20:10.344856 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.7451
+Target range: [20.8088 to 34.6814]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:20:57.126414 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.1744
+Target range: [21.1308 to 35.2180]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:21:43.910426 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.4980
+Target range: [21.3735 to 35.6224]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:22:40.755942 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.3179
+Target range: [22.7384 to 37.8973]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:23:38.626347 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.7390
+Target range: [22.3043 to 37.1738]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:24:35.976232 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.3084
+Target range: [21.2313 to 35.3855]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:25:22.916751 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6684
+Target range: [21.5013 to 35.8355]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:26:20.215747 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.7437
+Target range: [21.5577 to 35.9296]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:27:16.829328 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.7458
+Target range: [21.5594 to 35.9323]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:28:13.276654 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5557
+Target range: [22.1668 to 36.9447]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:29:10.038942 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.6341
+Target range: [21.4756 to 35.7926]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:30:07.008503 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.5922
+Target range: [21.4441 to 35.7402]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:31:03.946847 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.5917
+Target range: [21.4438 to 35.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:32:00.880591 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.5917
+Target range: [21.4438 to 35.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:32:58.174629 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.5917
+Target range: [21.4438 to 35.7396]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:33:55.688894 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 27.8241
+Target range: [20.8681 to 34.7802]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:34:43.328818 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.0827
+Target range: [19.5620 to 32.6033]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:35:32.754676 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9694
+Target range: [19.4770 to 32.4617]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:36:19.425016 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9612
+Target range: [19.4709 to 32.4515]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:37:05.977565 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9808
+Target range: [19.4856 to 32.4760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:37:52.253402 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9808
+Target range: [19.4856 to 32.4760]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:38:38.966501 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9676
+Target range: [19.4757 to 32.4594]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:39:25.253690 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9693
+Target range: [19.4770 to 32.4616]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:40:11.781685 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9716
+Target range: [19.4787 to 32.4645]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:40:58.321970 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9587
+Target range: [19.4690 to 32.4484]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:41:45.289143 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 25.9542
+Target range: [19.4656 to 32.4427]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:42:32.071903 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.4958
+Target range: [19.8719 to 33.1198]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:43:18.561034 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6086
+Target range: [19.9564 to 33.2607]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:44:05.063678 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6806
+Target range: [20.0104 to 33.3507]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:44:51.738070 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6861
+Target range: [20.0146 to 33.3577]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:45:38.067205 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6866
+Target range: [20.0150 to 33.3583]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:46:24.480312 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6868
+Target range: [20.0151 to 33.3585]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:47:10.810143 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 26.6819
+Target range: [20.0115 to 33.3524]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:47:57.125096 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.0234
+Target range: [21.0176 to 35.0293]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:48:44.271154 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 28.8264
+Target range: [21.6198 to 36.0331]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:49:41.474330 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.5440
+Target range: [22.1580 to 36.9300]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:50:38.617638 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.6967
+Target range: [22.2725 to 37.1208]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:51:36.242811 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.7021
+Target range: [22.2766 to 37.1276]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:52:33.761539 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6160
+Target range: [22.9620 to 38.2700]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:53:32.338791 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.6936
+Target range: [23.0202 to 38.3670]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:54:31.083904 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.4290
+Target range: [23.5717 to 39.2862]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:55:29.941574 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.5670
+Target range: [23.6752 to 39.4587]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:56:28.815802 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7326
+Target range: [23.7995 to 39.6658]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:57:27.450540 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7558
+Target range: [23.8168 to 39.6947]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:58:25.926754 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7599
+Target range: [23.8199 to 39.6999]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T19:59:24.470987 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7645
+Target range: [23.8234 to 39.7056]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:00:23.074015 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7604
+Target range: [23.8203 to 39.7005]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:01:22.050033 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7604
+Target range: [23.8203 to 39.7005]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:02:21.213607 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.4059
+Target range: [23.5544 to 39.2574]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:03:20.123523 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.3389
+Target range: [23.5042 to 39.1736]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:04:18.914127 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.4623
+Target range: [22.8467 to 38.0778]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:05:17.990376 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.8891
+Target range: [22.4168 to 37.3613]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:06:16.974046 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.8882
+Target range: [22.4162 to 37.3603]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:07:15.886450 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.8882
+Target range: [22.4161 to 37.3602]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:08:14.710595 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.8560
+Target range: [22.3920 to 37.3200]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:09:13.718954 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 29.8522
+Target range: [22.3891 to 37.3152]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:10:12.980106 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.9591
+Target range: [23.2193 to 38.6989]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:11:12.447406 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.5982
+Target range: [23.6987 to 39.4978]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:12:12.193193 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7184
+Target range: [23.7888 to 39.6480]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:13:13.024585 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.7335
+Target range: [23.8001 to 39.6669]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:14:15.644024 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0563
+Target range: [114.7922 to 191.3203]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:15:17.925342 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0445
+Target range: [114.7834 to 191.3056]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:16:20.558927 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0157
+Target range: [114.7617 to 191.2696]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:17:22.830291 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0930
+Target range: [114.8198 to 191.3663]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:18:13.223739 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0398
+Target range: [114.7799 to 191.2998]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:19:03.590104 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0448
+Target range: [114.7836 to 191.3061]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:19:54.071511 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.8070
+Target range: [23.8552 to 39.7587]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:20:44.162216 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0475
+Target range: [114.7856 to 191.3094]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:21:34.731088 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0530
+Target range: [114.7898 to 191.3163]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:22:25.052052 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0598
+Target range: [114.7949 to 191.3248]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:23:15.620612 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0461
+Target range: [114.7846 to 191.3076]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:24:05.841340 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0260
+Target range: [114.7695 to 191.2824]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:24:57.518882 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0330
+Target range: [114.7747 to 191.2912]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:25:47.700262 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0123
+Target range: [114.7592 to 191.2653]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:26:38.351649 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0652
+Target range: [114.7989 to 191.3315]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:27:29.056130 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 152.9918
+Target range: [114.7438 to 191.2397]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:28:19.782713 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0268
+Target range: [114.7701 to 191.2835]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:29:10.274289 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0283
+Target range: [114.7712 to 191.2854]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:30:00.389601 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0301
+Target range: [114.7726 to 191.2877]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:30:50.946941 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 152.9969
+Target range: [114.7477 to 191.2461]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:31:41.050281 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0363
+Target range: [114.7773 to 191.2954]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:32:31.553232 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.1031
+Target range: [114.8273 to 191.3788]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:33:21.732857 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0479
+Target range: [114.7859 to 191.3099]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:34:12.031235 ---
+Phase: Standard
+Rejected at tag: Quench fan speed
+Current RT value: 153.0590
+Target range: [114.7942 to 191.3237]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:35:02.438894 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 152.4633
+Target range: [114.3474 to 190.5791]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:35:02.451721 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan speed
+Current RT value: 123.3453
+Target range: [0.0000 to 246.6906]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T20:37:03.824616 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 7.1652
+Target range: [5.3739 to 8.9565]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:37:03.839837 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 7.1652
+Target range: [0.0000 to 14.3303]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:39:05.740612 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.8800
+Target range: [2.1600 to 3.6001]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:39:05.755125 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.8800
+Target range: [0.0000 to 5.7601]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:41:08.947269 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.2826
+Target range: [1.7119 to 2.8532]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:41:08.958334 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.2826
+Target range: [0.0000 to 4.5651]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:43:12.373439 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.9778
+Target range: [2.2334 to 3.7223]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:43:12.387077 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 2.9778
+Target range: [0.0000 to 5.9556]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:45:17.191967 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 31.0417
+Target range: [23.2813 to 38.8022]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:45:17.208545 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 15.0089
+Target range: [0.0000 to 30.0177]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:47:22.733915 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 638.3229
+Target range: [478.7422 to 797.9036]
+Config Limits: [0.0 to 1500.0]
+
+--- 2026-05-19T20:47:22.770964 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 17.9630
+Target range: [0.0000 to 35.9259]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:49:30.554072 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8830
+Target range: [24.6623 to 41.1038]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:49:30.571236 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 28.2746
+Target range: [0.0000 to 56.5491]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:51:38.010079 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.8410
+Target range: [24.6308 to 41.0513]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:51:38.028076 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 28.5211
+Target range: [0.0000 to 57.0422]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:53:49.440492 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 35.2014
+Target range: [26.4011 to 44.0018]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:53:49.456153 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 20.0446
+Target range: [0.0000 to 40.0893]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:56:02.420741 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 32.1192
+Target range: [24.0894 to 40.1491]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T20:56:02.438109 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 37.5671
+Target range: [0.0000 to 75.1343]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:58:15.414385 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 34.5878
+Target range: [25.9408 to 43.2347]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T20:58:15.429066 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 34.5878
+Target range: [0.0000 to 69.1756]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:00:28.898924 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 40.9962
+Target range: [30.7472 to 51.2453]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:00:28.914665 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 40.9962
+Target range: [0.0000 to 81.9924]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:02:44.469609 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.7667
+Target range: [23.0750 to 38.4584]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T21:02:44.493068 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 51.6954
+Target range: [0.0000 to 103.3908]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:05:00.340704 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 30.7220
+Target range: [23.0415 to 38.4025]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T21:05:00.358635 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 21.2667
+Target range: [0.0000 to 42.5335]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:07:17.562344 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 67.1127
+Target range: [50.3345 to 83.8909]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:07:17.576389 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 67.1127
+Target range: [0.0000 to 134.2254]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:09:34.384411 ---
+Phase: Standard
+Rejected at tag: Quench fan gas flow
+Current RT value: 33.8378
+Target range: [25.3783 to 42.2972]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:09:34.396532 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 33.8378
+Target range: [0.0000 to 67.6756]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:11:51.125626 ---
+Phase: Standard
+Rejected at tag: Dividing gate
+Current RT value: 39.8050
+Target range: [29.8537 to 49.7562]
+Config Limits: [0.0 to 60.0]
+
+--- 2026-05-19T21:11:51.141395 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 31.7412
+Target range: [0.0000 to 63.4824]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:14:06.752110 ---
+Phase: Standard
+Rejected at tag: Petcoke (PC)
+Current RT value: 3.6065
+Target range: [2.7049 to 4.5081]
+Config Limits: [0.0 to 5.5]
+
+--- 2026-05-19T21:14:06.767925 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 56.3263
+Target range: [0.0000 to 112.6525]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:16:14.387730 ---
+Phase: Standard
+Rejected at tag: Petcoke (PC)
+Current RT value: 3.3965
+Target range: [2.5474 to 4.2456]
+Config Limits: [0.0 to 5.5]
+
+--- 2026-05-19T21:16:14.396418 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan gas flow
+Current RT value: 44.9267
+Target range: [0.0000 to 89.8534]
+Config Limits: [0.0 to 914.9]
+
+--- 2026-05-19T21:18:02.704541 ---
+Phase: Standard
+Rejected at tag: Petcoke (PC)
+Current RT value: 3.5359
+Target range: [2.6519 to 4.4199]
+Config Limits: [0.0 to 5.5]
+
+--- 2026-05-19T21:18:02.718120 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Quench fan speed
+Current RT value: 64.4300
+Target range: [0.0000 to 128.8601]
+Config Limits: [0.0 to 810.6]
+
+--- 2026-05-19T21:20:18.733810 ---
+Phase: Standard
+Rejected at tag: Cooler speed (central 1)
+Current RT value: 4.8818
+Target range: [3.6614 to 6.1023]
+Config Limits: [0.0 to 20.0]
+
+--- 2026-05-19T21:20:18.777159 ---
+Phase: Steering (Relaxed)
+Rejected at tag: Coal Mill (ON/OFF)
+Current RT value: 0.1000
+Target range: [0.0000 to 0.2000]
+Config Limits: [0.0 to 1.0]
+
+--- 2026-05-19T21:22:09.892531 ---
+Phase: Standard
+Rejected at tag: Cooler BF fan motor speed
+Current RT value: 585.0967
+Target range: [438.8225 to 731.3709]
+Config Limits: [0.0 to 1500.0]

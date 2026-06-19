@@ -110,7 +110,7 @@
         "field": "C4N gas T",
         "label": "C4N gas T",
         "position": 13,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "C4P gas T": {
         "default_max": 100,
@@ -118,7 +118,7 @@
         "field": "C4P gas T",
         "label": "C4P gas T",
         "position": 14,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "CO (C3)": {
         "default_max": 100,
@@ -142,7 +142,7 @@
         "field": "Kiln BZT1",
         "label": "Kiln BZT1",
         "position": 8,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "Kiln BZT2": {
         "default_max": 100,
@@ -150,7 +150,7 @@
         "field": "Kiln BZT2",
         "label": "Kiln BZT2",
         "position": 9,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "Kiln feed": {
         "default_max": 100,
@@ -206,7 +206,7 @@
         "field": "PC outlet T1",
         "label": "PC outlet T1",
         "position": 15,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "PC outlet T2": {
         "default_max": 100,
@@ -214,7 +214,7 @@
         "field": "PC outlet T2",
         "label": "PC outlet T2",
         "position": 16,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       },
       "Petcoke (Kiln)": {
         "default_max": 100,
@@ -270,7 +270,7 @@
         "field": "Secondary air T2",
         "label": "Secondary air T2",
         "position": 6,
-        "unit": "Â°C"
+        "unit": "\u00c2\u00b0C"
       }
     }
   },
@@ -372,7 +372,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "ID fan speed AI Status",
-      "formula": "(`ID fan speed AI Bit`)",
+      "formula": "(`ID fan speed AI Bit` % 4) >= 2",
       "friendly_name": "ID fan speed AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -382,7 +382,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "Kiln feed AI Status",
-      "formula": "(`Kiln feed AI Bit` )",
+      "formula": "(`Kiln feed AI Bit` % 2) >= 1",
       "friendly_name": "Kiln feed AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -395,18 +395,6 @@
       "is_indicator": true,
       "op_summary": true,
       "position": 20,
-      "unit": "%"
-    },
-    "Kiln filling degree (%) SP": {
-      "default_max": 50,
-      "default_min": 0,
-      "description": "Kiln filling degree SP",
-      "formula": "`Ck production` * 0.262305569463854 / `Kiln speed`",
-      "friendly_name": "Kiln filling degree (%) SP",
-      "is_control": true,
-      "is_setpoint": true,
-      "nudge_speed": 0.05,
-      "op_summary": true,
       "unit": "%"
     },
     "Kiln filling degree AI Status": {
@@ -423,7 +411,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "Kiln speed AI Status",
-      "formula": "(`Kiln speed AI Bit`)",
+      "formula": "(`Kiln speed AI Bit` % 16) >= 8",
       "friendly_name": "Kiln speed AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -433,7 +421,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "Petcoke (Kiln) AI Status",
-      "formula": "(`Petcoke Kiln AI Bit` )",
+      "formula": "(`Petcoke (Kiln) AI Bit` % 2) >= 1",
       "friendly_name": "Petcoke (Kiln) AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -443,7 +431,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "Petcoke (PC) AI Status",
-      "formula": "(`Petcoke PC AI Bit` )",
+      "formula": "(`Petcoke (PC) AI Bit` % 2) >= 1",
       "friendly_name": "Petcoke (PC) AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -463,7 +451,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "RDF (Kiln) AI Status",
-      "formula": "(`RDF Kiln AI Bit` )",
+      "formula": "(`RDF (Kiln) AI Bit` % 8) >= 4",
       "friendly_name": "RDF (Kiln) AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -473,7 +461,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "RDF 1 (PC) AI Status",
-      "formula": "(`RDF 1 PC AI Bit` )",
+      "formula": "(`RDF 1 (PC) AI Bit` % 2) >= 1",
       "friendly_name": "RDF 1 (PC) AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -483,7 +471,7 @@
       "default_max": 1,
       "default_min": 0,
       "description": "RDF 2 (PC) AI Status",
-      "formula": "(`RDF 2 PC AI Bit` )",
+      "formula": "(`RDF 2 (PC) AI Bit` % 4) >= 2",
       "friendly_name": "RDF 2 (PC) AI Status",
       "is_indicator": true,
       "priority": 0,
@@ -508,7 +496,7 @@
       "is_setpoint": true,
       "nudge_speed": 1,
       "op_summary": true,
-      "unit": "Â°C"
+      "unit": "\u00c2\u00b0C"
     },
     "TRG - Cooler Sec Air T": {
       "default_max": 1200,
@@ -522,7 +510,7 @@
       "is_setpoint": true,
       "nudge_speed": 1,
       "op_summary": true,
-      "unit": "Â°C"
+      "unit": "\u00c2\u00b0C"
     },
     "TRG - Cyclone C4 Max T": {
       "default_max": 1000,
@@ -536,7 +524,7 @@
       "is_setpoint": true,
       "nudge_speed": 1,
       "op_summary": true,
-      "unit": "Â°C"
+      "unit": "\u00c2\u00b0C"
     },
     "TRG - Kiln BZT Max": {
       "default_max": 1450,
@@ -550,7 +538,7 @@
       "is_setpoint": true,
       "nudge_speed": 1,
       "op_summary": true,
-      "unit": "Â°C"
+      "unit": "\u00c2\u00b0C"
     },
     "TRG - Kiln Inlet O2": {
       "default_max": 10,
@@ -597,7 +585,7 @@
     "TRG - Tertiary Air dP": {
       "default_max": 0,
       "default_min": -8,
-      "description": "AI Target:Cooler Tertiary Air Duct dP",
+      "description": "AI Target: Tertiary Air Duct dP",
       "formula": "`Tert air duct dP (calc)`",
       "friendly_name": "TRG - Tertiary Air dP",
       "is_setpoint": true,
@@ -820,7 +808,7 @@
       "is_setpoint": true,
       "nudge_speed": 0.1,
       "op_summary": true,
-      "priority": 1,
+      "priority": 2,
       "scale_factor": 21.739,
       "scale_max": 4.6,
       "tag_name": "Kiln speed",
@@ -995,7 +983,7 @@
       "aipc": true,
       "default_max": 100,
       "default_min": 0,
-      "description": "Cooler: Tertiary air damper position",
+      "description": "MV: Tertiary air damper position",
       "dynamic_max_tag": "Tert air damper High",
       "dynamic_min_tag": "Tert air damper Low",
       "enable_dynamic_limits": false,
@@ -3837,88 +3825,6 @@
           "RDF 1 (PC)",
           "RDF 2 (PC)"
         ]
-      }
-    }
-  },
-  "runtime_statistics": {
-    "window_options_minutes": [30, 60, 240, 480, 1440],
-    "default_window_minutes": 60,
-    "mappings": {
-      "Cooler BF fan motor speed": {
-        "status_tag": "Cooler BF fan speed AI Status",
-        "rh_tag": "Cooler bagfilter fan motor speed AI RH"
-      },
-      "Cooler speed (central 1)": {
-        "status_tag": "Cooler speed (central 1) AI Status",
-        "rh_tag": null
-      },
-      "Cooler speed (central 2)": {
-        "status_tag": "Cooler speed (central 2) AI Status",
-        "rh_tag": null
-      },
-      "Cooler speed (left)": {
-        "status_tag": "Cooler speed (left) AI Status",
-        "rh_tag": null
-      },
-      "Cooler speed (right)": {
-        "status_tag": "Cooler speed (right) AI Status",
-        "rh_tag": null
-      },
-      "Dividing gate": {
-        "status_tag": "Dividing gate AI Status",
-        "rh_tag": "Dividing gate position AI RH"
-      },
-      "ID fan speed": {
-        "status_tag": "ID fan speed AI Status",
-        "rh_tag": "ID fan speed AI RH"
-      },
-      "Kiln feed": {
-        "status_tag": "Kiln feed AI Status",
-        "rh_tag": "Kiln feed AI RH"
-      },
-      "Kiln filling degree (%) SP": {
-        "status_tag": "Kiln filling degree AI Status",
-        "rh_tag": "Kiln Filling degree AI RH"
-      },
-      "Kiln speed": {
-        "status_tag": "Kiln speed AI Status",
-        "rh_tag": "Kiln speed AI RH"
-      },
-      "Petcoke (Kiln)": {
-        "status_tag": "Petcoke (Kiln) AI Status",
-        "rh_tag": "Petcoke (Kiln) AI RH"
-      },
-      "Petcoke (PC)": {
-        "status_tag": "Petcoke (PC) AI Status",
-        "rh_tag": "Petcoke (PC) AI RH"
-      },
-      "Quench fan gas flow": {
-        "status_tag": "Quench fan speed AI Status",
-        "rh_tag": "Quenching fan speed SP AI RH"
-      },
-      "Quench fan speed": {
-        "status_tag": "Quench fan speed AI Status",
-        "rh_tag": "Quenching fan speed SP AI RH"
-      },
-      "RDF (Kiln)": {
-        "status_tag": "RDF (Kiln) AI Status",
-        "rh_tag": "RDF (Kiln) AI RH"
-      },
-      "RDF 1 (PC)": {
-        "status_tag": "RDF 1 (PC) AI Status",
-        "rh_tag": "RDF 1 (PC) AI RH"
-      },
-      "RDF 2 (PC)": {
-        "status_tag": "RDF 2 (PC) AI Status",
-        "rh_tag": "RDF 2 (PC) AI RH"
-      },
-      "RIP (Kiln)": {
-        "status_tag": "RIP (Kiln) AI Status",
-        "rh_tag": "RIP (Kiln) AI RH"
-      },
-      "Tert air damper": {
-        "status_tag": "Tert air damper AI Status",
-        "rh_tag": "Tertiary air damper position AI RH"
       }
     }
   },

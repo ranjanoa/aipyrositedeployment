@@ -377,3 +377,35 @@ def write_aimnm_setpoints(values_dict):
     Configuration lives in model_config.json only.
     """
     return True
+
+
+def get_tag_value_at_time(timestamp, tag_name):
+    client = get_db_client()
+    if not client:
+        return None
+    try:
+        import datetime as dt
+        if timestamp.tzinfo is not None:
+            timestamp = timestamp.astimezone(dt.timezone.utc).replace(tzinfo=None)
+        ts_str = timestamp.isoformat() + 'Z'
+        
+        # Query the last value up to the stop timestamp starting from 0 (all history)
+        query = f'''
+        from(bucket: "{config.DB_BUCKET}")
+          |> range(start: 0, stop: {ts_str})
+          |> filter(fn: (r) => r["_measurement"] == "{config.DB_MEASUREMENT_OPC}" or r["_measurement"] == "{config.DB_MEASUREMENT_PI}" or r["_measurement"] == "{config.DB_MEASUREMENT}")
+          |> filter(fn: (r) => r["_field"] == "{str(tag_name).replace(chr(34), chr(92) + chr(34))}")
+          |> last()
+        '''
+        tables = client.query_api().query(query, org=config.DB_ORG)
+        for table in tables:
+            for record in table.records:
+                val = record.get_value()
+                if val is not None:
+                    return float(val)
+        return None
+    except Exception as e:
+        print(f"Error getting tag value at time {timestamp} for {tag_name}: {e}")
+        return None
+    finally:
+        client.close()

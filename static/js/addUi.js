@@ -20,6 +20,7 @@ import { OperatorKiln } from "./ui/pages/operator-kiln.js";
 import { OperatorPreheater } from "./ui/pages/operator-preheater.js";
 import { OperatorCooler } from "./ui/pages/operator-cooler.js";
 import { OperatorAiMnm } from "./ui/pages/ai-mnm.js";
+import { RuntimeStats } from "./ui/pages/runtime-stats.js";
 
 
 import { initActions } from "./actions.js";
@@ -87,13 +88,28 @@ export function renderApp() {
    main.appendChild(OperatorCooler());
    main.appendChild(OperatorPreheater());
    main.appendChild(OperatorAiMnm());
+   main.appendChild(RuntimeStats());
    main.appendChild(Configuration());
 
-   initActions()
-   bootstrap()
-   applyRoleAccess();
+    initActions()
+    bootstrap()
+    applyRoleAccess();
 
+    // Dynamic Auto-Zoom to fit browser display window (filling complete available space)
+    function applyAutoZoom() {
+        const baseWidth = 1920;
+        const scale = window.innerWidth / baseWidth;
+        
+        document.body.style.zoom = scale;
+        document.body.style.width = (100 / scale) + "%";
+        document.body.style.height = (100 / scale) + "%";
+    }
 
+    window.onresize = () => {
+        applyAutoZoom();
+    };
+
+    applyAutoZoom();
 }
 
 /* ===============================

@@ -16,13 +16,18 @@ import { initAiMnm } from "../optSum/optSumAiMnm/initAiMnm.js"
 import { drawAiMnmSummaryChart } from "../optSum/optSumAiMnm/drawAiMnmSummaryChart.js"
 import { drawAiMnmParallelChart } from "../optSum/optSumAiMnm/drawAiMnmParallelChart.js"
 import { state } from "../inits/state.js"
+import { initRuntimeStats, destroyRuntimeStats } from "../ui/pages/runtime-stats.js"
 export function switchTab(t) {
-    const tabs = ['hybrid', 'fingerprint', 'mbrl', 'simulator', 'trends', 'config', 'softsensor', 'softsensor-sim', 'op-summary','op-kiln','op-preheater','op-cooler','ai-mnm'];
+    const tabs = ['hybrid', 'fingerprint', 'mbrl', 'simulator', 'trends', 'config', 'softsensor', 'softsensor-sim', 'op-summary','op-kiln','op-preheater','op-cooler','ai-mnm', 'runtime-stats'];
 
     // Stop AI_MNM polling when leaving the tab (started inside initAiMnm on entry)
     if (t !== 'ai-mnm' && state.aiMnmInterval) {
         clearInterval(state.aiMnmInterval);
         state.aiMnmInterval = null;
+    }
+
+    if (t !== 'runtime-stats') {
+        destroyRuntimeStats();
     }
 
     tabs.forEach(x => {
@@ -34,7 +39,7 @@ export function switchTab(t) {
             p.classList.remove('grid', 'flex');
             if (x === t) {
                 p.classList.remove('hidden');
-                p.classList.add(x === 'softsensor-sim' || x === 'mbrl' || x === 'hybrid' || x === 'fingerprint' || x === 'simulator' || x === 'op-summary' ? 'grid' : 'flex' || x === 'op-kiln' ? 'grid' : 'flex'|| x === 'op-preheater' ? 'grid' : 'flex'|| x === 'op-cooler' ? 'grid' : 'flex'|| x === 'ai-mnm' ? 'grid' : 'flex');
+                p.classList.add(x === 'softsensor-sim' || x === 'mbrl' || x === 'hybrid' || x === 'fingerprint' || x === 'simulator' || x === 'op-summary' || x === 'runtime-stats' ? 'grid' : 'flex' || x === 'op-kiln' ? 'grid' : 'flex'|| x === 'op-preheater' ? 'grid' : 'flex'|| x === 'op-cooler' ? 'grid' : 'flex'|| x === 'ai-mnm' ? 'grid' : 'flex');
             }
         }
 
@@ -80,6 +85,9 @@ export function switchTab(t) {
                         initAiMnm();
                         drawAiMnmSummaryChart();
                         drawAiMnmParallelChart();
+                    }
+                    if (t === 'runtime-stats') {
+                        initRuntimeStats();
                     }
                 }, 100);
             }

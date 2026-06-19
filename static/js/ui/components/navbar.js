@@ -46,6 +46,8 @@ export function Navbar() {
             class="py-2.5 px-2 text-sm  text-gray-500 hover:text-yellow-50 border-b-4 border-transparent whitespace-nowrap">Cooler</button>   
     <button onclick="Actions.switchTab('ai-mnm')" id="nav-ai-mnm"
             class="py-2.5 px-2 text-sm  text-gray-500 hover:text-yellow-50 border-b-4 border-transparent whitespace-nowrap">AI_MNM</button>
+    <button onclick="Actions.switchTab('runtime-stats')" id="nav-runtime-stats"
+            class="py-2.5 px-2 text-sm  text-gray-500 hover:text-yellow-50 border-b-4 border-transparent whitespace-nowrap">Runtime Analytics</button>
     <button onclick="Actions.switchTab('config')" id="nav-config"
             class="py-2.5 px-2 text-sm text-gray-500 hover:text-yellow-50 border-b-4 border-transparent whitespace-nowrap">
         Configuration

@@ -715,3 +715,217 @@ def run_simulation():
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@api_routes.route('/runtime-stats', methods=['GET'])
+@cross_origin()
+def get_runtime_statistics():
+    try:
+        start_param = request.args.get('start_time')
+        end_param = request.args.get('end_time')
+        is_custom = False
+        
+        if start_param and end_param:
+            try:
+                start_time = datetime.fromisoformat(start_param.replace('Z', '').split('+')[0])
+                end_time = datetime.fromisoformat(end_param.replace('Z', '').split('+')[0])
+                window_mins = int((end_time - start_time).total_seconds() / 60.0)
+                is_custom = True
+            except Exception as e:
+                return jsonify({"error": f"Invalid custom date range parameters: {e}"}), 400
+        else:
+            window_mins = int(request.args.get('window_minutes', 60))
+            
+        conf = process_model.load_model_config()
+        
+        runtime_cfg = conf.get('runtime_statistics', {})
+        mappings = runtime_cfg.get('mappings', {})
+        
+        if not mappings:
+            return jsonify({"error": "No runtime statistics mappings found in configuration"}), 500
+            
+        # Collect all required friendly names
+        friendly_names_to_query = set()
+        
+        calc_vars = conf.get('calculated_variables', {})
+        controls = process_model.get_control_variables()
+        indicators = process_model.get_indicator_variables()
+        
+        # Always query the overall system status
+        system_status_friendly = "AI_SYSTEM_TRUST"
+        friendly_names_to_query.add(system_status_friendly)
+        if "AI_SYSTEM_TRUST" in calc_vars:
+            formula = calc_vars["AI_SYSTEM_TRUST"].get("formula", "")
+            import re
+            dependencies = re.findall(r'`([^`]+)`', formula)
+            for dep in dependencies:
+                friendly_names_to_query.add(dep)
+        
+        for var_name, mapping in mappings.items():
+            status_tag = mapping.get('status_tag')
+            rh_tag = mapping.get('rh_tag')
+            
+            if rh_tag:
+                friendly_names_to_query.add(rh_tag)
+                
+            if status_tag:
+                friendly_names_to_query.add(status_tag)
+                if status_tag in calc_vars:
+                    formula = calc_vars[status_tag].get('formula', '')
+                    dependencies = re.findall(r'`([^`]+)`', formula)
+                    for dep in dependencies:
+                        friendly_names_to_query.add(dep)
+                        
+        # Translate friendly names to raw tags for database query
+        name_to_tag = process_model.get_name_to_tag_map()
+        tag_to_name = process_model.get_tag_to_name_map()
+        
+        raw_tags = [name_to_tag.get(name, name) for name in friendly_names_to_query if name]
+        
+        # Fetch from database
+        if not is_custom:
+            end_time = datetime.utcnow()
+            start_time = end_time - timedelta(minutes=window_mins)
+        
+        df = database.get_realtime_data_window(start_time, end_time, raw_tags, tag_to_name)
+        
+        # Fallback to historical dataframe if empty
+        if df.empty:
+            hist_df = current_app.config.get('df_fingerprint')
+            if hist_df is not None and not hist_df.empty:
+                # Ensure friendly column names
+                hist_df.columns = [str(c).strip() for c in hist_df.columns]
+                
+                # Check for timestamp column
+                ts_col = config.TIMESTAMP_COLUMN
+                if ts_col in hist_df.columns:
+                    hist_df[ts_col] = pd.to_datetime(hist_df[ts_col])
+                    if is_custom:
+                        df = hist_df[(hist_df[ts_col] >= start_time) & (hist_df[ts_col] <= end_time)].copy()
+                    else:
+                        max_time = hist_df[ts_col].max()
+                        start_time = max_time - timedelta(minutes=window_mins)
+                        df = hist_df[hist_df[ts_col] >= start_time].copy()
+                else:
+                    df = hist_df.tail(window_mins * 60).copy()
+                    
+        if df.empty:
+            return jsonify({
+                "status": "success",
+                "window_minutes": window_mins,
+                "time_span_hours": round(window_mins / 60.0, 2),
+                "statistics": []
+            })
+            
+        # Enrich dataframe with calculated variables
+        df = process_model.materialize_df(df, controls, indicators, calc_vars)
+        
+        # Calculate window time span in hours
+        if isinstance(df.index, pd.DatetimeIndex):
+            time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
+        elif config.TIMESTAMP_COLUMN in df.columns:
+            ts_series = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
+            time_span_hours = (ts_series.max() - ts_series.min()).total_seconds() / 3600.0
+        else:
+            time_span_hours = window_mins / 60.0
+            
+        if time_span_hours <= 0:
+            time_span_hours = window_mins / 60.0
+            
+        stats_results = []
+        
+        # 1. Overall System Stats
+        system_status_val = 0.0
+        system_status_name = "AI_SYSTEM_TRUST"
+        if system_status_name in df.columns:
+            system_status_val = float(df[system_status_name].iloc[-1])
+        elif "AI_SYSTEM_TRUST_STATUS" in df.columns:
+            system_status_val = float(df["AI_SYSTEM_TRUST_STATUS"].iloc[-1])
+            
+        system_active_pct = 0.0
+        if system_status_name in df.columns:
+            system_active_pct = float((df[system_status_name] > 0.5).mean() * 100.0)
+        elif "AI_SYSTEM_TRUST_STATUS" in df.columns:
+            system_active_pct = float((df["AI_SYSTEM_TRUST_STATUS"] > 0.5).mean() * 100.0)
+            
+        system_active_hours = (system_active_pct / 100.0) * time_span_hours
+        
+        stats_results.append({
+            "var_name": "AI System (Overall)",
+            "description": "Overall AI System Status / Watchdog",
+            "unit": "binary",
+            "current_status": system_status_val,
+            "status_active_hours": round(system_active_hours, 2),
+            "utilization_pct": round(system_active_pct, 1),
+            "current_rh": "-",
+            "rh_delta": round(system_active_hours, 2),
+            "has_rh": False
+        })
+        
+        # 2. Per Control Variable Stats
+        for var_name, mapping in mappings.items():
+            status_col = mapping.get('status_tag')
+            rh_col = mapping.get('rh_tag')
+            
+            var_info = controls.get(var_name, {})
+            desc = var_info.get('description', var_name)
+            unit = var_info.get('unit', '')
+            
+            curr_status = 0.0
+            if status_col and status_col in df.columns:
+                curr_status = float(df[status_col].iloc[-1])
+                
+            curr_rh = 0.0
+            has_rh = False
+            rh_delta = 0.0
+            
+            if rh_col:
+                has_rh = True
+                raw_rh_tag = name_to_tag.get(rh_col, rh_col)
+                # Query InfluxDB directly for values at start and end
+                db_curr_rh = database.get_tag_value_at_time(end_time, raw_rh_tag)
+                db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
+                
+                if db_curr_rh is not None and db_start_rh is not None:
+                    curr_rh = db_curr_rh
+                    start_rh = db_start_rh
+                    rh_delta = max(0.0, curr_rh - start_rh)
+                else:
+                    # Fallback to dataframe values
+                    if rh_col in df.columns:
+                        rh_vals = df[rh_col].dropna()
+                        if not rh_vals.empty:
+                            curr_rh = float(rh_vals.iloc[-1])
+                            start_rh = float(rh_vals.iloc[0])
+                            rh_delta = max(0.0, curr_rh - start_rh)
+                    
+            util_pct = 0.0
+            if status_col and status_col in df.columns:
+                util_pct = float((df[status_col] > 0.5).mean() * 100.0)
+                
+            active_hours = (util_pct / 100.0) * time_span_hours
+            
+            if not has_rh:
+                rh_delta = active_hours
+                
+            stats_results.append({
+                "var_name": var_name,
+                "description": desc,
+                "unit": unit,
+                "current_status": curr_status,
+                "status_active_hours": round(active_hours, 2),
+                "utilization_pct": round(util_pct, 1),
+                "current_rh": round(curr_rh, 2) if has_rh else "-",
+                "rh_delta": round(rh_delta, 2),
+                "has_rh": has_rh
+            })
+            
+        return jsonify({
+            "status": "success",
+            "window_minutes": window_mins,
+            "time_span_hours": round(time_span_hours, 2),
+            "statistics": stats_results
+        })
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
