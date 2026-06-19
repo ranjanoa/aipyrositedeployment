@@ -442,3 +442,38 @@ def get_tag_value_at_time(timestamp, tag_name):
         return None
     finally:
         client.close()
+
+
+def get_first_tag_value(tag_name):
+    # Use 6s timeout for historic value retrieval
+    client = get_db_client(timeout=6000)
+    if not client:
+        return None
+    try:
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+
+        query = f'''
+        from(bucket: "{config.DB_BUCKET}")
+          |> range(start: 0)
+          |> filter(fn: (r) => {measurement_filter})
+          |> filter(fn: (r) => r["_field"] == "{str(tag_name).replace(chr(34), chr(92) + chr(34))}")
+          |> first()
+        '''
+        tables = client.query_api().query(query, org=config.DB_ORG)
+        for table in tables:
+            for record in table.records:
+                val = record.get_value()
+                if val is not None:
+                    return float(val)
+        return None
+    except Exception as e:
+        print(f"Error getting first tag value for {tag_name}: {e}")
+        return None
+    finally:
+        client.close()

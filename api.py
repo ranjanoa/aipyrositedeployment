@@ -866,7 +866,13 @@ def get_runtime_statistics():
         if df.empty:
             print("Runtime stats: Dataframe is empty after filtering, will return zeroed values.")
         
-        # Calculate window time span in hours
+        # Calculate calendar window duration in hours to act as standard denominator
+        if is_custom:
+            calendar_window_hours = (end_time - start_time).total_seconds() / 3600.0
+        else:
+            calendar_window_hours = window_mins / 60.0
+
+        # Calculate database time span in hours (retained for fallback diagnostics)
         try:
             if not df.empty and isinstance(df.index, pd.DatetimeIndex):
                 time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
@@ -874,12 +880,12 @@ def get_runtime_statistics():
                 ts_series = pd.to_datetime(df[config.TIMESTAMP_COLUMN])
                 time_span_hours = (ts_series.max() - ts_series.min()).total_seconds() / 3600.0
             else:
-                time_span_hours = window_mins / 60.0
+                time_span_hours = calendar_window_hours
         except Exception:
-            time_span_hours = window_mins / 60.0
+            time_span_hours = calendar_window_hours
             
         if time_span_hours <= 0 or pd.isna(time_span_hours):
-            time_span_hours = window_mins / 60.0
+            time_span_hours = calendar_window_hours
             
         stats_results = []
         db_offline = False
@@ -928,6 +934,10 @@ def get_runtime_statistics():
                         print("[RUNTIME-STATS] DB offline detected, skipping remaining RH queries.")
                     else:
                         db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
+                        if db_start_rh is None and db_curr_rh is not None:
+                            # Fallback: if start_time is before the earliest recorded data,
+                            # the running hours at start_time was the first recorded value in the DB.
+                            db_start_rh = database.get_first_tag_value(raw_rh_tag)
                 
                 if db_curr_rh is not None and db_start_rh is not None:
                     curr_rh = db_curr_rh
@@ -943,19 +953,26 @@ def get_runtime_statistics():
                             rh_delta = max(0.0, curr_rh - start_rh)
                     
             util_pct = 0.0
-            if status_col == "AI_SYSTEM_TRUST":
-                # Calculate from rh_delta and time_span_hours since it's not in the df
-                if time_span_hours > 0:
-                    util_pct = min(100.0, max(0.0, (rh_delta / time_span_hours) * 100.0))
-            elif status_col and status_col in df.columns and not df.empty:
-                valid_status = df[status_col].dropna()
-                if not valid_status.empty:
-                    util_pct = float((valid_status > 0.5).mean() * 100.0)
-                
-            active_hours = (util_pct / 100.0) * time_span_hours
+            active_hours = 0.0
             
-            if not has_rh:
+            if status_col == "AI_SYSTEM_TRUST":
+                active_hours = rh_delta
+            elif status_col and status_col in df.columns and not df.empty:
+                if has_rh:
+                    active_hours = rh_delta
+                else:
+                    valid_status = df[status_col].dropna()
+                    if not valid_status.empty:
+                        # Compute active hours by counting the actual seconds where loop was active
+                        active_hours = float((valid_status > 0.5).sum()) / 3600.0
+            
+            if has_rh:
+                active_hours = rh_delta
+            else:
                 rh_delta = active_hours
+
+            if calendar_window_hours > 0:
+                util_pct = min(100.0, max(0.0, (active_hours / calendar_window_hours) * 100.0))
                 
             stats_results.append({
                 "var_name": var_name,
