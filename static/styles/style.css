@@ -2141,13 +2141,9 @@
     font-weight: bold;
 }
 
-select {
-    color-scheme: dark;
-}
-
-/* Force dark background and white text on all select options so they match the dark theme on Windows/Chrome */
-select option {
-    color: #ffffff !important;
-    background-color: #152e36 !important;
+/* Force dark text and light background on history range select options so they are visible on Windows/Chrome */
+select.history-range-select option {
+    color: #111111 !important;
+    background-color: #ffffff !important;
 }
 
