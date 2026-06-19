@@ -315,7 +315,10 @@ class PIRL_MPC_Controller:
         # (not a real plant state). Use the mid-point of the safe range as a neutral fallback
         # to prevent PIRL-MPC from raising a false "Kiln Torque Crash" physics violation.
         if state.get('torque', 0.0) == 0.0:
-            state['torque'] = (self.params['min_safe_torque'] + self.params['max_safe_torque']) / 2.0
+            mpc_cfg = config.get('pirl_mpc_config', {})
+            min_torque = float(mpc_cfg.get('min_safe_torque', LITERATURE_DEFAULTS['min_safe_torque']))
+            max_torque = float(mpc_cfg.get('max_safe_torque', LITERATURE_DEFAULTS['max_safe_torque']))
+            state['torque'] = (min_torque + max_torque) / 2.0
 
         return state
 

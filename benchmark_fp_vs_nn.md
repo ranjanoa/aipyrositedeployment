@@ -9,11 +9,11 @@
 
 | Key Performance Indicator | 🔍 Fingerprint (Baseline) | 🤖 Neural Network (AI) | 🚀 AI Improvement |
 | :--- | :---: | :---: | :---: |
-| **Average Process Score** | -647.6 (± 462.5) | **-344.6** (± 502.0) | 46.8% |
-| **Avg Production (Feed)** | 177.8 tph (± 0.0) | **193.5** tph (± 0.0) | 15.8 tph |
-| **Avg TSR (Alt Fuels)** | 23.9 % (± 0.0) | **48.1** % (± 29.9) | 24.2 % |
-| **Avg SHC (Thermal)** | 525.9 kcal/kg (± 0.0) | **268.3** kcal/kg (± 94.6) | -257.7 kcal/kg |
+| **Average Process Score** | -958.0 (± 930.1) | **-490.8** (± 203.3) | 48.8% |
+| **Avg Production (Feed)** | 146.4 tph (± 62.7) | **176.0** tph (± 18.7) | 29.5 tph |
+| **Avg TSR (Alt Fuels)** | 21.5 % (± 6.4) | **22.8** % (± 14.3) | 1.3 % |
+| **Avg SHC (Thermal)** | 527.2 kcal/kg (± 75.3) | **515.4** kcal/kg (± 92.0) | -11.8 kcal/kg |
 
 ### 🏁 Final Verdict
-* **Neural Network Won:** 50 times
-* **Fingerprint Won:** 0 times
+* **Neural Network Won:** 38 times
+* **Fingerprint Won:** 12 times
