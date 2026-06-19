@@ -190,8 +190,12 @@ def index():
 
 @app.route('/favicon.ico')
 def favicon():
-    """Serves the favicon from the root directory."""
-    return send_from_directory(config.APP_DIR, 'logo.ico', mimetype='image/vnd.microsoft.icon')
+    """Serves the favicon - tries BASE_DIR first, falls back to config.APP_DIR."""
+    import os as _os
+    # BASE_DIR is always the project root regardless of frozen/dev mode
+    ico_path = _os.path.join(BASE_DIR, 'logo.ico')
+    serve_dir = BASE_DIR if _os.path.exists(ico_path) else config.APP_DIR
+    return send_from_directory(serve_dir, 'logo.ico', mimetype='image/vnd.microsoft.icon')
 
 
 # --- BACKGROUND TASK: Data Stream ---
