@@ -413,6 +413,83 @@ def simulate_what_if(history_df, manual_controls, target_var, steps=60):
 
 
 # ==============================================================================
+# 4.b MULTI-VARIABLE ROLLOUT PREDICTION (OPTIMIZED)
+# ==============================================================================
+def predict_all_variables_rollout(current_real_df, steps=30):
+    """Predicts future trends for all state variables in a single rollout pass,
+    preventing massive sequential loops over the world model.
+    """
+    if _world_model is None: _initialize_system()
+    if _world_model is None or current_real_df.empty: return {}
+
+    if current_real_df.isna().any().any():
+        current_real_df = current_real_df.ffill().fillna(0.0)
+
+    s_cols = _env_config['s_cols']
+    a_cols = _env_config['a_cols']
+
+    for c in s_cols + a_cols:
+        if c not in current_real_df.columns:
+            v_type = 'state' if c in s_cols else 'action'
+            stats = _env_config['stats'][v_type]
+            try:
+                col_idx = (s_cols if c in s_cols else a_cols).index(c)
+                neutral = float(stats['min'][col_idx]) + 0.5 * float(stats['range'][col_idx])
+            except (IndexError, KeyError, TypeError):
+                neutral = 0.0
+            current_real_df[c] = neutral
+
+    if len(current_real_df) < HISTORY_WINDOW: return {}
+
+    raw_s = current_real_df[s_cols].tail(HISTORY_WINDOW).values
+    raw_a = current_real_df[a_cols].tail(HISTORY_WINDOW).values
+    norm_s = _normalize(raw_s, 'state')
+    norm_a = _normalize(raw_a, 'action')
+
+    obs_buffer = []
+    for s, a in zip(norm_s, norm_a):
+        obs_buffer.extend(s)
+        obs_buffer.extend(a)
+
+    current_norm_state = norm_s[-1]
+    held_norm_action = norm_a[-1]
+
+    all_predictions = []
+
+    for _ in range(steps):
+        inp_tensor = torch.tensor([obs_buffer], dtype=torch.float32).to(device)
+        with torch.no_grad():
+            mean_delta, _ = _world_model.predict(inp_tensor)
+
+        delta = mean_delta.cpu().numpy()[0]
+        next_norm_state = current_norm_state + (delta / 100.0)
+
+        # Industrial Clamping
+        s_stats = _env_config['stats']['state']
+        val_real_all = (next_norm_state * s_stats['range']) + s_stats['min']
+        val_real_all = np.clip(val_real_all, _env_config['s_limits']['min'], _env_config['s_limits']['max'])
+        next_norm_state = (val_real_all - s_stats['min']) / s_stats['range']
+
+        if not np.isfinite(next_norm_state).all():
+            break
+
+        val_real_all = np.nan_to_num(val_real_all, nan=0.0, posinf=0.0, neginf=0.0)
+        all_predictions.append(val_real_all.tolist())
+
+        step_size = len(current_norm_state) + len(held_norm_action)
+        obs_buffer = obs_buffer[step_size:]
+        obs_buffer.extend(next_norm_state)
+        obs_buffer.extend(held_norm_action)
+        current_norm_state = next_norm_state
+
+    result = {}
+    if all_predictions:
+        for target_idx, var_name in enumerate(s_cols):
+            result[var_name] = [step_vals[target_idx] for step_vals in all_predictions]
+    return result
+
+
+# ==============================================================================
 # 5. GET OPTIMAL ACTION
 # ==============================================================================
 def get_optimal_action(current_real_df):
@@ -581,6 +658,9 @@ def get_optimal_action(current_real_df):
     # 3. GENERATE FULL ROLLOUTS FOR ALL VARIABLES (FOR THE UI CHART)
     ai_rollouts = {}
     if _world_model is not None:
+        # Pre-calculate all state variable rollouts in a single pass to avoid 180x redundant neural network loops
+        state_rollouts = predict_all_variables_rollout(current_real_df, steps=30)
+        
         # Include Controls AND Indicators in the pre-calculated curves
         ui_vars = list(a_cols) + list(s_cols)
         for v in ui_vars:
@@ -595,8 +675,8 @@ def get_optimal_action(current_real_df):
                     else: ramp.append(target)
                 ai_rollouts[v] = ramp
             else:
-                rollout = predict_soft_sensor_rollout(current_real_df, v, steps=30)
-                if rollout: ai_rollouts[v] = [float(x) for x in rollout]
+                rollout = state_rollouts.get(v, [])
+                if rollout: ai_rollouts[v] = rollout
 
     soft_sensors = {}
     soft_sensors[out_keys['confidence']] = val_confidence
@@ -612,6 +692,7 @@ def get_optimal_action(current_real_df):
         "fingerprint_prediction": ai_rollouts,
         "active_strategy": "AI"
     }
+
 
 
 # ==============================================================================
