@@ -3358,7 +3358,81 @@
         "RDF (Kiln)": 0.05,
         "RDF 1 (PC)": 0.05,
         "RDF 2 (PC)": 0.05
-      }
+      },
+      "reward_components": [
+        {
+          "_comment": "P1 SAFETY: CO kiln — hard suppress, asymmetric upper penalty only",
+          "type": "upper_limit",
+          "tag": "CO (kiln)",
+          "limit": 200,
+          "weight": 15.0
+        },
+        {
+          "_comment": "P1 SAFETY: CO precalciner — RDF combustion safety",
+          "type": "upper_limit",
+          "tag": "CO (C3)",
+          "limit": 300,
+          "weight": 10.0
+        },
+        {
+          "_comment": "P1 SAFETY: O2 minimum — CO risk, much heavier than O2 high side",
+          "type": "lower_limit",
+          "tag": "O2 (Kiln)",
+          "floor": 1.5,
+          "weight": 12.0
+        },
+        {
+          "_comment": "P2 STABILITY: O2 maximum — excess air = heat loss, lighter penalty",
+          "type": "upper_limit",
+          "tag": "O2 (Kiln)",
+          "limit": 4.0,
+          "weight": 2.0
+        },
+        {
+          "_comment": "P2 STABILITY: Burning zone temperature — core quality indicator",
+          "type": "range_keep",
+          "tag": "Kiln BZT1",
+          "min": 1300,
+          "max": 1380,
+          "weight": 5.0
+        },
+        {
+          "_comment": "P2 STABILITY: Secondary air temperature — cooler heat recovery",
+          "type": "lower_limit",
+          "tag": "Secondary air T1",
+          "floor": 800,
+          "weight": 3.0
+        },
+        {
+          "_comment": "P3 QUALITY: Precalciner outlet — calcination degree indicator",
+          "type": "range_keep",
+          "tag": "PC outlet T1",
+          "min": 880,
+          "max": 1060,
+          "weight": 2.5
+        },
+        {
+          "_comment": "P3 QUALITY: Preheater outlet — heat loss indicator (C1 gas exit)",
+          "type": "upper_limit",
+          "tag": "Preheater outlet T",
+          "limit": 380,
+          "weight": 2.0
+        },
+        {
+          "_comment": "P4 EFFICIENCY: TSR — reward alternative fuel substitution",
+          "type": "maximize",
+          "tag": "% TSR (total)",
+          "weight": 3.0,
+          "scale": 100.0
+        },
+        {
+          "_comment": "P4 EFFICIENCY: SHC proxy — penalise high specific heat consumption",
+          "type": "minimize",
+          "tag": "Thermal split (PC/Kiln)",
+          "weight": 2.0,
+          "scale": 50.0
+        }
+      ]
     },
     "SHC_MIN": {
       "description": "Minimise specific heat consumption (SHC) without reducing TSR below baseline. Switch to TSR_MAX to target alternative fuel maximisation instead.",
@@ -3425,6 +3499,80 @@
           "tag": "SHC",
           "threshold_pct": 0.15
         }
+      ],
+      "reward_components": [
+        {
+          "_comment": "P1 SAFETY: CO kiln",
+          "type": "upper_limit",
+          "tag": "CO (kiln)",
+          "limit": 200,
+          "weight": 15.0
+        },
+        {
+          "_comment": "P1 SAFETY: CO precalciner",
+          "type": "upper_limit",
+          "tag": "CO (C3)",
+          "limit": 300,
+          "weight": 10.0
+        },
+        {
+          "_comment": "P1 SAFETY: O2 minimum",
+          "type": "lower_limit",
+          "tag": "O2 (Kiln)",
+          "floor": 1.5,
+          "weight": 12.0
+        },
+        {
+          "_comment": "P2 STABILITY: O2 maximum",
+          "type": "upper_limit",
+          "tag": "O2 (Kiln)",
+          "limit": 4.0,
+          "weight": 2.0
+        },
+        {
+          "_comment": "P2 STABILITY: BZT — tighter range for SHC_MIN, stable combustion preferred",
+          "type": "range_keep",
+          "tag": "Kiln BZT1",
+          "min": 1310,
+          "max": 1375,
+          "weight": 5.0
+        },
+        {
+          "_comment": "P2 STABILITY: Secondary air T — higher floor for better heat recovery in SHC_MIN",
+          "type": "lower_limit",
+          "tag": "Secondary air T1",
+          "floor": 820,
+          "weight": 4.0
+        },
+        {
+          "_comment": "P3 QUALITY: Precalciner outlet",
+          "type": "range_keep",
+          "tag": "PC outlet T1",
+          "min": 880,
+          "max": 1060,
+          "weight": 2.5
+        },
+        {
+          "_comment": "P3 QUALITY: Preheater outlet — tighter limit for SHC_MIN (less heat waste)",
+          "type": "upper_limit",
+          "tag": "Preheater outlet T",
+          "limit": 370,
+          "weight": 3.0
+        },
+        {
+          "_comment": "P4 EFFICIENCY: SHC proxy — primary goal for SHC_MIN, high weight",
+          "type": "minimize",
+          "tag": "Thermal split (PC/Kiln)",
+          "weight": 6.0,
+          "scale": 50.0
+        },
+        {
+          "_comment": "P4 EFFICIENCY: TSR — secondary, maintain but not maximise",
+          "type": "maximize",
+          "tag": "% TSR (total)",
+          "weight": 2.0,
+          "scale": 100.0
+        }
       ]
     },
     "TSR_MAX": {
@@ -3490,6 +3638,80 @@
         {
           "tag": "% TSR (total)",
           "threshold_pct": 0.25
+        }
+      ],
+      "reward_components": [
+        {
+          "_comment": "P1 SAFETY: CO kiln",
+          "type": "upper_limit",
+          "tag": "CO (kiln)",
+          "limit": 200,
+          "weight": 15.0
+        },
+        {
+          "_comment": "P1 SAFETY: CO precalciner",
+          "type": "upper_limit",
+          "tag": "CO (C3)",
+          "limit": 300,
+          "weight": 10.0
+        },
+        {
+          "_comment": "P1 SAFETY: O2 minimum",
+          "type": "lower_limit",
+          "tag": "O2 (Kiln)",
+          "floor": 1.5,
+          "weight": 12.0
+        },
+        {
+          "_comment": "P2 STABILITY: O2 maximum — wider acceptable range for TSR_MAX (alt fuels vary)",
+          "type": "upper_limit",
+          "tag": "O2 (Kiln)",
+          "limit": 4.5,
+          "weight": 1.5
+        },
+        {
+          "_comment": "P2 STABILITY: BZT — wider range acceptable when maximising TSR",
+          "type": "range_keep",
+          "tag": "Kiln BZT1",
+          "min": 1280,
+          "max": 1400,
+          "weight": 4.0
+        },
+        {
+          "_comment": "P2 STABILITY: Secondary air T",
+          "type": "lower_limit",
+          "tag": "Secondary air T1",
+          "floor": 780,
+          "weight": 2.0
+        },
+        {
+          "_comment": "P3 QUALITY: Precalciner — slightly wider range with higher RDF",
+          "type": "range_keep",
+          "tag": "PC outlet T1",
+          "min": 860,
+          "max": 1080,
+          "weight": 2.0
+        },
+        {
+          "_comment": "P3 QUALITY: Preheater outlet",
+          "type": "upper_limit",
+          "tag": "Preheater outlet T",
+          "limit": 390,
+          "weight": 1.5
+        },
+        {
+          "_comment": "P4 EFFICIENCY: TSR — primary goal for TSR_MAX, high weight",
+          "type": "maximize",
+          "tag": "% TSR (total)",
+          "weight": 8.0,
+          "scale": 100.0
+        },
+        {
+          "_comment": "P4 EFFICIENCY: SHC proxy — secondary, accept some increase for TSR",
+          "type": "minimize",
+          "tag": "Thermal split (PC/Kiln)",
+          "weight": 1.5,
+          "scale": 50.0
         }
       ]
     },
@@ -3562,6 +3784,38 @@
         {
           "tag": "SHC",
           "threshold_pct": 0.15
+        }
+      ],
+      "reward_components": [
+        {
+          "_comment": "TEMPLATE — copy and edit to create your custom reward.",
+          "_type_options": "target_deviation | range_keep | upper_limit | lower_limit | maximize | minimize",
+          "_fields": {
+            "target_deviation": "tag, target (numeric), weight",
+            "range_keep": "tag, min, max, weight",
+            "upper_limit": "tag, limit, weight",
+            "lower_limit": "tag, floor, weight",
+            "maximize": "tag, weight, scale",
+            "minimize": "tag, weight, scale"
+          },
+          "type": "range_keep",
+          "tag": "Kiln BZT1",
+          "min": 1300,
+          "max": 1380,
+          "weight": 5.0
+        },
+        {
+          "_comment": "Add more terms here. Safety terms (CO, O2 lower) should have the highest weights.",
+          "type": "upper_limit",
+          "tag": "CO (kiln)",
+          "limit": 200,
+          "weight": 15.0
+        },
+        {
+          "type": "lower_limit",
+          "tag": "O2 (Kiln)",
+          "floor": 1.5,
+          "weight": 12.0
         }
       ]
     }
@@ -3903,7 +4157,13 @@
     }
   },
   "runtime_statistics": {
-    "window_options_minutes": [30, 60, 240, 480, 1440],
+    "window_options_minutes": [
+      30,
+      60,
+      240,
+      480,
+      1440
+    ],
     "default_window_minutes": 60,
     "mappings": {
       "Availability": {

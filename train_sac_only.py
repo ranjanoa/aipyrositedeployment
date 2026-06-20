@@ -35,7 +35,7 @@ if __name__ == "__main__":
         
         # 3. Train SAC Only
         print("🚀 Starting SAC Training Loop (Resuming from last save)...")
-        sac_manager.train_sac_agent(df, steps=50000)
+        sac_manager.train_sac_agent(df, steps=100000)
 
         print("\n✅ SUCCESS: SAC Training Complete.")
 
