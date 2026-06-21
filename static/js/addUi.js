@@ -98,11 +98,36 @@ export function renderApp() {
     // Dynamic Auto-Zoom to fit browser display window (filling complete available space)
     function applyAutoZoom() {
         const baseWidth = 1920;
-        const scale = window.innerWidth / baseWidth;
+        const baseHeight = 1080;
         
-        document.body.style.zoom = scale;
-        document.body.style.width = (100 / scale) + "%";
-        document.body.style.height = (100 / scale) + "%";
+        const scaleX = window.innerWidth / baseWidth;
+        const scaleY = window.innerHeight / baseHeight;
+        
+        // Choose the minimum scale factor to ensure the application always fits 
+        // completely within the display boundaries on both width and height.
+        const scale = Math.min(scaleX, scaleY);
+        
+        // Reset body styling that was previously used
+        document.body.style.zoom = "";
+        document.body.style.width = "";
+        document.body.style.height = "";
+        
+        // Scale and center the main app container
+        const app = document.getElementById("app");
+        if (app) {
+            app.style.width = baseWidth + "px";
+            app.style.height = baseHeight + "px";
+            app.style.transform = `scale(${scale})`;
+            app.style.transformOrigin = "top left";
+            
+            // Calculate centering offsets
+            const leftOffset = (window.innerWidth - (baseWidth * scale)) / 2;
+            const topOffset = (window.innerHeight - (baseHeight * scale)) / 2;
+            
+            app.style.position = "absolute";
+            app.style.left = leftOffset + "px";
+            app.style.top = topOffset + "px";
+        }
     }
 
     window.onresize = () => {

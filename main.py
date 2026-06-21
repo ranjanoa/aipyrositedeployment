@@ -106,6 +106,17 @@ static_dir = os.path.join(config.BASE_DIR, 'static')
 
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+
+@app.after_request
+def add_header(r):
+    # Only disable cache for custom application scripts, styles, and templates
+    # This keeps large libraries (like plotly.js, chart.js) cached for fast loads
+    if request.path.startswith('/static/js/') or request.path.startswith('/static/styles/') or request.path.endswith('.html'):
+        r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        r.headers["Pragma"] = "no-cache"
+        r.headers["Expires"] = "0"
+    return r
+
 app.config.from_object('config')
 socketio = SocketIO(app, 
                     cors_allowed_origins="*", 

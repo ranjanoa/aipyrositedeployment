@@ -6,7 +6,10 @@ import { initOpSummary } from "../optSum/initOpSummary.js"
 import { initOpkiln } from "../optSum/optSumkiln/initOpkiln.js"
 import { initOpPreheater } from "../optSum/optSumPreheater/initOppreheater.js";
 import { initOpCooler } from "../optSum/optSumCooler/initOpCooler.js"
+import { initFullscreen } from "./fullscreen.js";
+
 export function bootstrap() {
+    initFullscreen();
     initCharts();
     initializeApp().then(() => {
         initOpSummary();
@@ -19,3 +22,4 @@ export function bootstrap() {
     initSocket();
     restoreState();
 }
+

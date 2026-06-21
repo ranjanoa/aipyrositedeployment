@@ -6,10 +6,15 @@ export async function restoreState() {
             const response = await fetch(`${MOCK_CONFIG.API_URL}/api/status`);
             const data = await response.json();
 
-            if (data.test_mode === true) {
-                const toggle = document.getElementById('test-mode-toggle');
-                if (toggle) {
-                    toggle.checked = true;
+            const toggle = document.getElementById('test-mode-toggle');
+            if (toggle) {
+                toggle.checked = !!data.test_mode;
+            }
+
+            if (data.ai_mnm_base_strategy) {
+                const baseModeSelector = document.getElementById('ai-mnm-base-mode');
+                if (baseModeSelector) {
+                    baseModeSelector.value = data.ai_mnm_base_strategy;
                 }
             }
  
@@ -17,11 +22,19 @@ export async function restoreState() {
                 // Update modern UI mode cards
                 const modeCard = document.querySelector(`.mode-card[data-mode="${data.strategy}"]`);
                 if (modeCard) {
-                    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
-                    modeCard.classList.add('selected');
+                    document.querySelectorAll('.mode-card').forEach(c => {
+                        c.classList.remove('selected');
+                        const sub = c.querySelector(".fp-sub-options");
+                        if (sub) {
+                            sub.classList.add("opacity-60", "pointer-events-none");
+                        }
+                    });
                     
+                    modeCard.classList.add('selected');
                     const sub = modeCard.querySelector(".fp-sub-options");
-                    if (sub) sub.classList.remove("opacity-60", "pointer-events-none");
+                    if (sub) {
+                        sub.classList.remove("opacity-60", "pointer-events-none");
+                    }
 
                     if (data.enabled) {
                         modeCard.classList.add('engaged');

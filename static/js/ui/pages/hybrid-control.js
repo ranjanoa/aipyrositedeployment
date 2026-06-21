@@ -235,28 +235,31 @@ export function HybridControl() {
         cards.forEach((card) => {
             card.addEventListener("click", () => {
                 modeSelector(card.dataset.mode);
-                // If already engaged, trigger the update immediately to backend
-                if (state.isHybridEngaged) {
-                    Actions.toggleHybridSystem(true);
-                }
+                // Persist the selected strategy mode card to the backend
+                Actions.toggleHybridSystem(state.isHybridEngaged);
             });
         });
 
         const baseModeSelector = container.querySelector("#ai-mnm-base-mode");
         if (baseModeSelector) {
             baseModeSelector.addEventListener("change", () => {
-                if (state.isHybridEngaged) {
-                    Actions.toggleHybridSystem(true);
-                }
+                // Persist the selected base mode for AI_MNM to the backend
+                Actions.toggleHybridSystem(state.isHybridEngaged);
+            });
+        }
+
+        const testModeToggle = container.querySelector("#test-mode-toggle");
+        if (testModeToggle) {
+            testModeToggle.addEventListener("change", () => {
+                // Persist the Test Mode setting state to the backend
+                Actions.toggleHybridSystem(state.isHybridEngaged);
             });
         }
 
         // Apply default selection ONLY if none was restored by the system state
-        setTimeout(() => {
-            if (!container.querySelector('.mode-card.selected')) {
-                modeSelector("FINGERPRINT");
-            }
-        }, 50);
+        if (!container.querySelector('.mode-card.selected')) {
+            modeSelector("FINGERPRINT");
+        }
     }, 0);
 
     return container;

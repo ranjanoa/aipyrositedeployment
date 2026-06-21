@@ -211,6 +211,7 @@ def get_system_status():
         "strategy": strategy_pref,
         "fingerprint_type": config.FINGERPRINT_MODE_TYPE,
         "test_mode": getattr(config, 'TEST_MODE', False),
+        "ai_mnm_base_strategy": getattr(config, 'AI_MNM_BASE_STRATEGY', 'FINGERPRINT'),
         "active_target": active_target
     })
 
