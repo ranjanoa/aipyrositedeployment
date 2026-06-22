@@ -295,6 +295,7 @@ def automated_control_loop():
     _last_mode_state = -1
     _last_base_strat = ""
     _ai_system_trust_rh = None
+    _last_ai_system_trust_update_time = None
 
     # Persistent storage for recommendation to ensure UI stays updated 
     # even between 30-second AI optimization cycles.
@@ -714,8 +715,15 @@ def automated_control_loop():
                                     last_val = database.get_tag_value_at_time(datetime.utcnow(), "AI_SYSTEM_TRUST_RH")
                                     _ai_system_trust_rh = last_val if last_val is not None else 0.0
                                     
+                                current_rh_time = datetime.utcnow()
+                                if _last_ai_system_trust_update_time is None:
+                                    elapsed_seconds = float(AI_INTERVAL_SECONDS)
+                                else:
+                                    elapsed_seconds = (current_rh_time - _last_ai_system_trust_update_time).total_seconds()
+                                _last_ai_system_trust_update_time = current_rh_time
+                                    
                                 if final_trust_bit == 1:
-                                    _ai_system_trust_rh += (AI_INTERVAL_SECONDS / 3600.0)
+                                    _ai_system_trust_rh += (elapsed_seconds / 3600.0)
                                     
                                 setpoints['AI_SYSTEM_TRUST_RH'] = _ai_system_trust_rh
 
