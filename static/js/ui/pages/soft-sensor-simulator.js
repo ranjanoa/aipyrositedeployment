@@ -9,17 +9,17 @@ export function SoftSensorSimulator() {
 <div class="col-span-4 glass-panel flex flex-col bg-[#1a3842] overflow-hidden">
                 <div class="p-4 border-b border-[#476570] brand-header-bg bg-yellow-900 flex justify-between items-center">
                     <div>
-                        <h2 class="text-lg font-bold text-black">Manual Inputs</h2>
-                        <p class="text-xs text-black">Adjust setpoints to simulate impact.</p>
+                        <h2 class="text-lg font-bold" style="color: black !important;">Manual Inputs</h2>
+                        <p class="text-xs" style="color: black !important;">Adjust setpoints to simulate impact.</p>
                     </div>
                     <button onclick="Actions.initSoftSensorSim()"
-                        class="bg-yellow-900 text-black px-3 py-1.5 rounded text-[10px] border-black font-black hover:brightness-125 shadow transition-all uppercase tracking-wider hoverWhite">SYNC
+                        class="bg-yellow-900 px-3 py-1.5 rounded text-[10px] border-black font-black hover:brightness-125 shadow transition-all uppercase tracking-wider hoverWhite" style="color: black !important;">SYNC
                         LIVE</button>
                 </div>
                 <div id="sim-input-container" class="flex-1 overflow-y-auto p-5 space-y-6 custom-scrollbar"></div>
                 <div class="p-4 border-t border-[#476570] bg-[#152e36]">
                     <button onclick="Actions.runSoftSensorSim()"
-                        class="w-full py-3 bg-yellow-900 text-black hover:bg-blue-500 font-bold rounded shadow transition-all">RUN
+                        class="w-full py-3 bg-yellow-900 hover:bg-blue-500 font-bold rounded shadow transition-all" style="color: black !important;">RUN
                         SIMULATION (60 min)</button>
                 </div>
             </div>

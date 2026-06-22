@@ -15,7 +15,7 @@ export function Fingerprint() {
             </div>
             <div class="p-3 border-t border-gray-200 bg-dark-green shrink-0">
                 <button onclick="Actions.findFingerprint()" id="find-fingerprint-btn"
-                        class="w-full py-3 bg-yellow-900 text-black font-mono text-sm font-bold rounded shadow hover:bg-gray-200 transition-colors">
+                        class="w-full py-3 bg-yellow-900 font-mono text-sm font-bold rounded shadow hover:bg-gray-200 transition-colors" style="color: black !important;">
                     SCAN HISTORY
                 </button>
             </div>
