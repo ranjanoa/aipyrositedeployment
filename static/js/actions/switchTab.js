@@ -41,7 +41,8 @@ export function switchTab(t) {
             p.classList.remove('grid', 'flex');
             if (x === t) {
                 p.classList.remove('hidden');
-                p.classList.add(x === 'softsensor-sim' || x === 'mbrl' || x === 'hybrid' || x === 'fingerprint' || x === 'simulator' || x === 'op-summary' || x === 'runtime-stats' ? 'grid' : 'flex' || x === 'op-kiln' ? 'grid' : 'flex'|| x === 'op-preheater' ? 'grid' : 'flex'|| x === 'op-cooler' ? 'grid' : 'flex'|| x === 'ai-mnm' ? 'grid' : 'flex');
+                const gridTabs = ['hybrid', 'fingerprint', 'mbrl', 'simulator', 'softsensor-sim', 'op-summary', 'op-kiln', 'op-preheater', 'op-cooler', 'ai-mnm', 'runtime-stats'];
+                p.classList.add(gridTabs.includes(x) ? 'grid' : 'flex');
             }
         }
 

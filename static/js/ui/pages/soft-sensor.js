@@ -14,7 +14,8 @@ export function SoftSensor() {
                 </div>
             </div>
             <button onclick="Actions.fetchSoftSensorPrediction()"
-                    class="px-6 py-2 bg-yellow-900 text-sm font-bold rounded hover:bg-gray-200 transition">
+                    class="px-6 py-2 bg-yellow-900 text-sm font-bold rounded hover:bg-gray-200 transition"
+                    style="color: black !important;">
                 RECALCULATE
             </button>
         </div>
