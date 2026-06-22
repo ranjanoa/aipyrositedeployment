@@ -311,8 +311,8 @@ window.RuntimeStatsActions = {
             
             // Choose color based on engagement percentage
             let barColor = 'bg-red-500';
-            if (util >= 80) barColor = 'bg-[#00FF66]';
-            else if (util >= 40) barColor = 'bg-yellow-500';
+            if (util > 90) barColor = 'bg-[#00FF66]';
+            else if (util > 50) barColor = 'bg-orange-500';
 
             html += `
                 <tr class="hover:bg-white/5 transition-colors">

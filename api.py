@@ -673,7 +673,7 @@ def get_softsensor_prediction():
         name_map = process_model.get_name_to_tag_map()
         db_tags = list(name_map.values())
         end = datetime.utcnow()
-        start = end - timedelta(minutes=60)
+        start = end - timedelta(minutes=2)
 
         real_df = database.get_realtime_data_window(start, end, db_tags, {v: k for k, v in name_map.items()})
 
@@ -715,7 +715,7 @@ def run_simulation():
         name_map = process_model.get_name_to_tag_map()
         db_tags = list(name_map.values())
         end = datetime.utcnow()
-        start = end - timedelta(minutes=10)
+        start = end - timedelta(minutes=2)
 
         real_df = database.get_realtime_data_window(start, end, db_tags, {v: k for k, v in name_map.items()})
         if real_df.empty:
