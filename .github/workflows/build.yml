@@ -31,8 +31,17 @@ jobs:
       run: |
         pyinstaller CimporApp.spec
 
+    - name: Package Release
+      shell: cmd
+      run: |
+        mkdir release
+        move dist\CimporApp.exe release\
+        xcopy templates release\templates\ /E /I /H /Y
+        xcopy static release\static\ /E /I /H /Y
+        xcopy files release\files\ /E /I /H /Y
+
     - name: Upload Executable Artifact
       uses: actions/upload-artifact@v4
       with:
         name: CimporApp-Windows
-        path: dist/CimporApp.exe
+        path: release/

@@ -70,8 +70,11 @@ import fingerprint_engine
 # Wrap AI import in try/except so it doesn't crash if you are only testing Fingerprint
 try:
     from modules.ai_core import mbrl_manager
-except ImportError:
-    print("[WARN] AI Module (mbrl_manager) not found. AI Strategy will be disabled.")
+except ImportError as e:
+    print(f"[WARN] AI Module (mbrl_manager) not found. Error: {e}")
+    mbrl_manager = None
+except Exception as e:
+    print(f"[WARN] AI Module failed to load due to an unexpected error: {e}")
     mbrl_manager = None
 
 import control_service  # <--- REQUIRED for PLC Control

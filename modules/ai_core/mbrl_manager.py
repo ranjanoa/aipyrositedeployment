@@ -101,106 +101,113 @@ def _initialize_system():
         print("⚡ Initializing AI System (Real Neural Network Mode)...")
 
         process_model.load_model_config()
-    controls = process_model.get_control_variables()
-    indicators = process_model.get_indicator_variables()
+        controls = process_model.get_control_variables()
+        indicators = process_model.get_indicator_variables()
 
-    # Exclude calculated variables and priority 0 variables from the AI's core mathematical optimization space
-    s_cols = sorted([k for k, v in {**controls, **indicators}.items() if not v.get('is_calculated') and v.get('priority', 3) != 0 and 'formula' not in v])
-    a_cols = sorted([k for k, v in controls.items() if v.get('is_setpoint') and not v.get('is_calculated') and v.get('priority', 3) != 0 and 'formula' not in v])
+        # Exclude calculated variables and priority 0 variables from the AI's core mathematical optimization space
+        s_cols = sorted([k for k, v in {**controls, **indicators}.items() if not v.get('is_calculated') and v.get('priority', 3) != 0 and 'formula' not in v])
+        a_cols = sorted([k for k, v in controls.items() if v.get('is_setpoint') and not v.get('is_calculated') and v.get('priority', 3) != 0 and 'formula' not in v])
 
-    required_cols = list(set(s_cols + a_cols))
+        required_cols = list(set(s_cols + a_cols))
 
-    try:
-        # --- ROBUST DATA LOADING ---
-        from fingerprint_engine import robust_read_csv
-        df_full = robust_read_csv(config.HISTORICAL_DATA_CSV_PATH)
-        
-        if df_full.empty:
-            print("⚠️ No data loaded. Creating dummy stats.")
-            df_train = pd.DataFrame(columns=required_cols)
-        else:
-            existing_cols = df_full.columns.tolist()
-            valid_cols = [c for c in required_cols if c in existing_cols]
+        try:
+            # --- ROBUST DATA LOADING ---
+            from fingerprint_engine import robust_read_csv
+            df_full = robust_read_csv(config.HISTORICAL_DATA_CSV_PATH)
             
-            if not valid_cols:
-                print("⚠️ No matching columns in Data. Creating dummy stats.")
+            if df_full.empty:
+                print("⚠️ No data loaded. Creating dummy stats.")
                 df_train = pd.DataFrame(columns=required_cols)
             else:
-                df_train = df_full[valid_cols]
+                existing_cols = df_full.columns.tolist()
+                valid_cols = [c for c in required_cols if c in existing_cols]
+                
+                if not valid_cols:
+                    print("⚠️ No matching columns in Data. Creating dummy stats.")
+                    df_train = pd.DataFrame(columns=required_cols)
+                else:
+                    df_train = df_full[valid_cols]
 
-        for c in required_cols:
-            if c not in df_train.columns:
-                df_train[c] = 0.0
-            df_train[c] = pd.to_numeric(df_train[c], errors='coerce').fillna(0.0)
+            for c in required_cols:
+                if c not in df_train.columns:
+                    df_train[c] = 0.0
+                df_train[c] = pd.to_numeric(df_train[c], errors='coerce').fillna(0.0)
 
-        # --- CRITICAL FIX: Clamp historical data to config limits BEFORE calculating stats ---
-        all_cfg = {**process_model.get_control_variables(), **process_model.get_indicator_variables()}
-        for c in df_train.columns:
-            if c in all_cfg:
-                lo = all_cfg[c].get('default_min', -1e9)
-                hi = all_cfg[c].get('default_max', 1e9)
-                df_train[c] = df_train[c].clip(lower=lo, upper=hi)
+            # --- CRITICAL FIX: Clamp historical data to config limits BEFORE calculating stats ---
+            all_cfg = {**process_model.get_control_variables(), **process_model.get_indicator_variables()}
+            for c in df_train.columns:
+                if c in all_cfg:
+                    lo = all_cfg[c].get('default_min', -1e9)
+                    hi = all_cfg[c].get('default_max', 1e9)
+                    df_train[c] = df_train[c].clip(lower=lo, upper=hi)
 
-        s_min, s_max = df_train[s_cols].min().values, df_train[s_cols].max().values
-        a_min, a_max = df_train[a_cols].min().values, df_train[a_cols].max().values
+            s_min, s_max = df_train[s_cols].min().values, df_train[s_cols].max().values
+            a_min, a_max = df_train[a_cols].min().values, df_train[a_cols].max().values
 
-        s_range = s_max - s_min
-        s_range[s_range < 1e-6] = 1.0
-        a_range = a_max - a_min
-        a_range[a_range < 1e-6] = 1.0
+            s_range = s_max - s_min
+            s_range[s_range < 1e-6] = 1.0
+            a_range = a_max - a_min
+            a_range[a_range < 1e-6] = 1.0
 
-        stats = {
-            'state': {'min': s_min, 'max': s_max, 'range': s_range},
-            'action': {'min': a_min, 'max': a_max, 'range': a_range}
-        }
+            stats = {
+                'state': {'min': s_min, 'max': s_max, 'range': s_range},
+                'action': {'min': a_min, 'max': a_max, 'range': a_range}
+            }
 
-        # --- NEW: Store absolute industrial limits for rollout clamping ---
-        all_cfg = {**process_model.get_control_variables(), **process_model.get_indicator_variables()}
-        s_limits_min = np.array([float(all_cfg.get(c, {}).get('default_min', -1e9)) for c in s_cols])
-        s_limits_max = np.array([float(all_cfg.get(c, {}).get('default_max', 1e9)) for c in s_cols])
-        
-        _env_config = {
-            'stats': stats, 
-            's_cols': s_cols, 
-            'a_cols': a_cols,
-            's_limits': {'min': s_limits_min, 'max': s_limits_max}
-        }
-        print("✅ Config & Data Loaded Successfully (with Industrial Clamping).")
+            # --- NEW: Store absolute industrial limits for rollout clamping ---
+            all_cfg = {**process_model.get_control_variables(), **process_model.get_indicator_variables()}
+            s_limits_min = np.array([float(all_cfg.get(c, {}).get('default_min', -1e9)) for c in s_cols])
+            s_limits_max = np.array([float(all_cfg.get(c, {}).get('default_max', 1e9)) for c in s_cols])
+            
+            local_env_config = {
+                'stats': stats, 
+                's_cols': s_cols, 
+                'a_cols': a_cols,
+                's_limits': {'min': s_limits_min, 'max': s_limits_max}
+            }
+            print("✅ Config & Data Loaded Successfully (with Industrial Clamping).")
 
-    except Exception as e:
-        print(f"❌ Critical Error in Initialization: {e}")
-        import traceback
-        traceback.print_exc()
-        return
-
-    s_dim = len(s_cols)
-    a_dim = len(a_cols)
-
-    # --- LOAD WORLD MODEL ---
-    try:
-        if RobustWorldModel:
-            _world_model = RobustWorldModel(s_dim, a_dim, HISTORY_WINDOW)
-            try:
-                _world_model.load(WM_PATH)
-                print("✅ World Model Weights Loaded.")
-            except Exception as load_err:
-                print(f"⚠️ Warning: Model Shape Mismatch. Starting FRESH World Model.")
-    except Exception as e:
-        print(f"❌ Error creating World Model: {e}")
-        _world_model = None
-
-    # --- LOAD SAC AGENT ---
-    if SAC_AVAILABLE:
-        try:
-            obs_dim = (s_dim + a_dim) * HISTORY_WINDOW
-            _sac_agent = SACAgent(obs_dim, a_dim)
-            try:
-                _sac_agent.load(SAC_PATH)
-                print("✅ SAC Agent Weights Loaded.")
-            except Exception as load_err:
-                print(f"⚠️ Warning: Model Shape Mismatch. Starting FRESH SAC Agent.")
         except Exception as e:
-            pass
+            print(f"❌ Critical Error in Initialization: {e}")
+            import traceback
+            traceback.print_exc()
+            return
+
+        s_dim = len(s_cols)
+        a_dim = len(a_cols)
+
+        # --- LOAD WORLD MODEL ---
+        local_world_model = None
+        try:
+            if RobustWorldModel:
+                local_world_model = RobustWorldModel(s_dim, a_dim, HISTORY_WINDOW)
+                try:
+                    local_world_model.load(WM_PATH)
+                    print("✅ World Model Weights Loaded.")
+                except Exception as load_err:
+                    print(f"⚠️ Warning: Model Shape Mismatch. Starting FRESH World Model.")
+        except Exception as e:
+            print(f"❌ Error creating World Model: {e}")
+            local_world_model = None
+
+        # --- LOAD SAC AGENT ---
+        local_sac_agent = None
+        if SAC_AVAILABLE:
+            try:
+                obs_dim = (s_dim + a_dim) * HISTORY_WINDOW
+                local_sac_agent = SACAgent(obs_dim, a_dim)
+                try:
+                    local_sac_agent.load(SAC_PATH)
+                    print("✅ SAC Agent Weights Loaded.")
+                except Exception as load_err:
+                    print(f"⚠️ Warning: Model Shape Mismatch. Starting FRESH SAC Agent.")
+            except Exception as e:
+                pass
+
+        # Publish the fully initialized systems
+        _env_config = local_env_config
+        _world_model = local_world_model
+        _sac_agent = local_sac_agent
 
 
 def _normalize(values, v_type='state'):
