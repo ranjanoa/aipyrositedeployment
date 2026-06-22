@@ -13,6 +13,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 from datetime import datetime
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 import logging
+import threading
+
+_init_lock = threading.Lock()
 
 logger = logging.getLogger("AI-CORE")
 
@@ -92,9 +95,12 @@ def _initialize_system():
     global _world_model, _sac_agent, _env_config
     if _world_model is not None: return
 
-    print("⚡ Initializing AI System (Real Neural Network Mode)...")
+    with _init_lock:
+        if _world_model is not None: return
 
-    process_model.load_model_config()
+        print("⚡ Initializing AI System (Real Neural Network Mode)...")
+
+        process_model.load_model_config()
     controls = process_model.get_control_variables()
     indicators = process_model.get_indicator_variables()
 
