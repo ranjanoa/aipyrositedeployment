@@ -477,3 +477,110 @@ def get_first_tag_value(tag_name):
         return None
     finally:
         client.close()
+
+
+def get_tags_values_at_time(timestamp, tag_names):
+    if not tag_names:
+        return {}
+    # Use 15s timeout for historic value retrieval
+    client = get_db_client(timeout=15000)
+    if not client:
+        return {}
+    
+    results = {}
+    remaining_tags = set(tag_names)
+    
+    try:
+        import datetime as dt
+        if timestamp.tzinfo is not None:
+            timestamp = timestamp.astimezone(dt.timezone.utc).replace(tzinfo=None)
+        ts_str = timestamp.isoformat() + 'Z'
+        
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+
+        # Tiered query: search the last 7 days first (fast), fall back to 30 days, then to all history (start: 0)
+        # to avoid scanning the entire database from 1970 when not needed.
+        for days in [7, 30, 0]:
+            if not remaining_tags:
+                break
+            if days == 0:
+                range_start = "0"
+            else:
+                range_start = (timestamp - dt.timedelta(days=days)).isoformat() + 'Z'
+
+            # Build field filter for the remaining tags
+            field_filter = " or ".join([f'r["_field"] == "{str(t).replace(chr(34), chr(92) + chr(34))}"' for t in remaining_tags])
+            
+            query = f'''
+            from(bucket: "{config.DB_BUCKET}")
+              |> range(start: {range_start}, stop: {ts_str})
+              |> filter(fn: (r) => {measurement_filter})
+              |> filter(fn: (r) => {field_filter})
+              |> last()
+            '''
+            tables = client.query_api().query(query, org=config.DB_ORG)
+            for table in tables:
+                for record in table.records:
+                    tag = record.get_field()
+                    val = record.get_value()
+                    if tag in remaining_tags and val is not None:
+                        results[tag] = float(val)
+                        
+            # Remove found tags from remaining_tags
+            for tag in list(remaining_tags):
+                if tag in results:
+                    remaining_tags.remove(tag)
+                    
+        return results
+    except Exception as e:
+        print(f"Error getting tags values at time {timestamp}: {e}")
+        return results
+    finally:
+        client.close()
+
+
+def get_first_tags_values(tag_names):
+    if not tag_names:
+        return {}
+    # Use 15s timeout for historic value retrieval
+    client = get_db_client(timeout=15000)
+    if not client:
+        return {}
+    results = {}
+    try:
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+        
+        field_filter = " or ".join([f'r["_field"] == "{str(t).replace(chr(34), chr(92) + chr(34))}"' for t in tag_names])
+
+        query = f'''
+        from(bucket: "{config.DB_BUCKET}")
+          |> range(start: 0)
+          |> filter(fn: (r) => {measurement_filter})
+          |> filter(fn: (r) => {field_filter})
+          |> first()
+        '''
+        tables = client.query_api().query(query, org=config.DB_ORG)
+        for table in tables:
+            for record in table.records:
+                tag = record.get_field()
+                val = record.get_value()
+                if val is not None:
+                    results[tag] = float(val)
+        return results
+    except Exception as e:
+        print(f"Error getting first tags values: {e}")
+        return results
+    finally:
+        client.close()

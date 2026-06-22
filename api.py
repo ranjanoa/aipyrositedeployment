@@ -8,6 +8,7 @@ import json
 import os
 import plotly.graph_objects as go
 import traceback
+import concurrent.futures
 
 # --- IMPORTS ---
 import config
@@ -742,32 +743,18 @@ def run_simulation():
         return jsonify({"error": str(e)}), 500
 
 
-@api_routes.route('/runtime-stats', methods=['GET'])
-@cross_origin()
-def get_runtime_statistics():
+stats_executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+
+
+def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_fingerprint):
     try:
-        start_param = request.args.get('start_time')
-        end_param = request.args.get('end_time')
-        is_custom = False
-        
-        if start_param and end_param:
-            try:
-                start_time = datetime.fromisoformat(start_param.replace('Z', '').split('+')[0])
-                end_time = datetime.fromisoformat(end_param.replace('Z', '').split('+')[0])
-                window_mins = int((end_time - start_time).total_seconds() / 60.0)
-                is_custom = True
-            except Exception as e:
-                return jsonify({"error": f"Invalid custom date range parameters: {e}"}), 400
-        else:
-            window_mins = int(request.args.get('window_minutes', 60))
-            
         conf = process_model.load_model_config()
         
         runtime_cfg = conf.get('runtime_statistics', {})
         mappings = runtime_cfg.get('mappings', {})
         
         if not mappings:
-            return jsonify({"error": "No runtime statistics mappings found in configuration"}), 500
+            return {"error": "No runtime statistics mappings found in configuration"}, 500
             
         # Collect all required friendly names
         friendly_names_to_query = set()
@@ -817,13 +804,18 @@ def get_runtime_statistics():
             end_time = datetime.utcnow()
             start_time = end_time - timedelta(minutes=window_mins)
         
+        # Snapshot the query window BEFORE any historical fallback may reassign start_time.
+        # The batch DB queries must always use the original requested window boundaries.
+        query_start_time = start_time
+        query_end_time = end_time
+        
         df = database.get_realtime_data_window(start_time, end_time, raw_tags, tag_to_name)
         
         # Fallback to historical dataframe if empty
         if df.empty:
-            hist_df = current_app.config.get('df_fingerprint')
-            if hist_df is not None and not hist_df.empty:
+            if df_fingerprint is not None and not df_fingerprint.empty:
                 # Ensure friendly column names
+                hist_df = df_fingerprint.copy()
                 hist_df.columns = [str(c).strip() for c in hist_df.columns]
                 
                 # Check for timestamp column
@@ -867,9 +859,11 @@ def get_runtime_statistics():
         if df.empty:
             print("Runtime stats: Dataframe is empty after filtering, will return zeroed values.")
         
-        # Calculate calendar window duration in hours to act as standard denominator
+        # Calculate calendar window duration in hours to act as standard denominator.
+        # Always use the snapshotted query boundaries — NOT start_time/end_time which
+        # may have been reassigned by the historical fallback block above.
         if is_custom:
-            calendar_window_hours = (end_time - start_time).total_seconds() / 3600.0
+            calendar_window_hours = (query_end_time - query_start_time).total_seconds() / 3600.0
         else:
             calendar_window_hours = window_mins / 60.0
 
@@ -891,6 +885,49 @@ def get_runtime_statistics():
         stats_results = []
         db_offline = False
         
+        # --- BATCH QUERY OPTIMIZATION ---
+        # Build lists of tags to query in batch
+        end_time_tags = set()
+        start_time_tags = set()
+        
+        for var_name, mapping in mappings.items():
+            status_col = mapping.get('status_tag')
+            rh_col = mapping.get('rh_tag')
+            
+            if status_col == "AI_SYSTEM_TRUST":
+                raw_tag = name_to_tag.get(status_col, "AI_SYSTEM_TRUST_STATUS")
+                end_time_tags.add(raw_tag)
+                
+            if rh_col:
+                raw_rh_tag = name_to_tag.get(rh_col, rh_col)
+                end_time_tags.add(raw_rh_tag)
+                start_time_tags.add(raw_rh_tag)
+                
+        # Perform batched database fetches to completely eliminate loops of single queries
+        end_values = {}
+        start_values = {}
+        first_values = {}
+        
+        # 1. Fetch all end values at the END of the requested window
+        end_values = database.get_tags_values_at_time(query_end_time, list(end_time_tags))
+        
+        # If we got nothing from DB and dataframe is also empty, DB might be offline
+        if not end_values and df.empty:
+            db_offline = True
+            print("[RUNTIME-STATS] DB offline detected, skipping batch queries.")
+            
+        if not db_offline:
+            # 2. Fetch all start values at the START of the requested window
+            start_values = database.get_tags_values_at_time(query_start_time, list(start_time_tags))
+            
+            # 3. Find tags that need a fallback first value query
+            first_time_tags = [
+                tag for tag in start_time_tags
+                if tag in end_values and tag not in start_values
+            ]
+            if first_time_tags:
+                first_values = database.get_first_tags_values(first_time_tags)
+
         # Per Control Variable Stats
         for var_name, mapping in mappings.items():
             status_col = mapping.get('status_tag')
@@ -900,13 +937,10 @@ def get_runtime_statistics():
             desc = mapping.get('description', var_info.get('description', var_name))
             unit = mapping.get('unit', var_info.get('unit', ''))
             curr_status = 0.0
+            
             if status_col == "AI_SYSTEM_TRUST":
-                # Availability / AI watchdog is in kiln2 (which is not loaded in df window to avoid timeouts)
-                # Fetch directly from InfluxDB using the raw tag name if possible, or fallback to config mode
                 raw_tag = name_to_tag.get(status_col, "AI_SYSTEM_TRUST_STATUS")
-                db_val = None
-                if not db_offline:
-                    db_val = database.get_tag_value_at_time(end_time, raw_tag)
+                db_val = end_values.get(raw_tag)
                 if db_val is not None:
                     curr_status = float(db_val)
                 else:
@@ -923,29 +957,20 @@ def get_runtime_statistics():
             if rh_col:
                 has_rh = True
                 raw_rh_tag = name_to_tag.get(rh_col, rh_col)
-                # Query InfluxDB directly for values at start and end
-                db_curr_rh = None
-                db_start_rh = None
                 
-                if not db_offline:
-                    db_curr_rh = database.get_tag_value_at_time(end_time, raw_rh_tag)
-                    if db_curr_rh is None and df.empty:
-                        # Both the direct query and the window query returned nothing — DB is offline
-                        db_offline = True
-                        print("[RUNTIME-STATS] DB offline detected, skipping remaining RH queries.")
-                    else:
-                        db_start_rh = database.get_tag_value_at_time(start_time, raw_rh_tag)
-                        if db_start_rh is None and db_curr_rh is not None:
-                            # Fallback: if start_time is before the earliest recorded data,
-                            # the running hours at start_time was the first recorded value in the DB.
-                            db_start_rh = database.get_first_tag_value(raw_rh_tag)
+                # Lookup from batched results instead of querying DB sequentially
+                db_curr_rh = end_values.get(raw_rh_tag)
+                db_start_rh = start_values.get(raw_rh_tag)
+                
+                if db_start_rh is None and db_curr_rh is not None:
+                    db_start_rh = first_values.get(raw_rh_tag)
                 
                 if db_curr_rh is not None and db_start_rh is not None:
                     curr_rh = db_curr_rh
                     start_rh = db_start_rh
                     rh_delta = max(0.0, curr_rh - start_rh)
                 else:
-                    # Fallback to dataframe values
+                    # Fallback to dataframe values if DB lookup failed
                     if rh_col in df.columns and not df.empty:
                         rh_vals = df[rh_col].dropna()
                         if not rh_vals.empty:
@@ -956,23 +981,22 @@ def get_runtime_statistics():
             util_pct = 0.0
             active_hours = 0.0
             
-            if status_col == "AI_SYSTEM_TRUST":
+            if has_rh and rh_delta > 0.0:
+                # Primary path: use the PLC RH totaliser delta — most accurate
                 active_hours = rh_delta
             elif status_col and status_col in df.columns and not df.empty:
-                # Use running hours delta if we successfully retrieved a non-zero cumulative value,
-                # otherwise fall back to counting status ticks in the dataframe.
-                if has_rh and curr_rh > 0.0:
+                # Fallback: count rows where the status bit is active and convert to hours.
+                # Each row in the realtime window dataframe represents one second of data.
+                if status_col == "AI_SYSTEM_TRUST":
+                    # For the system-wide tag we always prefer the RH value even if zero
                     active_hours = rh_delta
                 else:
                     valid_status = df[status_col].dropna()
                     if not valid_status.empty:
-                        # Compute active hours by counting the actual seconds where loop was active
                         active_hours = float((valid_status > 0.5).sum()) / 3600.0
-            
-            if has_rh:
-                active_hours = rh_delta
-            else:
-                rh_delta = active_hours
+                        # Keep rh_delta in sync for display consistency
+                        if not has_rh:
+                            rh_delta = active_hours
 
             if calendar_window_hours > 0:
                 util_pct = min(100.0, max(0.0, (active_hours / calendar_window_hours) * 100.0))
@@ -989,12 +1013,61 @@ def get_runtime_statistics():
                 "has_rh": has_rh
             })
             
-        return jsonify({
+        return {
             "status": "success",
             "window_minutes": window_mins,
             "time_span_hours": round(time_span_hours, 2),
             "statistics": stats_results
-        })
+        }
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        return {"error": str(e)}, 500
+
+
+@api_routes.route('/runtime-stats', methods=['GET'])
+@cross_origin()
+def get_runtime_statistics():
+    try:
+        start_param = request.args.get('start_time')
+        end_param = request.args.get('end_time')
+        is_custom = False
+        
+        if start_param and end_param:
+            try:
+                start_time = datetime.fromisoformat(start_param.replace('Z', '').split('+')[0])
+                end_time = datetime.fromisoformat(end_param.replace('Z', '').split('+')[0])
+                window_mins = int((end_time - start_time).total_seconds() / 60.0)
+                is_custom = True
+            except Exception as e:
+                return jsonify({"error": f"Invalid custom date range parameters: {e}"}), 400
+        else:
+            window_mins = int(request.args.get('window_minutes', 60))
+            start_time = None
+            end_time = None
+            
+        df_fingerprint = current_app.config.get('df_fingerprint')
+        
+        # Offload compilation to thread pool to avoid blocking execution/GIL
+        future = stats_executor.submit(
+            compute_runtime_statistics,
+            start_time,
+            end_time,
+            window_mins,
+            is_custom,
+            df_fingerprint
+        )
+        
+        # Cooperatively wait — time.sleep() releases the GIL so other
+        # Python threads (autopilot, data emitter) can run freely.
+        import time
+        while not future.done():
+            time.sleep(0.02)
+                
+        result = future.result()
+        
+        if isinstance(result, tuple):
+            return jsonify(result[0]), result[1]
+        return jsonify(result)
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500

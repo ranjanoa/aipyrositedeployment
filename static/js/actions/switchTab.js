@@ -16,7 +16,7 @@ import { initAiMnm } from "../optSum/optSumAiMnm/initAiMnm.js"
 import { drawAiMnmSummaryChart } from "../optSum/optSumAiMnm/drawAiMnmSummaryChart.js"
 import { drawAiMnmParallelChart } from "../optSum/optSumAiMnm/drawAiMnmParallelChart.js"
 import { state } from "../inits/state.js"
-import { initRuntimeStats, destroyRuntimeStats } from "../ui/pages/runtime-stats.js"
+import { initRuntimeStats, destroyRuntimeStats, wakeRuntimeStats } from "../ui/pages/runtime-stats.js"
 export function switchTab(t) {
     const tabs = ['hybrid', 'fingerprint', 'mbrl', 'simulator', 'trends', 'config', 'softsensor', 'softsensor-sim', 'op-summary','op-kiln','op-preheater','op-cooler','ai-mnm', 'runtime-stats'];
 
@@ -26,6 +26,8 @@ export function switchTab(t) {
         state.aiMnmInterval = null;
     }
 
+    // destroyRuntimeStats is now a no-op (interval persists in background),
+    // but we still call it to mark the tab as hidden.
     if (t !== 'runtime-stats') {
         destroyRuntimeStats();
     }
@@ -87,6 +89,9 @@ export function switchTab(t) {
                         drawAiMnmParallelChart();
                     }
                     if (t === 'runtime-stats') {
+                        // Wake first to flush any cached result instantly,
+                        // then init to start the interval if not already running.
+                        wakeRuntimeStats();
                         initRuntimeStats();
                     }
                 }, 100);

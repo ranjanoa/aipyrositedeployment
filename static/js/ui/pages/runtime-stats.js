@@ -1,8 +1,14 @@
 // Runtime Analytics page module
 import { state } from "../../inits/state.js";
 
+// --- Persistent background state ---
+// The refresh interval is NEVER destroyed on tab switch.
+// Results are cached so the tab renders instantly on re-entry.
 let refreshInterval = null;
 let currentWindowMinutes = 60;
+let _cachedData = null;         // Last successful API response
+let _isTabVisible = false;      // Whether the analytics tab is currently shown
+let _pendingRender = false;     // True if new data arrived while tab was hidden
 
 export function RuntimeStats() {
     const container = document.createElement("div");
@@ -215,23 +221,25 @@ window.RuntimeStatsActions = {
 
     refreshData(showLoader = false) {
         const tableBody = document.getElementById("runtime-stats-table-body");
-        if (!tableBody) return;
 
-        // Show spinner / loading indicator only if requested or table is empty
-        if (showLoader || tableBody.innerHTML.includes("Loading statistics")) {
-            tableBody.innerHTML = `
-                <tr>
-                    <td colspan="5" class="p-8 text-center text-gray-400 font-bold">
-                        <div class="flex items-center justify-center gap-2">
-                            <svg class="animate-spin h-4 w-4 text-[#ebf552]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Fetching runtime statistics...
-                        </div>
-                    </td>
-                </tr>
-            `;
+        // If tab is visible and no cache yet, show a spinner
+        if (_isTabVisible && tableBody && (showLoader || tableBody.innerHTML.includes("Loading statistics"))) {
+            // Only show spinner if we have no cached data to show
+            if (!_cachedData) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="p-8 text-center text-gray-400 font-bold">
+                            <div class="flex items-center justify-center gap-2">
+                                <svg class="animate-spin h-4 w-4 text-[#ebf552]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Fetching runtime statistics...
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
         }
 
         let url = `/api/runtime-stats?window_minutes=${currentWindowMinutes}`;
@@ -255,14 +263,27 @@ window.RuntimeStatsActions = {
             .then(res => res.json())
             .then(data => {
                 if (data.status === "success") {
-                    this.renderStats(data);
+                    // Always cache the latest successful result
+                    _cachedData = data;
+                    _pendingRender = true;
+
+                    if (_isTabVisible) {
+                        // Tab is open — render immediately
+                        this.renderStats(data);
+                        _pendingRender = false;
+                    }
+                    // If tab is hidden, data sits in cache until wakeRuntimeStats() is called
                 } else {
-                    tableBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500 font-bold">Failed to load statistics: ${data.error || 'Unknown Error'}</td></tr>`;
+                    if (_isTabVisible && tableBody) {
+                        tableBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500 font-bold">Failed to load statistics: ${data.error || 'Unknown Error'}</td></tr>`;
+                    }
                 }
             })
             .catch(err => {
                 console.error("Error fetching stats:", err);
-                tableBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500 font-bold">Network error while fetching statistics.</td></tr>`;
+                if (_isTabVisible && tableBody) {
+                    tableBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500 font-bold">Network error while fetching statistics.</td></tr>`;
+                }
             });
     },
 
@@ -341,21 +362,47 @@ function formatHours(hoursFloat) {
 }
 
 export function initRuntimeStats() {
-    // Initial fetch
-    window.RuntimeStatsActions.refreshData(true);
+    // Mark the tab as visible so fetches render immediately
+    _isTabVisible = true;
 
-    // Start interval loop (every 10s)
-    if (refreshInterval) {
-        clearInterval(refreshInterval);
+    // If we already have cached data, render it instantly (no wait for network)
+    if (_cachedData && _pendingRender) {
+        window.RuntimeStatsActions.renderStats(_cachedData);
+        _pendingRender = false;
+    } else if (_cachedData) {
+        // Render the cached data straight away so the page isn't empty
+        window.RuntimeStatsActions.renderStats(_cachedData);
     }
-    refreshInterval = setInterval(() => {
+
+    // Start the persistent background interval only once, ever
+    if (!refreshInterval) {
+        // Do an immediate fetch on first start
+        window.RuntimeStatsActions.refreshData(true);
+        refreshInterval = setInterval(() => {
+            window.RuntimeStatsActions.refreshData(false);
+        }, 10000);
+    } else {
+        // Interval already running in background — just trigger a fresh fetch
+        // so the displayed data is up-to-date the moment the user sees the tab
         window.RuntimeStatsActions.refreshData(false);
-    }, 10000);
+    }
+}
+
+// wakeRuntimeStats is called when the tab becomes visible.
+// It marks the tab as visible and flushes any pending cached render.
+export function wakeRuntimeStats() {
+    _isTabVisible = true;
+    if (_cachedData && _pendingRender) {
+        window.RuntimeStatsActions.renderStats(_cachedData);
+        _pendingRender = false;
+    } else if (_cachedData) {
+        window.RuntimeStatsActions.renderStats(_cachedData);
+    }
 }
 
 export function destroyRuntimeStats() {
-    if (refreshInterval) {
-        clearInterval(refreshInterval);
-        refreshInterval = null;
-    }
+    // Intentional no-op: the background interval is NEVER stopped on tab switch.
+    // Data continues to refresh in the background so results are instant on re-entry.
+    // The interval is only stopped if the page itself is unloaded.
+    _isTabVisible = false;
 }
