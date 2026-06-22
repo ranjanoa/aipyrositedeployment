@@ -101,8 +101,21 @@ file_handler.setFormatter(log_formatter)
 logger.addHandler(file_handler)
 
 # Ensure the APP_DIR variables exist via config
-template_dir = os.path.join(config.BASE_DIR, 'templates')
-static_dir = os.path.join(config.BASE_DIR, 'static')
+# 1. Check for external template override
+ext_template_dir = os.path.join(config.APP_DIR, 'templates')
+if getattr(sys, 'frozen', False) and os.path.exists(ext_template_dir):
+    template_dir = ext_template_dir
+    logger.info(f"Using EXTERNAL templates directory: {template_dir}")
+else:
+    template_dir = os.path.join(config.BASE_DIR, 'templates')
+
+# 2. Check for external static override
+ext_static_dir = os.path.join(config.APP_DIR, 'static')
+if getattr(sys, 'frozen', False) and os.path.exists(ext_static_dir):
+    static_dir = ext_static_dir
+    logger.info(f"Using EXTERNAL static directory: {static_dir}")
+else:
+    static_dir = os.path.join(config.BASE_DIR, 'static')
 
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
