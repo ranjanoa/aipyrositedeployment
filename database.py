@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
-from influxdb_client.client.util.helpers import get_retries
+from urllib3.util.retry import Retry
 
 
 def get_db_client(timeout=10000): # INCREASED FROM 2000 to 10000
@@ -23,8 +23,20 @@ def get_heavy_analytics_client(timeout_ms=600000): # 10 Minutes
     Includes extreme timeouts and automatic network retries.
     """
     try:
-        retries = get_retries(retries=3, backoff_factor=2, max_retry_time=30)
-        client = InfluxDBClient(url=config.DB_URL, token=config.DB_TOKEN, org=config.DB_ORG, timeout=timeout_ms, retries=retries)
+        # Native urllib3 Retry logic (Safe across all InfluxDB client versions)
+        retries = Retry(
+            total=3,
+            backoff_factor=2,
+            status_forcelist=[429, 500, 502, 503, 504]
+        )
+        
+        client = InfluxDBClient(
+            url=config.DB_URL, 
+            token=config.DB_TOKEN, 
+            org=config.DB_ORG, 
+            timeout=timeout_ms, 
+            retries=retries
+        )
         return client
     except Exception as e:
         print(f"Error connecting to InfluxDB for Heavy Analytics: {e}")
