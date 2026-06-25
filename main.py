@@ -232,7 +232,7 @@ def background_data_emitter():
     """
     socketio.sleep(2)
     db_fail_count = 0
-    MAX_BACKOFF = 30  # Max 30s sleep when DB is offline
+    MAX_BACKOFF = 5  # Re-try every 5s so UI doesn't hit 100s stall limit
 
     while True:
         try:
