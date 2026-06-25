@@ -79,9 +79,6 @@ load_system_state()
 @api_routes.route('/autoloop', methods=['POST'])
 @cross_origin()
 def toggle_autopilot():
-    """
-    Handles the ENGAGE/DISENGAGE button click from the UI.
-    """
     try:
         data = request.get_json()
 
@@ -89,8 +86,6 @@ def toggle_autopilot():
         should_enable = data.get('enabled', False)
         target_batch = data.get('target_data') or data.get('target_batch')
         is_test_mode = data.get('test_mode', False)
-        # Optional base strategy used when AI_MNM overlays the 6 CV setpoints on
-        # top of an existing engine (Fingerprint / AI / Hybrid).
         base_strategy = (data.get('base_strategy') or 'FINGERPRINT').upper()
 
         config.SELECTED_STRATEGY = strategy
@@ -105,22 +100,14 @@ def toggle_autopilot():
                 config.CONTROL_MODE = 1
                 msg = "Engaged: Neural Network Control"
 
-            # === START OF CHANGED BLOCK ===
             elif strategy == 'FINGERPRINT':
                 config.CONTROL_MODE = 2
-
                 if target_batch:
-                    # Case A: User selected a specific new batch -> MANUAL
-                    # We save this selection and lock the mode.
                     with open(TARGET_FILE, 'w') as f:
                         json.dump(target_batch, f, indent=4)
                     config.FINGERPRINT_MODE_TYPE = 'MANUAL'
                     msg = "Engaged: Fingerprint Locked on Selection"
-
                 else:
-                    # Case B: No batch selected -> Force AUTO
-                    # We explicitly DELETE the old target file so the system doesn't
-                    # accidentally "Resume" an old target from the past.
                     if os.path.exists(TARGET_FILE):
                         try:
                             os.remove(TARGET_FILE)
@@ -129,15 +116,12 @@ def toggle_autopilot():
 
                     config.FINGERPRINT_MODE_TYPE = 'AUTO'
                     msg = "Engaged: Fingerprint Auto-Search"
-            # === END OF CHANGED BLOCK ===
 
             elif strategy == 'HYBRID':
                 config.CONTROL_MODE = 3
                 msg = "Engaged: Hybrid Auto-Arbitration Mode"
 
             elif strategy == 'AI_MNM':
-                # AI_MNM overlays 6 CV setpoints sourced from cimpor_data_result on
-                # top of a configurable base engine. CONTROL_MODE 4 is the AI_MNM tag.
                 config.CONTROL_MODE = 4
                 msg = f"Engaged: AI_MNM Overlay (Base={base_strategy})"
 
@@ -147,8 +131,6 @@ def toggle_autopilot():
 
         control_service.service.set_enabled(should_enable)
         
-        # --- IMMEDIATE UI RESET ---
-        # Force the dashboard to clear stale AI/FP curves immediately on mode switch
         emit('autopilot_recommendation', {
             "active_strategy": "MANUAL" if not should_enable else strategy,
             "driver": "SWITCHING...",
@@ -182,7 +164,6 @@ def toggle_autopilot():
 @api_routes.route('/fingerprint/mode', methods=['POST'])
 @cross_origin()
 def set_fingerprint_mode():
-    """Update the preferred fingerprint search mode (AUTO/MANUAL) without engaging."""
     try:
         data = request.get_json()
         mode = data.get('mode', 'AUTO')
@@ -224,14 +205,11 @@ def get_system_status():
 @cross_origin()
 def find_fingerprint():
     try:
-        # --- FIXED LOGIC: Only Lock if ENGAGED (Mode 2) ---
-        # If we are in Monitor Mode (Mode 0), we skip this block and run the full search below.
         if config.CONTROL_MODE == 2 and config.FINGERPRINT_MODE_TYPE == 'MANUAL' and os.path.exists(TARGET_FILE):
             try:
                 with open(TARGET_FILE, 'r') as f:
                     saved_target = json.load(f)
 
-                # RECONSTRUCT RAW ROW (Restores values if missing)
                 controls_cfg = process_model.get_control_variables()
                 reconstructed_row = {}
 
@@ -249,17 +227,14 @@ def find_fingerprint():
                 if not reconstructed_row:
                     reconstructed_row = saved_target
 
-                # Retrieve current real-time data
                 tag_map = process_model.get_tag_to_name_map()
                 end_time = datetime.utcnow()
                 start_time = end_time - timedelta(minutes=30)
                 real_df = database.get_realtime_data_window(start_time, end_time, list(tag_map.keys()), tag_map)
 
-                # Reconstruct process context
                 controls_cfg = process_model.get_control_variables()
                 indicators_cfg = process_model.get_indicator_variables()
                 
-                # ARCHIVAL FIX: Calculate teal similarity for the engaged manual target
                 sim_pct = fingerprint_engine.calculate_match_percentage(
                     current_state.to_dict() if hasattr(current_state, 'to_dict') else dict(current_state), 
                     reconstructed_row, 
@@ -279,9 +254,7 @@ def find_fingerprint():
             except Exception as e:
                 print(f"Manual Load Error: {e}")
                 pass
-                # --- END FIXED LOGIC ---
 
-        # === STANDARD SEARCH LOGIC (Runs for Disengaged/Monitor Mode) ===
         req_data = request.get_json()
         engine_logger = fingerprint_engine.engine_logger
         engine_logger.info(f"[API] Search Request received. Constraints: {list(req_data.get('deviation', {}).keys())}")
@@ -309,13 +282,10 @@ def find_fingerprint():
 
         current_state = real_df.iloc[-1]
 
-        # 1. Configuration & Weights
         weights = process_model.get_optimization_weights()
         controls_cfg = process_model.get_control_variables()
         indicators_cfg = process_model.get_indicator_variables()
         
-        # 2. Unified Advanced Search (Consistent with AUTO mode)
-        # This applies the Golden Filter, Multi-Phase Search, and Slope-Aware Ranking.
         strategy = req_data.get("deviation", {})
         top_matches_raw, is_fallback = fingerprint_engine.find_best_fingerprint_advanced(
             real_df, hist_df, strategy, current_state, weights
@@ -325,7 +295,6 @@ def find_fingerprint():
         ts_col = config.TIMESTAMP_COLUMN
         current_state_dict = current_state.to_dict() if hasattr(current_state, 'to_dict') else dict(current_state)
 
-        # --- PERF: Build a timestamp → index lookup once, not per match ---
         if ts_col in hist_df.columns:
             if not pd.api.types.is_datetime64_any_dtype(hist_df[ts_col]):
                 ts_index = pd.to_datetime(hist_df[ts_col], errors='coerce')
@@ -334,7 +303,6 @@ def find_fingerprint():
         else:
             ts_index = pd.Series(dtype='datetime64[ns]')
 
-        # --- PERF: Cap to top 10 matches - UI only shows top results anyway ---
         MAX_RESULTS = 10
         top_matches_raw = top_matches_raw[:MAX_RESULTS]
 
@@ -344,7 +312,6 @@ def find_fingerprint():
                 ts = row.get(ts_col)
                 target_ts = pd.to_datetime(ts)
 
-                # --- PERF: Only build full chart window for the best match (index 0) ---
                 pred_df = None
                 if i == 0:
                     matches = ts_index.index[ts_index == target_ts].tolist()
@@ -359,10 +326,8 @@ def find_fingerprint():
                         engine_logger.warning(f"  [API] Visualization window not found for {ts}. Using dummy padding.")
                         pred_df = pd.DataFrame([row_dict] * 60)
                 else:
-                    # For non-top matches, use a minimal placeholder (no heavy DataFrame copy)
                     pred_df = pd.DataFrame([row_dict] * 2)
 
-                # Calculate physical similarity score (0-100%)
                 sim_pct = fingerprint_engine.calculate_match_percentage(
                     current_state_dict,
                     row_dict,
@@ -374,7 +339,6 @@ def find_fingerprint():
 
                 api_obj = process_model.build_api_response(real_df, row, pred_df, sim_pct, 0, 0)
 
-                # For non-top matches, strip heavy chart data to keep response lean
                 if i > 0:
                     api_obj['live_history'] = {}
                     api_obj['fingerprint_prediction'] = {}
@@ -384,7 +348,6 @@ def find_fingerprint():
                 engine_logger.error(f"  [API] Match {i+1} formatting error: {str(e)}")
                 continue
 
-        # Final Sort: Ensure the UI shows the highest Similarity % first
         formatted_results.sort(key=lambda x: float(x.get('match_score', 0)), reverse=True)
 
         if not formatted_results:
@@ -392,7 +355,6 @@ def find_fingerprint():
             return jsonify({"data": [process_model.build_no_fingerprint_response(current_state)]})
 
         return jsonify({"data": formatted_results})
-
 
     except Exception as e:
         traceback.print_exc()
@@ -427,13 +389,6 @@ def sync_history():
 @api_routes.route('/aimnm/values', methods=['GET'])
 @cross_origin()
 def get_aimnm_values():
-    """
-    Returns latest AI_MNM Curr/SP pairs for the operator AI_MNM tab.
-    Source-of-truth field names come from model_config.json -> ai_mnm:
-      cv_parameters[<param>].curr_field   (read from cimpor_data_result)
-      cv_parameters[<param>].sp_field     (read from cimpor_data_result)
-    Side effect: every CV pair just read is mirrored into kiln2 as aimnm_<param> SP fields.
-    """
     try:
         cfg = process_model.load_model_config() or {}
         ai_mnm_cfg = cfg.get('ai_mnm', {}) or {}
@@ -444,10 +399,7 @@ def get_aimnm_values():
         ts = cdr.pop('_time', None)
         cdr_keys_lower = {k.lower(): k for k in cdr.keys()}
 
-        # --- MEASUREMENT NAME SAFETY CHECK ---
-        # Use getattr fallback so older config.py deployments without DB_MEASUREMENT_AI_MNM_RESULT don't crash
         primary_measurement = getattr(config, 'DB_MEASUREMENT_AI_MNM_RESULT', 'cimpor_data_results')
-        # Try primary config name, but fallback to singular if plural (or vice-versa) if empty
         if not cdr:
             alt_measurement = "cimpor_data_result" if primary_measurement.endswith('s') else primary_measurement + 's'
             cdr = database.get_aimnm_results(window_minutes=10, measurement_override=alt_measurement) or {}
@@ -469,28 +421,22 @@ def get_aimnm_values():
                     return cdr_keys_lower[cand]
             return None
 
-        # --- STRICT SOURCE ROUTING ---
-        # 1. Current Values: ALWAYS from live PLC (kiln1/opc/pi)
         missing_cv_vars = [spec.get('target_var') for spec in cv_spec.values() if spec.get('target_var')]
         live_kiln1 = database.get_live_current_values(missing_cv_vars, window_minutes=10) or {}
 
-        # 2. Target Values: ALWAYS from AI database results (cdr)
         values = {}
         missing = []
         for param, spec in cv_spec.items():
-            curr_field = spec.get('curr_field') # This is the label in the DB
+            curr_field = spec.get('curr_field')
             sp_field   = spec.get('sp_field')
-            target_var = spec.get('target_var') # This is the tag in kiln1
+            target_var = spec.get('target_var')
 
             row = {}
-            
-            # CURR comes from Live PLC
             if target_var in live_kiln1:
                 row['curr'] = live_kiln1[target_var]
             else:
                 missing.append(target_var)
 
-            # SP comes from AI Results
             sp_resolved = _resolve(sp_field)
             if sp_resolved:
                 row['sp'] = cdr[sp_resolved]
@@ -509,10 +455,7 @@ def get_aimnm_values():
         except Exception as mirror_err:
             print(f"[AI_MNM] kiln2 mirror failed: {mirror_err}")
 
-        # Indicators — ALWAYS from live PLC (kiln1/opc/pi)
         indicators = {}
-        
-        # Gather target vars for indicators
         ind_target_vars = [spec.get('field') for spec in ind_spec.values() if spec.get('field')]
         live_ind_kiln1 = database.get_live_current_values(ind_target_vars, window_minutes=10) or {}
 
@@ -532,10 +475,6 @@ def get_aimnm_values():
 @api_routes.route('/aimnm/debug', methods=['GET'])
 @cross_origin()
 def get_aimnm_debug():
-    """
-    Diagnostic endpoint — returns raw field names in cimpor_data_result and kiln1.
-    Hit from browser: /api/aimnm/debug
-    """
     try:
         cfg = process_model.load_model_config() or {}
         ai_mnm_cfg = cfg.get('ai_mnm', {}) or {}
@@ -575,10 +514,6 @@ def get_aimnm_debug():
 @api_routes.route('/aimnm/save', methods=['POST'])
 @cross_origin()
 def save_aimnm_setpoints():
-    """
-    No-op endpoint (spec: AI_MNM config persisted exclusively to model_config.json
-    via /api/config). Retained for frontend backward compatibility.
-    """
     try:
         body = request.get_json() or {}
         section = body.get('section', 'cv')
@@ -756,14 +691,12 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         if not mappings:
             return {"error": "No runtime statistics mappings found in configuration"}, 500
             
-        # Collect all required friendly names
         friendly_names_to_query = set()
         
         calc_vars = conf.get('calculated_variables', {})
         controls = process_model.get_control_variables()
         indicators = process_model.get_indicator_variables()
         
-        # Always query the overall system status
         system_status_friendly = "AI_SYSTEM_TRUST"
         friendly_names_to_query.add(system_status_friendly)
         if "AI_SYSTEM_TRUST" in calc_vars:
@@ -788,37 +721,35 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                     for dep in dependencies:
                         friendly_names_to_query.add(dep)
         
-        # Add runtime stats condition variable if enabled
         cond = conf.get('runtime_stats_condition', {})
         if cond.get('enabled') and cond.get('variable'):
             friendly_names_to_query.add(cond.get('variable'))
                         
-        # Translate friendly names to raw tags for database query
         name_to_tag = process_model.get_name_to_tag_map()
         tag_to_name = process_model.get_tag_to_name_map()
         
         raw_tags = [name_to_tag.get(name, name) for name in friendly_names_to_query if name]
         
-        # Fetch from database
         if not is_custom:
             end_time = datetime.utcnow()
             start_time = end_time - timedelta(minutes=window_mins)
         
         # Snapshot the query window BEFORE any historical fallback may reassign start_time.
-        # The batch DB queries must always use the original requested window boundaries.
         query_start_time = start_time
         query_end_time = end_time
         
-        df = database.get_realtime_data_window(start_time, end_time, raw_tags, tag_to_name)
+        # --- NEW MASSIVE QUERY HANDLING ---
+        # If querying more than 24 hours (1440 minutes), switch to the heavy-duty chunked client
+        if window_mins > 1440:
+            df = database.fetch_massive_history(start_time, end_time, raw_tags, tag_to_name)
+        else:
+            df = database.get_realtime_data_window(start_time, end_time, raw_tags, tag_to_name)
         
-        # Fallback to historical dataframe if empty
         if df.empty:
             if df_fingerprint is not None and not df_fingerprint.empty:
-                # Ensure friendly column names
                 hist_df = df_fingerprint.copy()
                 hist_df.columns = [str(c).strip() for c in hist_df.columns]
                 
-                # Check for timestamp column
                 ts_col = config.TIMESTAMP_COLUMN
                 if ts_col in hist_df.columns:
                     hist_df[ts_col] = pd.to_datetime(hist_df[ts_col])
@@ -834,17 +765,14 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         if df.empty:
             print("Runtime stats: Dataframe is empty, will return zeroed values.")
             
-        # Enrich dataframe with calculated variables
         df = process_model.materialize_df(df, controls, indicators, calc_vars)
         
-        # Apply runtime stats filter condition
         if cond.get('enabled'):
             cond_var = cond.get('variable')
             operator = cond.get('operator', '>')
             try:
                 threshold = float(cond.get('threshold', 0))
                 if cond_var in df.columns:
-                    # Filter dataframe where condition is met
                     if operator == '>':
                         df = df[pd.to_numeric(df[cond_var], errors='coerce') > threshold]
                     elif operator == '<':
@@ -859,15 +787,11 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         if df.empty:
             print("Runtime stats: Dataframe is empty after filtering, will return zeroed values.")
         
-        # Calculate calendar window duration in hours to act as standard denominator.
-        # Always use the snapshotted query boundaries — NOT start_time/end_time which
-        # may have been reassigned by the historical fallback block above.
         if is_custom:
             calendar_window_hours = (query_end_time - query_start_time).total_seconds() / 3600.0
         else:
             calendar_window_hours = window_mins / 60.0
 
-        # Calculate database time span in hours (retained for fallback diagnostics)
         try:
             if not df.empty and isinstance(df.index, pd.DatetimeIndex):
                 time_span_hours = (df.index.max() - df.index.min()).total_seconds() / 3600.0
@@ -885,8 +809,6 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         stats_results = []
         db_offline = False
         
-        # --- BATCH QUERY OPTIMIZATION ---
-        # Build lists of tags to query in batch
         end_time_tags = set()
         start_time_tags = set()
         
@@ -903,24 +825,19 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                 end_time_tags.add(raw_rh_tag)
                 start_time_tags.add(raw_rh_tag)
                 
-        # Perform batched database fetches to completely eliminate loops of single queries
         end_values = {}
         start_values = {}
         first_values = {}
         
-        # 1. Fetch all end values at the END of the requested window
         end_values = database.get_tags_values_at_time(query_end_time, list(end_time_tags))
         
-        # If we got nothing from DB and dataframe is also empty, DB might be offline
         if not end_values and df.empty:
             db_offline = True
             print("[RUNTIME-STATS] DB offline detected, skipping batch queries.")
             
         if not db_offline:
-            # 2. Fetch all start values at the START of the requested window
             start_values = database.get_tags_values_at_time(query_start_time, list(start_time_tags))
             
-            # 3. Find tags that need a fallback first value query
             first_time_tags = [
                 tag for tag in start_time_tags
                 if tag in end_values and tag not in start_values
@@ -928,7 +845,6 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
             if first_time_tags:
                 first_values = database.get_first_tags_values(first_time_tags)
 
-        # Per Control Variable Stats
         for var_name, mapping in mappings.items():
             status_col = mapping.get('status_tag')
             rh_col = mapping.get('rh_tag')
@@ -958,7 +874,6 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                 has_rh = True
                 raw_rh_tag = name_to_tag.get(rh_col, rh_col)
                 
-                # Lookup from batched results instead of querying DB sequentially
                 db_curr_rh = end_values.get(raw_rh_tag)
                 db_start_rh = start_values.get(raw_rh_tag)
                 
@@ -970,7 +885,6 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                     start_rh = db_start_rh
                     rh_delta = max(0.0, curr_rh - start_rh)
                 else:
-                    # Fallback to dataframe values if DB lookup failed
                     if rh_col in df.columns and not df.empty:
                         rh_vals = df[rh_col].dropna()
                         if not rh_vals.empty:
@@ -982,19 +896,15 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
             active_hours = 0.0
             
             if has_rh and rh_delta > 0.0:
-                # Primary path: use the PLC RH totaliser delta — most accurate
                 active_hours = rh_delta
             elif status_col and status_col in df.columns and not df.empty:
-                # Fallback: count rows where the status bit is active and convert to hours.
-                # Each row in the realtime window dataframe represents one second of data.
                 if status_col == "AI_SYSTEM_TRUST":
-                    # For the system-wide tag we always prefer the RH value even if zero
                     active_hours = rh_delta
                 else:
                     valid_status = df[status_col].dropna()
                     if not valid_status.empty:
-                        active_hours = float((valid_status > 0.5).sum()) / 3600.0
-                        # Keep rh_delta in sync for display consistency
+                        # Modified: Because of downsampling over huge data, taking sum directly is safer
+                        active_hours = float((valid_status > 0.5).sum()) / (3600.0 if window_mins <= 1440 else 1.0)
                         if not has_rh:
                             rh_delta = active_hours
 
@@ -1047,7 +957,6 @@ def get_runtime_statistics():
             
         df_fingerprint = current_app.config.get('df_fingerprint')
         
-        # Offload compilation to thread pool to avoid blocking execution/GIL
         future = stats_executor.submit(
             compute_runtime_statistics,
             start_time,
@@ -1057,8 +966,6 @@ def get_runtime_statistics():
             df_fingerprint
         )
         
-        # Cooperatively wait — time.sleep() releases the GIL so other
-        # Python threads (autopilot, data emitter) can run freely.
         import time
         while not future.done():
             time.sleep(0.02)
@@ -1070,4 +977,4 @@ def get_runtime_statistics():
         return jsonify(result)
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 500
