@@ -322,7 +322,11 @@ def get_aimnm_results(window_minutes=2, measurement_override=None):
                 out['_time'] = str(v)
                 continue
             try:
-                out[k] = float(v)
+                val = float(v)
+                if np.isnan(val) or np.isinf(val):
+                    out[k] = None
+                else:
+                    out[k] = val
             except (TypeError, ValueError):
                 continue
         return out
@@ -385,7 +389,11 @@ def get_live_current_values(field_names, window_minutes=5):
             val = r.get('_value')
             if field and val is not None:
                 try:
-                    out[field] = float(val)
+                    fval = float(val)
+                    if np.isnan(fval) or np.isinf(fval):
+                        out[field] = None
+                    else:
+                        out[field] = fval
                 except (TypeError, ValueError):
                     continue
                     
