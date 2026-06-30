@@ -738,12 +738,29 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         query_start_time = start_time
         query_end_time = end_time
         
+        # Determine downsample interval based on query window duration
+        downsample_interval = None
+        if window_mins > 480:     # > 8 hours to 24 hours (e.g. 1440 mins)
+            downsample_interval = '1m'
+        elif window_mins > 240:   # > 4 hours to 8 hours
+            downsample_interval = '30s'
+        elif window_mins > 60:    # > 1 hour to 4 hours
+            downsample_interval = '10s'
+        elif window_mins > 30:    # > 30 mins to 1 hour
+            downsample_interval = '5s'
+            
         # --- NEW MASSIVE QUERY HANDLING ---
         # If querying more than 24 hours (1440 minutes), switch to the heavy-duty chunked client
         if window_mins > 1440:
             df = database.fetch_massive_history(start_time, end_time, raw_tags, tag_to_name)
         else:
-            df = database.get_realtime_data_window(start_time, end_time, raw_tags, tag_to_name)
+            df = database.get_realtime_data_window(
+                start_time,
+                end_time,
+                raw_tags,
+                tag_to_name,
+                downsample_interval=downsample_interval
+            )
         
         if df.empty:
             if df_fingerprint is not None and not df_fingerprint.empty:
@@ -816,8 +833,8 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
             status_col = mapping.get('status_tag')
             rh_col = mapping.get('rh_tag')
             
-            if status_col == "AI_SYSTEM_TRUST":
-                raw_tag = name_to_tag.get(status_col, "AI_SYSTEM_TRUST_STATUS")
+            if status_col:
+                raw_tag = name_to_tag.get(status_col, status_col)
                 end_time_tags.add(raw_tag)
                 
             if rh_col:
@@ -828,6 +845,8 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         end_values = {}
         start_values = {}
         first_values = {}
+        fallback_end_values = {}
+        fallback_start_values = {}
         
         end_values = database.get_tags_values_at_time(query_end_time, list(end_time_tags))
         
@@ -838,13 +857,22 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
         if not db_offline:
             start_values = database.get_tags_values_at_time(query_start_time, list(start_time_tags))
             
+            # Batch query fallback 1-minute range values for any missing end/start tags
+            missing_end_tags = [tag for tag in end_time_tags if tag not in end_values]
+            if missing_end_tags:
+                fallback_end_values = database.get_tags_values_in_range(query_end_time, missing_end_tags, tolerance_mins=1)
+                
+            missing_start_tags = [tag for tag in start_time_tags if tag not in start_values]
+            if missing_start_tags:
+                fallback_start_values = database.get_tags_values_in_range(query_start_time, missing_start_tags, tolerance_mins=1)
+            
             first_time_tags = [
                 tag for tag in start_time_tags
                 if tag in end_values and tag not in start_values
             ]
             if first_time_tags:
                 first_values = database.get_first_tags_values(first_time_tags)
-
+ 
         for var_name, mapping in mappings.items():
             status_col = mapping.get('status_tag')
             rh_col = mapping.get('rh_tag')
@@ -854,17 +882,21 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
             unit = mapping.get('unit', var_info.get('unit', ''))
             curr_status = 0.0
             
-            if status_col == "AI_SYSTEM_TRUST":
-                raw_tag = name_to_tag.get(status_col, "AI_SYSTEM_TRUST_STATUS")
+            if status_col:
+                raw_tag = name_to_tag.get(status_col, status_col)
                 db_val = end_values.get(raw_tag)
+                if db_val is None:
+                    db_val = fallback_end_values.get(raw_tag)
+                
                 if db_val is not None:
                     curr_status = float(db_val)
                 else:
-                    curr_status = 1.0 if config.CONTROL_MODE > 0 else 0.0
-            elif status_col and status_col in df.columns and not df.empty:
-                valid_status = df[status_col].dropna()
-                if not valid_status.empty:
-                    curr_status = float(valid_status.iloc[-1])
+                    if status_col in df.columns and not df.empty:
+                        valid_status = df[status_col].dropna()
+                        if not valid_status.empty:
+                            curr_status = float(valid_status.iloc[-1])
+                    elif status_col == "AI_SYSTEM_TRUST":
+                        curr_status = 1.0 if config.CONTROL_MODE > 0 else 0.0
                 
             curr_rh = 0.0
             has_rh = False
@@ -875,10 +907,14 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                 raw_rh_tag = name_to_tag.get(rh_col, rh_col)
                 
                 db_curr_rh = end_values.get(raw_rh_tag)
+                if db_curr_rh is None:
+                    db_curr_rh = fallback_end_values.get(raw_rh_tag)
+                    
                 db_start_rh = start_values.get(raw_rh_tag)
-                
-                if db_start_rh is None and db_curr_rh is not None:
-                    db_start_rh = first_values.get(raw_rh_tag)
+                if db_start_rh is None:
+                    db_start_rh = fallback_start_values.get(raw_rh_tag)
+                    if db_start_rh is None:
+                        db_start_rh = first_values.get(raw_rh_tag)
                 
                 if db_curr_rh is not None and db_start_rh is not None:
                     curr_rh = db_curr_rh
@@ -903,8 +939,21 @@ def compute_runtime_statistics(start_time, end_time, window_mins, is_custom, df_
                 else:
                     valid_status = df[status_col].dropna()
                     if not valid_status.empty:
-                        # Modified: Because of downsampling over huge data, taking sum directly is safer
-                        active_hours = float((valid_status > 0.5).sum()) / (3600.0 if window_mins <= 1440 else 1.0)
+                        # Determine actual sample interval in seconds dynamically
+                        dt_seconds = 1.0
+                        if len(df) > 1:
+                            try:
+                                diffs = pd.Series(df.index).diff().dropna()
+                                if not diffs.empty:
+                                    median_diff = diffs.median()
+                                    if pd.notna(median_diff):
+                                        dt_seconds = median_diff.total_seconds()
+                            except Exception:
+                                pass
+                        if pd.isna(dt_seconds) or dt_seconds <= 0.0:
+                            dt_seconds = 1.0
+                        
+                        active_hours = float((valid_status > 0.5).sum()) * dt_seconds / 3600.0
                         if not has_rh:
                             rh_delta = active_hours
 

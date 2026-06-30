@@ -77,7 +77,16 @@ export function RuntimeStats() {
                 <div class="flex-1 glass-panel border border-[#2d4a54] bg-[#1a3842] flex flex-col min-w-0 rounded-lg overflow-hidden">
                     <div class="p-3 bg-[#152e36] border-b border-[#2d4a54] flex justify-between items-center shrink-0">
                         <span class="text-xs font-bold text-white uppercase tracking-wider">Control Variable Performance Metrics</span>
-                        <span id="stats-status-info" class="text-[10px] text-gray-400 font-mono">Last updated: --:--:--</span>
+                        <div class="flex items-center gap-2">
+                            <span id="stats-loading-indicator" class="hidden text-[10px] text-[#ebf552] font-bold flex items-center gap-1">
+                                <svg class="animate-spin h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                UPDATING...
+                            </span>
+                            <span id="stats-status-info" class="text-[10px] text-gray-400 font-mono">Last updated: --:--:--</span>
+                        </div>
                     </div>
                     
                     <div class="flex-1 overflow-y-auto">
@@ -221,6 +230,11 @@ window.RuntimeStatsActions = {
 
     refreshData(showLoader = false) {
         const tableBody = document.getElementById("runtime-stats-table-body");
+        const loadingIndicator = document.getElementById("stats-loading-indicator");
+
+        if (loadingIndicator) {
+            loadingIndicator.classList.remove("hidden");
+        }
 
         // If tab is visible and no cache yet, show a spinner
         if (_isTabVisible && tableBody && (showLoader || tableBody.innerHTML.includes("Loading statistics"))) {
@@ -262,6 +276,9 @@ window.RuntimeStatsActions = {
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                if (loadingIndicator) {
+                    loadingIndicator.classList.add("hidden");
+                }
                 if (data.status === "success") {
                     // Always cache the latest successful result
                     _cachedData = data;
@@ -280,6 +297,9 @@ window.RuntimeStatsActions = {
                 }
             })
             .catch(err => {
+                if (loadingIndicator) {
+                    loadingIndicator.classList.add("hidden");
+                }
                 console.error("Error fetching stats:", err);
                 if (_isTabVisible && tableBody) {
                     tableBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-red-500 font-bold">Network error while fetching statistics.</td></tr>`;

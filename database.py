@@ -222,7 +222,7 @@ def fetch_massive_history(start_time, end_time, process_tags, tag_map):
     finally:
         client.close()
 
-def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
+def get_realtime_data_window(start_time, end_time, process_tags, tag_map, downsample_interval=None):
     if not process_tags:
         return pd.DataFrame()
     client = get_db_client(timeout=20000)
@@ -242,11 +242,13 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
         dfs = []
         for chunk in tag_chunks:
             field_filters = ' or '.join([f'r["_field"] == "{str(tag).replace(chr(34), chr(92) + chr(34))}"' for tag in chunk])
+            downsample_clause = f'|> aggregateWindow(every: {downsample_interval}, fn: mean, createEmpty: false)' if downsample_interval else ''
             query = f'''
             from(bucket: "{config.DB_BUCKET}")
               |> range(start: {start_time.isoformat()}Z, stop: {end_time.isoformat()}Z)
               |> filter(fn: (r) => {measurement_filter})
               |> filter(fn: (r) => {field_filters})
+              {downsample_clause}
             '''
             df_chunk = client.query_api().query_data_frame(org=config.DB_ORG, query=query)
             if isinstance(df_chunk, list):
@@ -264,7 +266,8 @@ def get_realtime_data_window(start_time, end_time, process_tags, tag_map):
         for next_df in dfs[1:]:
             df = pd.merge(df, next_df, on='_time', how='outer')
             
-        return _rename_and_format_df(df, tag_map) if not df.empty else pd.DataFrame()
+        skip_resample = True if downsample_interval else False
+        return _rename_and_format_df(df, tag_map, skip_resample=skip_resample) if not df.empty else pd.DataFrame()
     except Exception as e:
         import traceback
         print(f"Error in get_realtime_data_window: {e}")
@@ -586,6 +589,54 @@ def get_tags_values_at_time(timestamp, tag_names):
         return results
     except Exception as e:
         print(f"Error getting tags values at time {timestamp}: {e}")
+        return results
+    finally:
+        client.close()
+
+
+def get_tags_values_in_range(timestamp, tag_names, tolerance_mins=1):
+    if not tag_names:
+        return {}
+    client = get_db_client(timeout=10000)
+    if not client: return {}
+    results = {}
+    try:
+        import datetime as dt
+        if timestamp.tzinfo is not None:
+            timestamp = timestamp.astimezone(dt.timezone.utc).replace(tzinfo=None)
+        
+        start_time = timestamp - dt.timedelta(minutes=tolerance_mins)
+        end_time = timestamp + dt.timedelta(minutes=tolerance_mins)
+        
+        start_str = start_time.isoformat() + 'Z'
+        end_str = end_time.isoformat() + 'Z'
+        
+        measurements = [
+            config.DB_MEASUREMENT,
+            config.DB_MEASUREMENT_OPC,
+            config.DB_MEASUREMENT_PI,
+            getattr(config, 'DB_MEASUREMENT_SETPOINTS', 'kiln2')
+        ]
+        measurement_filter = " or ".join(f'r["_measurement"] == "{m}"' for m in measurements if m)
+        field_filter = " or ".join([f'r["_field"] == "{str(t).replace(chr(34), chr(92) + chr(34))}"' for t in tag_names])
+        
+        query = f'''
+        from(bucket: "{config.DB_BUCKET}")
+          |> range(start: {start_str}, stop: {end_str})
+          |> filter(fn: (r) => {measurement_filter})
+          |> filter(fn: (r) => {field_filter})
+          |> last()
+        '''
+        tables = client.query_api().query(query, org=config.DB_ORG)
+        for table in tables:
+            for record in table.records:
+                tag = record.get_field()
+                val = record.get_value()
+                if val is not None:
+                    results[tag] = float(val)
+        return results
+    except Exception as e:
+        print(f"Error in get_tags_values_in_range for {tag_names} at {timestamp}: {e}")
         return results
     finally:
         client.close()
